@@ -1,0 +1,91 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    align-items: stretch;
+    min-width: 0;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @media screen and (max-width: 768px) {
+        padding-left: 2rem;
+        padding-right: 2rem;  
+    }
+
+    @media screen and (max-width: 500px) {
+        padding-left: 1rem;
+        padding-right: 1rem;  
+    }
+}
+
+.title {
+    margin: 0 0 .3rem 0;
+    color: $darkblue;
+
+    @media screen and (max-width: 768px) {
+        font-size: 1.7rem;
+    }
+}
+
+.subtitle {
+    margin:0 0 .5rem 0;
+    color: #222222;
+    font-size: 1.4rem;
+    @media screen and (max-width: 768px) {
+        font-size: 1.2rem;
+    }
+}
+
+.post-details {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    flex-wrap: wrap;
+    @media screen and (max-width: 768px) {
+        font-size: .9rem;
+    }
+}
+
+.post-details p{
+    margin: 0 0 0 0;
+    color: $grey;
+    font-size: inherit;
+}
+
+.author {
+    color: #444444;
+    font-size: 1rem;
+}
+
+.date {
+    color: #444444;
+    font-size: 1rem;
+}
+
+
+.date::before{
+    content: "\02022";
+    padding: 0 1rem;
+}
+
+.reading-time {
+    color: #444444;
+    font-size: 1rem;
+}
+
+.reading-time::before{
+    content: "\02022";
+    padding: 0 1rem;
+}
+
+.line-left {
+    background: $darkblue;
+    height: 3px;
+    border: none;
+    width: 100%;
+}

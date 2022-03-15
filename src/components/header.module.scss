@@ -1,0 +1,28 @@
+.header {
+    padding: 1rem 0 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+}
+
+.nav-item {
+    color: #999999;
+    font-size: 1rem;
+    margin-right: 1.3rem;
+    text-decoration: none;
+    transition: all ease .5s;
+}
+
+.nav-item:hover {
+    color: $mediumblue;
+    transition: all ease .5s;
+}
+
+.active-nav-item {
+    color: $darkblue;
+}

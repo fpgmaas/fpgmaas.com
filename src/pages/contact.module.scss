@@ -1,0 +1,17 @@
+.email {
+    margin-left: 1rem;
+    margin:0 0 .2rem 0;
+    font-size: 1rem;
+    color: $grey;
+}
+
+.email-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-container {
+    color: $darkblue;
+    margin-right: .3rem;
+}

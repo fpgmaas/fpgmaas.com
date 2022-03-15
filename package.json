@@ -1,0 +1,60 @@
+{
+  "name": "gatsby-starter-hello-world",
+  "private": true,
+  "description": "A simplified bare-bones starter for Gatsby",
+  "version": "0.1.0",
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "env-cmd -f .env.development gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "env-cmd -f .env.production gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "@fontsource/fira-code": "^4.5.8",
+    "@fontsource/inter": "^4.5.7",
+    "@fontsource/open-sans": "^4.5.8",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "add": "^2.0.6",
+    "gatsby": "^4.11.0",
+    "gatsby-plugin-catch-links": "^4.11.0",
+    "gatsby-plugin-google-gtag": "^4.11.0",
+    "gatsby-plugin-mdx": "^3.11.1",
+    "gatsby-plugin-react-helmet": "^5.11.0",
+    "gatsby-plugin-sass": "^5.11.0",
+    "gatsby-plugin-sharp": "^4.11.1",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-remark-autolink-headers": "^5.11.1",
+    "gatsby-remark-images": "^6.11.1",
+    "gatsby-remark-vscode": "^3.3.1",
+    "gatsby-source-filesystem": "^4.11.0",
+    "gatsby-transformer-remark": "^5.11.0",
+    "json-loader": "^0.5.7",
+    "plotly.js": "^2.11.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-loadable": "^5.5.0",
+    "react-plotly.js": "^2.5.1",
+    "react-spinners": "^0.11.0",
+    "sass": "^1.49.9",
+    "yarn": "^1.22.18"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "prettier": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}

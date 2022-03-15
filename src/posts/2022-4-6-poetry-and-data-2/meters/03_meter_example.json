@@ -1,0 +1,11 @@
+{
+    "data": {
+        "text":
+            [
+                ["i", "al", "ways", "hoped","i'd","have","some","more"],
+                ["an","oth","er","year","or","two"]
+            ],
+        "stressed":
+                [[0,1,0,1,0,1,0,1],[0,1,0,1,0,1]]
+    }
+}

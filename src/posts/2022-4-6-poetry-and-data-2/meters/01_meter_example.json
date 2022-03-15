@@ -1,0 +1,14 @@
+{
+    "data": {
+        "text":
+            [
+                ["I","should","have","hur","ried","youth","in","truth"],
+                ["and", "moved","more","quick","ly","on"]
+            ],
+        "stressed":
+            [
+                [0,1,0,1,0,1,0,1],
+                [0,1,0,1,0,1]
+            ]
+    }
+}
