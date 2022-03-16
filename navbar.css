@@ -44,7 +44,7 @@ nav {
     display: block;
     height: 2px;
     position: absolute;
-    background: ;
+    background: white;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     left: 0;
     right:5px;

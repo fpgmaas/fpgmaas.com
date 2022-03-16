@@ -23,3 +23,18 @@ const navSlide = () => {
 }
 
 navSlide();
+var particles = Particles.init({
+	selector: '.background',
+    maxParticles: 300,
+    sizeVariations: 3,
+  color: '#FFFFFF',
+  speed: 0.15,
+  responsive: [
+    {
+      breakpoint: 1000,
+      options: {
+        maxParticles: 100
+      }
+    }
+  ]
+});
