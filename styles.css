@@ -9,6 +9,7 @@ body{
     display: flex;                  /* Enter flexbox layout */
     flex-direction: column;         /* a column of several rows */
     justify-content: space-between; /* moves header up, footer down*/
+    background-color: #002142;
 }
 
 @media screen and (max-width:768px) {
@@ -40,13 +41,13 @@ body{
     min-width:160px;
 }
 .item i {
-    font-size: 40px;
-    color: #004080;
+    font-size: 36px;
+    color: white;
     margin-bottom: 20px;
 }
 
 .item a {
-    color:#004080;
+    color:white;
     text-decoration: none;
     letter-spacing: 2px;
     font-size: 22px;

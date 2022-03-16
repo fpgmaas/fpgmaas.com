@@ -13,7 +13,7 @@ nav {
 }
 
 .nav-links a {
-    color:#004080;
+    color:white;
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
@@ -28,7 +28,7 @@ nav {
 }
 
 .nav-links li:not(:last-child) {
-    border-right: 1px solid #004080;
+    border-right: 1px solid white;
   }
 
   .nav-links a{
@@ -44,7 +44,7 @@ nav {
     display: block;
     height: 2px;
     position: absolute;
-    background: #004080;
+    background: ;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     left: 0;
     right:5px;
@@ -73,7 +73,7 @@ nav {
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: grey;
+    background-color: white;
     margin: 5px;
     transition: all 0.3s ease;
 }
@@ -82,7 +82,7 @@ nav {
 @media screen and (max-width:768px) {
 
     nav {
-        background: white;
+        background: #002142;
         height: 56px;
         min-height: 56px;
     }
@@ -92,7 +92,7 @@ nav {
         position: absolute;
         left: 0px;
         height: 100%;
-        top: 56px;
+        top: 0px;
         background-color: white;
         display: flex;
         flex-direction: column;
