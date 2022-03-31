@@ -17,6 +17,7 @@
 .iconFront {
     color: $darkblue;
     margin: 0 .5rem 0 .5rem;
+    transition: all ease .5s;
 }
 
 .line-left {
@@ -35,4 +36,9 @@
     margin-left: .5rem;
     height: 2px;
     border: none;
+}
+
+.iconFront:hover {
+    transition: all ease .5s;
+    color: $orange;
 }
