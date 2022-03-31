@@ -3,6 +3,21 @@
 }
 
 .title {
-    margin:0 0 .2rem 0;
+    margin:0 0 5rem 0;
     color: $grey;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+}
+
+.iconBack {
+    font-size: 24px;
+    color: $darkblue;
+}
+
+.iconFront {
+    font-size: 24px;
+    color: white
 }

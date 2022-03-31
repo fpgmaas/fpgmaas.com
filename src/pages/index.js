@@ -1,11 +1,18 @@
 import React from "react"
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
-import { FaStackOverflow, FaGithub, FaLinkedin } from 'react-icons/fa'
 import * as layoutStyles from './index.module.scss'
+
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+library.add(fas, fab);
 
 
 const IndexPage = () => {
+
   return (
     <Layout>
       <h1 className={layoutStyles.name}>
@@ -14,26 +21,20 @@ const IndexPage = () => {
       <h4 className={layoutStyles.title}>
         Senior Data Scientist Logistics at IKEA
       </h4>
-      <p>Link to contact page? <Link to='/contact'>Contact me!</Link></p>
-      <div class="main">
-        <div class="center-container">
-            <div class="item">
-                <a href="https://github.com">
-                <FaGithub />
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://stackoverflow.com">
-                <FaStackOverflow />
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://linkedin.com">
-                <FaLinkedin />
-                </a>
-            </div>
-        </div>
-    </div>
+      <div className={layoutStyles.iconContainer}>
+      <span className="fa-stack fa-2x" style = {{marginLeft:0}}>
+        <FontAwesomeIcon icon={["fas", "circle"]} className={`fa-stack-2x ${layoutStyles.iconBack}`}/>
+        <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={`fa-stack-1x ${layoutStyles.iconFront}`} />
+      </span>
+      <span className="fa-stack fa-2x">
+        <FontAwesomeIcon icon={["fas", "circle"]} className={`fa-stack-2x ${layoutStyles.iconBack}`} color = 'blue'/>
+        <FontAwesomeIcon icon={["fab", "github"]} className={`fa-stack-1x ${layoutStyles.iconFront}`} color = 'white'/>
+      </span>
+      <span className="fa-stack fa-2x">
+        <FontAwesomeIcon icon={["fas", "circle"]} className={`fa-stack-2x ${layoutStyles.iconBack}`} color = 'blue'/>
+        <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={`fa-stack-1x ${layoutStyles.iconFront}`} color = 'white'/>
+      </span>
+      </div>
     </Layout>
   )
 }
