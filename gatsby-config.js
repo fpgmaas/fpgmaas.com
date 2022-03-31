@@ -5,7 +5,12 @@ module.exports = {
     author: 'Florian Maas'
   },
   plugins: [
-    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        additionalData: `@import "${__dirname}/src/styles/colors.scss";`,
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -14,5 +19,13 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-  ]
+      {
+        resolve: 'gatsby-plugin-web-font-loader',
+        options: {
+          google: {
+            families: ['Quicksand']
+          }
+        }
+      }
+    ]
 }
