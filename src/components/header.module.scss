@@ -1,0 +1,31 @@
+.header {
+    padding: 1rem 0 3rem;
+}
+
+.title {
+    text-decoration: none;
+    color: black;
+    font-size: 3rem;
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+}
+
+.nav-item {
+    color: #999999;
+    font-size: .9rem;
+    margin-right: 1.3rem;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    color: #666666;
+    transition: all ease .5s;
+}
+
+.active-nav-item {
+    color: #333333;
+}
