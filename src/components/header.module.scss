@@ -1,13 +1,7 @@
 .header {
-    padding: 1rem 0 3rem;
+    padding: 1rem 0 2rem;
     display: flex;
     justify-content: flex-end;
-}
-
-.title {
-    text-decoration: none;
-    color: black;
-    font-size: 3rem;
 }
 
 .nav-list {
@@ -24,7 +18,7 @@
 }
 
 .nav-item:hover {
-    color: #666666;
+    color: $darkblue;
     transition: all ease .5s;
 }
 

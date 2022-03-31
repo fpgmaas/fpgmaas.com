@@ -1,16 +1,17 @@
 import React from "react"
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
-
 import { FaStackOverflow, FaGithub, FaLinkedin } from 'react-icons/fa'
+import * as layoutStyles from './index.module.scss'
+
 
 const IndexPage = () => {
   return (
     <Layout>
-      <h1>
+      <h1 className={layoutStyles.name}>
         Florian Maas
       </h1>
-      <h4>
+      <h4 className={layoutStyles.title}>
         Senior Data Scientist Logistics at IKEA
       </h4>
       <p>Link to contact page? <Link to='/contact'>Contact me!</Link></p>

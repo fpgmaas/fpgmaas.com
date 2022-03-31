@@ -1,14 +1,22 @@
-.container {
+.page {
     margin: 0 auto;
     max-width: 1000px;
-    padding: 1rem;
+    padding: 0;
 
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    justify-content: space-between;
     background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
 }
 
 .content {
-    flex-grow: 1;
+    display: block;
+    flex-direction: column;
+    justify-content: flex-start;
 }

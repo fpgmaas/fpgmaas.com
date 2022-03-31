@@ -1,18 +1,18 @@
 import React from 'react'
 import Footer from '../components/footer'
 import Header from '../components/header'
-import '../styles/index.scss'
+import '../styles/default.scss'
 import * as layoutStyles from './layout.module.scss'
 
 
-// https://www.youtube.com/watch?v=8t0vNu2fCCM
-
 const Layout = (props) => {
     return (
-        <div className={layoutStyles.container}>
-            <div className={layoutStyles.content}>
-                <Header />
-                {props.children}
+        <div className={layoutStyles.page}>
+            <Header />
+            <div className={layoutStyles.contentContainer}>
+                <div className={layoutStyles.content}>
+                    {props.children}
+                </div>
             </div>
             <Footer />
         </div>
