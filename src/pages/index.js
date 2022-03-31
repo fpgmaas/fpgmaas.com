@@ -22,18 +22,17 @@ const IndexPage = () => {
         Senior Data Scientist Logistics at IKEA
       </h4>
       <div className={layoutStyles.iconContainer}>
-      <span className="fa-stack fa-2x" style = {{marginLeft:0}}>
-        <FontAwesomeIcon icon={["fas", "circle"]} className={`fa-stack-2x ${layoutStyles.iconBack}`}/>
-        <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={`fa-stack-1x ${layoutStyles.iconFront}`} />
-      </span>
-      <span className="fa-stack fa-2x">
-        <FontAwesomeIcon icon={["fas", "circle"]} className={`fa-stack-2x ${layoutStyles.iconBack}`} color = 'blue'/>
-        <FontAwesomeIcon icon={["fab", "github"]} className={`fa-stack-1x ${layoutStyles.iconFront}`} color = 'white'/>
-      </span>
-      <span className="fa-stack fa-2x">
-        <FontAwesomeIcon icon={["fas", "circle"]} className={`fa-stack-2x ${layoutStyles.iconBack}`} color = 'blue'/>
-        <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={`fa-stack-1x ${layoutStyles.iconFront}`} color = 'white'/>
-      </span>
+        <hr className={layoutStyles.lineLeft}></hr>
+        <a href="https://www.linkedin.com/in/florianmaas/" target='blank'>
+          <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={layoutStyles.iconFront} />
+        </a>
+        <a href="https://github.com/fpgmaas" target='blank'>
+          <FontAwesomeIcon icon={["fab", "github"]} className={layoutStyles.iconFront} />
+        </a>
+        <a href="https://stackoverflow.com/users/8037249/florian" target='blank'>
+          <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={layoutStyles.iconFront} />
+        </a>
+        <hr className={layoutStyles.lineRight}></hr>
       </div>
     </Layout>
   )

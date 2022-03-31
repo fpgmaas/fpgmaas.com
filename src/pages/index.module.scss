@@ -3,21 +3,36 @@
 }
 
 .title {
-    margin:0 0 5rem 0;
+    margin:0 0 1rem 0;
     color: $grey;
 }
 
 .icon-container {
     display: flex;
-    justify-content: center;
-}
-
-.iconBack {
-    font-size: 24px;
-    color: $darkblue;
+    justify-content: flex-start;
+    font-size: 1.4rem;
+    align-items: center;
 }
 
 .iconFront {
-    font-size: 24px;
-    color: white
+    color: $darkblue;
+    margin: 0 .5rem 0 .5rem;
+}
+
+.line-left {
+    width: 30px;
+    background: $darkblue;
+    margin-right: .5rem;
+    margin-left: 0;
+    height: 2px;
+    border: none;
+}
+
+.line-right {
+    width: 300px;
+    background: $darkblue;
+    margin-right: 0rem;
+    margin-left: .5rem;
+    height: 2px;
+    border: none;
 }
