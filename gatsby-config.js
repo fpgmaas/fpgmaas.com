@@ -18,7 +18,20 @@ module.exports = {
         path: `${__dirname}/src/md-posts`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          }
+        ],
+      },
+    },
       {
         resolve: 'gatsby-plugin-web-font-loader',
         options: {

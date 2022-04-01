@@ -6,15 +6,12 @@ import Layout from '../components/layout'
 const Blog = () => {
     const data = useStaticQuery(graphql`
     query {
-        allMarkdownRemark {
+        allMdx {
             edges {
                 node {
                     frontmatter {
                         title
                         date
-                        slug
-                    }
-                    fields {
                         slug
                     }
                 }
@@ -28,10 +25,10 @@ const Blog = () => {
         <Layout>
             <h1>Blog</h1>
             <ol>
-                {data.allMarkdownRemark.edges.map((edge) => {
+                {data.allMdx.edges.map((edge) => {
                     return (
                     <li>
-                        <Link to={`/blog/${edge.node.fields.slug}`}>
+                        <Link to={`/blog/${edge.node.frontmatter.slug}`}>
                         <h2>{edge.node.frontmatter.title}</h2>
                         </Link>
                         <p>{edge.node.frontmatter.date}</p>
