@@ -7,21 +7,21 @@
     color: $grey;
 }
 
-.icon-container {
+.icons-container {
     display: flex;
     justify-content: flex-start;
     font-size: 1.4rem;
     align-items: center;
 }
 
-.iconFront {
+.icon {
     color: $darkblue;
     margin: 0 .5rem 0 .5rem;
     transition: all ease .5s;
 }
 
 .line-left {
-    width: 30px;
+    width: 300px;
     background: $darkblue;
     margin-right: .5rem;
     margin-left: 0;
@@ -30,7 +30,7 @@
 }
 
 .line-right {
-    width: 300px;
+    width: 30px;
     background: $darkblue;
     margin-right: 0rem;
     margin-left: .5rem;
@@ -38,7 +38,7 @@
     border: none;
 }
 
-.iconFront:hover {
+.icon:hover {
     transition: all ease .5s;
-    color: $orange;
+    color: $mediumblue;
 }

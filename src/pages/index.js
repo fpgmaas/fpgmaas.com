@@ -1,38 +1,37 @@
 import React from "react"
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
-import * as layoutStyles from './index.module.scss'
+import * as indexStyles from './index.module.scss'
 
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { fas } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-library.add(fas, fab);
+library.add(fab);
 
 
 const IndexPage = () => {
 
   return (
     <Layout>
-      <h1 className={layoutStyles.name}>
+      <h1 className={indexStyles.name}>
         Florian Maas
       </h1>
-      <h4 className={layoutStyles.title}>
+      <h4 className={indexStyles.title}>
         Senior Data Scientist Logistics at IKEA
       </h4>
-      <div className={layoutStyles.iconContainer}>
-        <hr className={layoutStyles.lineLeft}></hr>
+      <div className={indexStyles.iconsContainer}>
+        <hr className={indexStyles.lineLeft}></hr>
         <a href="https://www.linkedin.com/in/florianmaas/" target='blank'>
-          <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={layoutStyles.iconFront} />
+          <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={indexStyles.icon} />
         </a>
         <a href="https://github.com/fpgmaas" target='blank'>
-          <FontAwesomeIcon icon={["fab", "github"]} className={layoutStyles.iconFront} />
+          <FontAwesomeIcon icon={["fab", "github"]} className={indexStyles.icon} />
         </a>
         <a href="https://stackoverflow.com/users/8037249/florian" target='blank'>
-          <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={layoutStyles.iconFront} />
+          <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={indexStyles.icon} />
         </a>
-        <hr className={layoutStyles.lineRight}></hr>
+        <hr className={indexStyles.lineRight}></hr>
       </div>
     </Layout>
   )
