@@ -1,6 +1,7 @@
 ---
-title: "This is React!"
-date: "2022-3-3"
+slug: "/blog/my-second-post"
+date: "2019-05-05"
+title: "My second blog post"
 ---
 
 Lorem ipsum dolor sic amet bla bla bla bla

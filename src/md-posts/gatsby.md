@@ -1,6 +1,7 @@
 ---
-title: "This is Gatsby!"
-date: "2022-3-3"
+slug: "/blog/my-first-post"
+date: "2019-05-04"
+title: "My first blog post"
 ---
 
 Lorem ipsum dolor sic amet bla bla bla bla

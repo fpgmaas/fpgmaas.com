@@ -15,7 +15,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/src/md-posts`,
       },
     },
     `gatsby-transformer-remark`,
@@ -26,6 +26,7 @@ module.exports = {
             families: ['Quicksand']
           }
         }
-      }
+      },
+      `gatsby-plugin-catch-links`
     ]
 }
