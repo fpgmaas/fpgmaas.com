@@ -16,6 +16,7 @@ query($slug: String) {
     frontmatter {
       slug
       title
+      subtitle
       date
     }
     body
@@ -27,6 +28,7 @@ const Blog = (props) => {
     return (
         <Layout>
             <h1>{props.data.mdx.frontmatter.title}</h1>
+            <h3>{props.data.mdx.frontmatter.subtitle}</h3>
             <p>{props.data.mdx.frontmatter.date}</p>
             <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
         </Layout>

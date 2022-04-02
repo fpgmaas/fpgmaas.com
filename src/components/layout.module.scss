@@ -13,10 +13,12 @@
 .content-container {
     display: flex;
     justify-content: center;
+    margin-right: 15rem;
+    margin-left: 15rem;
 }
 
 .content {
-    display: block;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
