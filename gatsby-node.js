@@ -30,10 +30,3 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
 }
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-    actions.setWebpackConfig({
-      node: {
-        fs: 'empty'
-      }
-    })
-  }

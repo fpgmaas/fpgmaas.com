@@ -14,6 +14,6 @@ More text! Here's a list!
 2. two
 3. and three!.
 
-import { MyPlot } from '/src/components/MyPlot'
+import plotProps from './plot'
 
-<MyPlot argument = {'/src/md-posts/gatsby/plot.json'} />
+<MyPlotly data = {plotProps.data} layout = {plotProps.layout} />
