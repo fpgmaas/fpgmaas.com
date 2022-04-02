@@ -14,9 +14,7 @@ const Plotly = Loadable({
 
 export const MyPlot = ({argument}) => {
     console.log(argument);
-    let jsonData = require('../md-posts/plot.json');
-    // const fs = require('fs')
-    // let jsonData = JSON.parse(fs.readFileSync('../md-posts/plot.json', 'utf-8'))
+    let jsonData = require('../posts/2022-1-1/plot.json');
     console.log(jsonData);
     return (
         <Plotly

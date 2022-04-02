@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src/md-posts`,
+        path: `${__dirname}/src/posts`,
       },
     },
     {
