@@ -5,6 +5,16 @@ module.exports = {
     author: 'Florian Maas'
   },
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-catch-links`,
+    {
+      resolve: `gatsby-remark-images`,
+      options: {
+        maxWidth: 1200,
+        linkImagesToOriginal: false,
+        wrapperStyle: `border-radius: 0.5em; overflow: hidden;`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-sass',
       options: {
@@ -22,14 +32,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          }
-        ],
+        gatsbyRemarkPlugins: [`gatsby-remark-images`]
       },
     },
       {
@@ -39,7 +42,6 @@ module.exports = {
             families: ['Quicksand']
           }
         }
-      },
-      `gatsby-plugin-catch-links`
+      }
     ]
 }
