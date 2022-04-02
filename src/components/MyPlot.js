@@ -1,6 +1,4 @@
 import React from 'react'
-import { data, layout } from '../md-posts/plot.json'
-
 import Loadable from 'react-loadable'
 
 const Plotly = Loadable({
@@ -16,10 +14,14 @@ const Plotly = Loadable({
 
 export const MyPlot = ({argument}) => {
     console.log(argument);
+    let jsonData = require('../md-posts/plot.json');
+    // const fs = require('fs')
+    // let jsonData = JSON.parse(fs.readFileSync('../md-posts/plot.json', 'utf-8'))
+    console.log(jsonData);
     return (
         <Plotly
-          data={data}
-          layout = {layout}
+          data={jsonData.data}
+          layout = {jsonData.layout}
         />
       );
 }
