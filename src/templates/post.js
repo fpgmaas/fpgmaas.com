@@ -21,6 +21,8 @@ query($slug: String) {
       title
       subtitle
       date
+      author
+      reading_time
     }
     body
   }
@@ -34,7 +36,14 @@ const Post = (props) => {
 
         <h1 className = {postStyles.title}>{props.data.mdx.frontmatter.title}</h1>
         <h3 className = {postStyles.subtitle}>{props.data.mdx.frontmatter.subtitle}</h3>
-        <p className = {postStyles.date}>{props.data.mdx.frontmatter.date}</p>
+
+        <div className = {postStyles.postDetails}>
+          <p className = {postStyles.author}>{props.data.mdx.frontmatter.author}</p>
+          <p className = {postStyles.date}>{props.data.mdx.frontmatter.date}</p>
+          <p className = {postStyles.readingTime}>Reading time {props.data.mdx.frontmatter.reading_time}</p>
+        </div>
+        <hr className={postStyles.lineLeft} />
+
         <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
       </div>
     </Layout>

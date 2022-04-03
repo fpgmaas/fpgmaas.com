@@ -23,7 +23,7 @@ const IndexPage = () => {
           Senior Data Scientist Logistics at IKEA
         </h4>
         <div className={indexStyles.iconsContainer}>
-          <hr className={indexStyles.lineLeft}></hr>
+          <hr className={indexStyles.lineLeft} />
           <a href="https://www.linkedin.com/in/florianmaas/" target='blank'>
             <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={indexStyles.icon} />
           </a>
@@ -33,7 +33,7 @@ const IndexPage = () => {
           <a href="https://stackoverflow.com/users/8037249/florian" target='blank'>
             <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={indexStyles.icon} />
           </a>
-          <hr className={indexStyles.lineRight}></hr>
+          <hr className={indexStyles.lineRight} />
         </div>
       </div>
     </Layout>
