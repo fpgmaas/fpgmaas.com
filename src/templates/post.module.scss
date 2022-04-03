@@ -4,4 +4,23 @@
     justify-content: flex-start;
     padding-left: 5rem;
     padding-right: 5rem;
+    align-items: stretch;
+    min-width: 0;
+}
+
+.title {
+    margin:0 0 .3rem 0;
+    color: $darkblue;
+}
+
+.subtitle {
+    margin:0 0 .3rem 0;
+    color: #222222;
+    font-size: 1.2rem;
+}
+
+.date {
+    margin:0 0 .3rem 0;
+    color: #444444;
+    font-size: 1rem;
 }

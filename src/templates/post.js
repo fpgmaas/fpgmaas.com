@@ -32,9 +32,9 @@ const Post = (props) => {
     <Layout>
       <div className={postStyles.content}>
 
-        <h1>{props.data.mdx.frontmatter.title}</h1>
-        <h3>{props.data.mdx.frontmatter.subtitle}</h3>
-        <p>{props.data.mdx.frontmatter.date}</p>
+        <h1 className = {postStyles.title}>{props.data.mdx.frontmatter.title}</h1>
+        <h3 className = {postStyles.subtitle}>{props.data.mdx.frontmatter.subtitle}</h3>
+        <p className = {postStyles.date}>{props.data.mdx.frontmatter.date}</p>
         <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
       </div>
     </Layout>

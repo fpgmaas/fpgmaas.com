@@ -5,7 +5,7 @@ import '../styles/default.scss'
 import * as layoutStyles from './layout.module.scss'
 
 import { MDXProvider } from "@mdx-js/react"
-import MyPlotly from './MyPlotly'
+import { MyPlotly } from './MyPlotly'
 
 const shortcodes = { MyPlotly }
 

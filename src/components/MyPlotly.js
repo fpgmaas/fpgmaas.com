@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Loadable from 'react-loadable'
 
 import PropTypes from 'prop-types';
+import { faBorderNone } from '@fortawesome/free-solid-svg-icons';
 
 
 const Plotly = Loadable({
@@ -15,37 +16,24 @@ const Plotly = Loadable({
   timeout: 10000,
 })
 
-class MyPlotly extends Component {
+export const MyPlotly = ({ data, layout, style, config, ...rest }) =>
+{
 
-  render() {
-    console.log({
-      height: this.props.height,
-    })
     return (<Plotly
-      data={this.props.data}
+      data={data}
       layout={{
-        ...this.props.layout,
-        width: this.props.width,
-        height: this.props.height,
+        ...layout,
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
+        autosize: true
+      }}
+      style={{ width: `100%`, ...style }}
+      useResizeHandler
+      config={{
+        displayModeBar: false,
+        showTips: false,
+        ...config,
       }}
     ></Plotly>
     )
-  }
 }
-
-MyPlotly.propTypes = {
-  data: PropTypes.object,
-  layout: PropTypes.object,
-  width: PropTypes.number,
-  height: PropTypes.number
-};
-
-MyPlotly.defaultProps = {
-  width: 800,
-  height: 500
-};
-
-export default MyPlotly;
-
