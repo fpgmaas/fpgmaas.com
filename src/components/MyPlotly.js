@@ -18,11 +18,11 @@ const Plotly = Loadable({
 
 export const MyPlotly = ({ data, layout, style, config, ...rest }) =>
 {
-
+    let {width, ...newlayout} = layout
     return (<Plotly
       data={data}
       layout={{
-        ...layout,
+        ...newlayout,
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         autosize: true
