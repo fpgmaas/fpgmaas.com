@@ -18,12 +18,17 @@ const Plotly = Loadable({
 class MyPlotly extends Component {
 
   render() {
+    console.log({
+      height: this.props.height,
+    })
     return (<Plotly
       data={this.props.data}
       layout={{
+        ...this.props.layout,
         width: this.props.width,
         height: this.props.height,
-        ...this.props.layout
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
       }}
     ></Plotly>
     )

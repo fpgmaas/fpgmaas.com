@@ -7,52 +7,21 @@ body {
   background-color: $lightblue;
   margin: 0;
 }
+p a {
+  color: $darkblue;
+  transition: all ease .5s;
+}
 
-// .main {
-//     flex: 1;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-// }
+p a:hover {
+  color: $mediumblue;
+  transition: all ease .5s;
+}
 
-// .center-container {
-//     display: flex;
-//     justify-content: space-between;
-//     width: 50%;
-//     min-width: 640px;
-//     align-items:flex-start;
-// }
-
-// .item {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     height: 300px;
-//     width: 300px;
-// }
-// .item i {
-//     font-size: 36px;
-//     color: white;
-//     margin-bottom: 20px;
-//     transition: 0.5s ease;
-// }
-
-// .item a {
-//     color:$darkblue;
-//     text-decoration: none;
-//     letter-spacing: 2px;
-//     font-size: 22px;
-//     text-align: center;
-//     display: flex;
-//     flex-direction: column;
-//     transition: 0.5s ease;
-// }
-
-// .item:hover a {
-//     font-size: 26px;
-// }
-
-// .item:hover i {
-//     font-size: 46px;
-// }
+blockquote {
+  background:$superlightblue;
+  border-left:3px solid $mediumblue;
+  margin:1.5em 10px;
+  padding:.5em 10px;
+  quotes:"\201C""\201D""\2018""\2019";
+  color: $grey;
+}

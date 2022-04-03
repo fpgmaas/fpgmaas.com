@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
-    const blogTemplate = path.resolve('./src/templates/blog.js')
+    const postTemplate = path.resolve('./src/templates/post.js')
     const res = await graphql(`
         query {
             allMdx{
@@ -20,7 +20,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
     res.data.allMdx.edges.forEach((edge) => {
         createPage({
-            component: blogTemplate,
+            component: postTemplate,
             path: `/blog/${edge.node.frontmatter.slug}`,
             context: {
                 slug: edge.node.frontmatter.slug

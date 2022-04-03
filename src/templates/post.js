@@ -24,7 +24,7 @@ query($slug: String) {
 }
 `
 
-const Blog = (props) => {
+const Post = (props) => {
     return (
         <Layout>
             <h1>{props.data.mdx.frontmatter.title}</h1>
@@ -36,4 +36,4 @@ const Blog = (props) => {
     )
 }
 
-export default Blog
+export default Post
