@@ -18,7 +18,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sass',
       options: {
-        additionalData: `@import "${__dirname}/src/styles/colors.scss";`,
+        additionalData: `@import "${__dirname}/src/styles/colors.module.scss";`,
       }
     },
     {
