@@ -3,6 +3,9 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import * as postStyles from './post.module.scss'
+
+
 export const query = graphql`
 query($slug: String) {
   mdx (
@@ -25,15 +28,18 @@ query($slug: String) {
 `
 
 const Post = (props) => {
-    return (
-        <Layout>
-            <h1>{props.data.mdx.frontmatter.title}</h1>
-            <h3>{props.data.mdx.frontmatter.subtitle}</h3>
-            <p>{props.data.mdx.frontmatter.date}</p>
-            <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
-        </Layout>
+  return (
+    <Layout>
+      <div className={postStyles.content}>
 
-    )
+        <h1>{props.data.mdx.frontmatter.title}</h1>
+        <h3>{props.data.mdx.frontmatter.subtitle}</h3>
+        <p>{props.data.mdx.frontmatter.date}</p>
+        <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
+      </div>
+    </Layout>
+
+  )
 }
 
 export default Post

@@ -1,3 +1,11 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 380px;
+}
+
 .name {
     margin:0 0 .2rem 0;
 }
@@ -21,21 +29,23 @@
 }
 
 .line-left {
-    width: 300px;
+    max-width: 300px;
     background: $darkblue;
     margin-right: .5rem;
     margin-left: 0;
     height: 2px;
     border: none;
+    width: 100%;
 }
 
 .line-right {
-    width: 30px;
+    max-width: 30px;
     background: $darkblue;
     margin-right: 0rem;
     margin-left: .5rem;
     height: 2px;
     border: none;
+    width: 100%;
 }
 
 .icon:hover {
