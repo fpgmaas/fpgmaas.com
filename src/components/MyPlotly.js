@@ -45,7 +45,7 @@ export const MyPlotly = ({ data, layout, style, config, ...rest }) => {
   console.log(title.text)
   return (
     <div>
-      <h3 className={plotlyStyles.plotTitle}> {title.text} </h3>
+      <h3 className={plotlyStyles.plotTitle}> {title.text.replace('<br>',' ')} </h3>
 
       <Plotly
         data={data}

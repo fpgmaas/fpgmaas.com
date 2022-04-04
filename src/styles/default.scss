@@ -17,7 +17,7 @@ body {
   background-color: $lightblue;
   margin: 0;
 }
-p a {
+p a, li a {
   color: $darkblue;
   transition: all ease .5s;
 }

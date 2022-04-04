@@ -2,6 +2,7 @@
 
 ## TODO:
 - add relative paths!
+- add SEO and site metadata
 - find out issue with namespace of json imports..
 - experiment with fonts
 - add plotly loader
