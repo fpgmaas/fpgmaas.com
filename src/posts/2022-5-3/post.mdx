@@ -1,0 +1,92 @@
+---
+date: "2022-01-02"
+title: "My second blog post"
+slug: react
+subtitle: subtitle
+reading_time: 2 minutes
+author: Florian Maas
+---
+
+import plotData1 from './plots/plot_1_most_common_meters.json'
+import plotData2 from './plots/plot_2_top_rated_in_10_most_common_meters.json'
+import plotData3 from './plots/plot_3_avg_upvotes_per_meter.json'
+import plotData4 from './plots/plot_4_box_plot_upvotes_per_meter.json'
+import plotData5 from './plots/plot_5_hist_line_length_per_meter.json'
+import plotData6 from './plots/plot_6_meter_timelines.json'
+import plotData7 from './plots/plot_7_other_meters.json'
+import plotData8 from './plots/plot_8_scatter_other_meters.json'
+
+In my [previous notebook](https://fpgmaas.nl/2019-12-06-1.0-summary-statistics-upvotes-and-awards/), I did some initial
+analysis on the dataset that contains all poems by [/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog). I
+noted there that the rhythm, or poetic meter, of the poems, is one of the main characteristics that makes these poems so
+appealing to me.
+
+In this notebook, I want to get to know a bit more about poetic meter, and explore the meters that sprog utilizes in his
+poems on [/r/AskReddit](https://www.reddit.com/r/AskReddit/). A little disclaimer before we start; I did not know
+anything about poetry when I started this notebook. Well, that's not entirely true; I knew that in poems words usually
+rhyme. That's about it. Anway, I don't claim that this notebook is exhaustive nor that everything in it is correct, so
+if you have any feedback or suggestions; please do let me know!
+
+Oh, by the way; all code can be found on [GitHub](https://github.com/fpgmaas/poems).
+
+Let's go exploring!
+
+## Understanding poetic meter
+
+To explore poetic meter, let's start by taking a look at one of my favourite poems by
+[/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog), which contains a message about dealing with regret:
+
+
+> I should have hurried youth, in truth,  
+> And moved more quickly on -  
+> I should have made the most of youth,  
+> Before the time was gone.  
+> 
+> I should have followed fancy, free,  
+> Before it thought to fade -  
+> I should have picked a good degree,  
+> Or found myself a trade.  
+> 
+> I should have stopped to stare above;  
+> To share another's dreams -  
+> I should have never welcomed love,  
+> And lost it all, it seems.  
+> 
+> No matter what the aim or end -  
+> No matter what you do -  
+> Regrets are part of life, my friend:  
+> 
+> Don't let them conquer you.  
+> 
+> [Source](https://www.reddit.com/r/AskReddit/comments/4fsds1/adults_from_reddit_what_do_you_regret_most_from/d2bmumz/)
+
+One of the reasons I like this poem is because of its clear and uplifting message. But another reason that makes this poem stand out to me is it's very apparent rhythm. If you say this poem out loud, you are clearly able to hear it;
+
+
+> I SHOULD have HURried YOUTH, in TRUTH,  
+> And MOVED more QUICKly ON -
+
+Or, a more visual way of representing this:
+
+import meterData from './meters/01_meter.json'
+
+<Meter data = {meterData} />
+
+Here, the syllables in the blue squares are stressed, and the syllables in the grey squares are unstressed. If you have trouble hearing the rhythm, try to read the lines out loud, stressing the syllables in the grey squares. Feels unnatural doesn't it? Now try the same, but stressing the words in the blue squares. That should be a lot more comfortable.
+
+So we could say that the rhythm of the two lines above is unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed. Luckily, as with any other art, science, religion or discipline, things in poetry tend to have names to make talking about them a bit easier. For example, the meter of the first line is iambic tetrameter, whereas the second line is iambic trimeter. To break that down: First, they are both iambic, because they consist of iambic feet. An iambic foot is a unstressed syllable, followed by a stressed syllable, so a grey square followed by a blue square in the visualization above. The first line consists out of four iambic feet (pentameter), and the second line consists out of three iambic feet (trimeter). The nomenclature for the number of feet per line is as follows:
+
+- monometer (1) or foot
+- dimeter (2)
+- trimeter (3)
+- tetrameter (4)
+- pentameter (5)
+- hexameter (6)
+- ...
+
+Two other commonly used types of feet are the trochaic foot (stressed, unstressed), and the anapestic foot (unstressed, unstressed, stressed). To illustrate, examples of the three types of feet we have encountered until now are:
+
+
+
+import {Meter} from './meter.js'
+

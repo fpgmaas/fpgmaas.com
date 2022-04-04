@@ -1,0 +1,34 @@
+.meter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.line {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.word {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    background-color: #d0d0d0;
+    font-size: .8rem;
+    border: 1px solid white;
+}
+
+.word p {
+    color: $grey;
+}
+
+.stressed{
+    background-color: $darkblue;
+}
+
+.stressed p{
+    color: white;
+}
+
