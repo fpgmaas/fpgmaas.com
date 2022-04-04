@@ -34,10 +34,12 @@ module.exports = {
         extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [`gatsby-remark-images`],
         remarkPlugins: [
-          [require('gatsby-remark-vscode').remarkPlugin]
+          [require('gatsby-remark-vscode').remarkPlugin, {
+            theme: 'Monokai'
+          }]
         ]
       },
     }
-    ]
+  ]
 }
 

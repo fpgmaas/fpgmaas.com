@@ -8,7 +8,7 @@ slug: "poetry_and_data_1"
 ---
 
 I am a really big fan of the poems by [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) on
-Reddit. For those of you who are not familiar with him yet; he writes short poems as responses to others on
+Reddit. For those of you who are not familiar with this person yet; they write short poems as responses to others on
 [/r/AskReddit](https://www.reddit.com/r/AskReddit/) threads. To give you an example, one that I particularly like is the
 following, which was written in response to a thread full of responses from ICU workers, who despite their best efforts
 are not always able to save every patient they meet:
@@ -25,7 +25,7 @@ are not always able to save every patient they meet:
 > [Source](https://www.reddit.com/r/AskReddit/comments/bj4hfq/medical_workers_of_reddit_what_were_the_most/em5vsum/)
 
 
-I always find it difficult to explain why I love these poems so much. Some, like the above, stand out in simplicity; six
+I always find it difficult to explain why I enjoy these poems so much. Some, like the above, stand out in simplicity; six
 short lines that bring a message that speaks to many of us. But there's more elaborate ones, and really funny ones too.
 I would love to understand a little bit better what exactly it is that makes these poems so appealing to me, and to get
 a better grasp of the artform behind it. Sadly, I know absolutely nothing about poetry. And since I'm also not as good
@@ -37,7 +37,7 @@ My plan is to create a dataset of all the poems
 that dive into these works. In this first notebook, I want to explore some basic statistics about these poems.
 
 You can find the notebook with python code that was used to create this page on 
-[GitHub](https://github.com/flo12392/poems/blob/master/1.0-summary-statistics-upvotes-and-awards.ipynb).
+[GitHub](https://github.com/fpgmaas/poems/blob/master/notebooks/1.0-summary-statistics-upvotes-and-awards.ipynb).
 
 
 import plotData1_1 from './plots/plot_1_comment_count_per_day.json'
@@ -56,9 +56,9 @@ import plotData1_11 from './plots/plot_11_correlation.json'
 
 Let's start by simply looking at the amount of poems over time. We can see below that on the extraordinarily productive
 days, sprog provides us with about 5 or 6 poems, and his productivity seems to have increased somewhat over time. The
-outlier of 12 comments in June is the ['Ask Me
+outlier of 10 comments in June is the ['Ask Me
 Anything'](https://www.reddit.com/r/books/comments/3aungz/hi_im_sam_garland_aka_upoem_for_your_sprog_ive/), or AMA in
-short, where he answered questions of fellow Redditors.
+short, where they answered questions of fellow Redditors.
 
 <MyPlotly data = {plotData1_1.data} layout = {plotData1_1.layout} />
 
@@ -68,9 +68,11 @@ to get a clearer view:
 
 <MyPlotly data = {plotData1_2.data} layout = {plotData1_2.layout} />
 
-Not all poems by sprog have been posted on /r/AskReddit threads, he also responded to posts on some other subreddits. In
-total, there are 3415 comments by /u/poem_for_your_sprog on Reddit. Out of those, 96.0% were comments within
-/r/AskReddit. It would be interesting to find out to which other subreddits sprog has posted his poems in the past. To
+Here we can see that sprog was most productive between 2017 and 2020. 
+
+Not all poems by sprog have been posted on [/r/AskReddit](https://reddit.com/r/askreddit) threads, they also responded to posts on some other subreddits. In
+total, there are 3415 comments by [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) on Reddit. Out of those, 96.0% were comments within
+[/r/AskReddit](https://reddit.com/r/askreddit). It would be interesting to find out to which other subreddits sprog has posted their poems in the past. To
 gain insight in the temporary pattern of these poems and in the distribution of these poems over the subreddits
 simultaneously, we can create a plot with multiple timelines and denote the comments as events in a scatter plot. You
 can hover over the plot to read the poems.
@@ -81,7 +83,7 @@ The total number of subreddits that sprog has written poems on is fairly limited
 early days there were many more comments outside of [/r/AskReddit](https://www.reddit.com/r/AskReddit/) threads than
 there have been in the past few years. 
 
-It also seems like we have some more outliers to filter. For example, by hovering over the marker in December in the
+It also seems like we have some more outliers to filter. For example, by hovering over the marker in December 2013 in the
 timeline of [/r/worldnews](https://www.reddit.com/r/worldnews/) we find a very long line that is clearly not part of a
 poem; that's a regular comment. So let's continue by analyzing the basic structure of the comments to see if we can
 identify a method to filter out these outliers.
@@ -100,9 +102,9 @@ some rhymes are written in the rhyme scheme `abab`, while others are split out o
 the first peak should be around 23 instead of 30.
 
 When I took a look at the rows corresponding to that peak, I found out that they all had a similar 'flow' to them. A bit
-of Googling made me relalize that this is called poetic [metre](https://en.wikipedia.org/wiki/Metre_(poetry)). There, I
+of Googling made me realize that this is called poetic [metre](https://en.wikipedia.org/wiki/Metre_(poetry)). There, I
 learned something about poetry already. It turns out that these are a set of poems that sprog usually writes in
-'Anapestic tetrameter'. Anapestic tetrameter is a metre with four anapestical feet per line. An anapestical foot is two
+'Anapestic tetrameter'. Anapestic tetrameter is a metre with four anapestical feet per line, where an anapestical foot is two
 unstressed syllables, followed by a stressed one. So, denoting a stressed syllable as / and an unstressed syllable as x,
 an anapestic tetrameter can de denoted as follows:
 
@@ -180,7 +182,7 @@ fact that the peak after each multiple of four decays until the next multiple of
 # Upvotes & Awards
 
 On Reddit, there are two ways to show appreciation for a comment. One can upvote a post, of spend some actual money to
-give the post an award. The total number of upvotes on poems by /u/poem_for_your_sprog is 9,104,079, a considerable
+give the post an award. The total number of upvotes on poems by [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) is 9,104,079, a considerable
 amount.
 
 Next, let's take a look at the awards that sprog has earned. Initially, there were three types of awards;
@@ -191,7 +193,7 @@ Next, let's take a look at the awards that sprog has earned. Initially, there we
 Currently, there are [many more types](https://reddit.fandom.com/wiki/Awards) of awards to react to a post, with names
 such as 'Wholesome', 'Helpful', or 'Bravo!'.
 
-Below is a chart which shows the breakdown of the awards /u/poem_for_your_sprog has been given:
+Below is a chart which shows the breakdown of the awards [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) has been given:
 
 <MyPlotly data = {plotData1_7.data} layout = {plotData1_7.layout} style = {{height: 500}}/>
 
@@ -199,7 +201,7 @@ That's a lot of gold!
 
 Below are three more graphs. The first is a histogram of the number of upvotes per post, and the second is a histogram
 of the number of awards per post. The last graph shows the 100 most upvoted poems and the 100 poems with the most awards
-written by /u/poem_for_your_sprog on Reddit with the number of upvotes on the y-axis and the number of awards on the
+written by [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) on Reddit with the number of upvotes on the y-axis and the number of awards on the
 x-axis. You can hover over the points to read the poems!
 
 <MyPlotly data = {plotData1_8.data} layout = {plotData1_8.layout} />
