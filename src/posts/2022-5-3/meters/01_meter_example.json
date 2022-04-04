@@ -2,13 +2,13 @@
     "data": {
         "text":
             [
-                ["there's", "a", "laugh", "on", "her", "lips", "and", "a", "light", "in", "her", "eye"],
-                ["and", "a", "warmth", "in", "her", "voice", "and", "a", "smile", "in", "her", "sigh"]
+                ["I","should","have","hur","ried","youth","in","truth"],
+                ["and", "moved","more","quick","ly","on"]
             ],
         "stressed":
             [
-                [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-                [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]
+                [0,1,0,1,0,1,0,1],
+                [0,1,0,1,0,1]
             ]
     }
 }
