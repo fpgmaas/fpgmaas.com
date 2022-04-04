@@ -1,8 +1,18 @@
 *
 {
-  font-family: 'Quicksand', 'Arial', 'Sans Serif';
+  font-family: 'Inter', 'Arial', 'Sans Serif';
 }
-  
+
+p, li {
+  color: $grey;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+}
+ 
 body {
   background-color: $lightblue;
   margin: 0;

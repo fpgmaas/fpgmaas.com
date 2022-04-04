@@ -34,15 +34,7 @@ module.exports = {
         extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [`gatsby-remark-images`]
       },
-    },
-      {
-        resolve: 'gatsby-plugin-web-font-loader',
-        options: {
-          google: {
-            families: ['Quicksand']
-          }
-        }
-      }
+    }
     ]
 }
 

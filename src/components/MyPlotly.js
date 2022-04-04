@@ -3,7 +3,7 @@ import Loadable from 'react-loadable'
 
 import PropTypes from 'prop-types';
 import { faBorderNone } from '@fortawesome/free-solid-svg-icons';
-import ClipLoader from "react-spinners/ClipLoader";
+import FadeLoader from "react-spinners/FadeLoader";
 
 import * as plotlyStyles from './plotly.module.scss'
 
@@ -17,7 +17,7 @@ const Plotly = Loadable({
     ) : (
       <div className={plotlyStyles.loadingDiv}>
         <p>Loading plot...</p>
-        <ClipLoader color={"#004080"} size={50} />
+        <FadeLoader color={"#004080"} size={50} />
       </div>
     ),
   timeout: 10000,
