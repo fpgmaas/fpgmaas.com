@@ -35,3 +35,9 @@ blockquote {
   quotes:"\201C""\201D""\2018""\2019";
   color: $grey;
 }
+
+code {
+  font-family: 'fira-code';
+  font-size: 1.2rem;
+  font-weight: 400;
+}

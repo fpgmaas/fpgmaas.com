@@ -32,7 +32,10 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [`gatsby-remark-images`]
+        gatsbyRemarkPlugins: [`gatsby-remark-images`],
+        remarkPlugins: [
+          [require('gatsby-remark-vscode').remarkPlugin]
+        ]
       },
     }
     ]

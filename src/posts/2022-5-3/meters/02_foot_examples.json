@@ -1,0 +1,55 @@
+{
+    "iambic_foot": {
+        "data": {
+            "title": "iambic foot",
+            "text": [
+                [
+                    "ex",
+                    "ist"
+                ]
+            ],
+            "stressed": [
+                [
+                    0,
+                    1
+                ]
+            ]
+        }
+    },
+    "trochaic_foot": {
+        "data": {
+            "title": "trochaic foot",
+            "text": [
+                [
+                    "ti",
+                    "ger"
+                ]
+            ],
+            "stressed": [
+                [
+                    1,
+                    0
+                ]
+            ]
+        }
+    },
+    "anapestic_foot": {
+        "data": {
+            "title": "iambic foot",
+            "text": [
+                [
+                    "un",
+                    "der",
+                    "stand"
+                ]
+            ],
+            "stressed": [
+                [
+                    0,
+                    0,
+                    1
+                ]
+            ]
+        }
+    }
+}

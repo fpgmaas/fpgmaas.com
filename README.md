@@ -1,6 +1,8 @@
 # fpgmaas.com
 
 ## TODO:
+- add relative paths!
+- find out issue with namespace of json imports..
 - experiment with fonts
 - add plotly loader
 - fix blog layout page
@@ -11,3 +13,7 @@
 - add site metadata and SEO
 - allow people to like or upvote?
 - add pageviews to blog.
+- add codeblock formatting
+- autolink headers
+- add blog pagination overview
+- add tags

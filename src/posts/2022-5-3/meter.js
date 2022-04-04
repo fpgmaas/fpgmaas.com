@@ -3,11 +3,11 @@ import React from 'react'
 import * as meterStyles from './meter.module.scss'
 
 export const Meter = ({data}) => {
-
+    console.log(data);
     return (
-        <div>
-            <h3>{data.title}</h3>
-            <div className={meterStyles.meterContainer}>
+        <div className = {meterStyles.meterContainer}>
+            {("title" in data) && <h3>{data.title}</h3>}
+            <div className={meterStyles.linesContainer}>
                 {data.data.text.map((line, lineIndex) => {
                     return (
                         <div className={meterStyles.line}>
