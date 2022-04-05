@@ -1,7 +1,7 @@
 ---
 date: "2022-01-02"
 title: "Poetry & Data II: Meter"
-slug: poetry_and_data_2
+slug: poetry-and-data-2
 subtitle: Analyzing the meter in the poetry of /u/poem_for_your_sprog on Reddit
 reading_time: 12 minutes
 author: Florian Maas
@@ -16,7 +16,9 @@ import plotData2_4 from './plots/plot_4_box_plot_upvotes_per_meter.json'
 import plotData2_5 from './plots/plot_5_hist_line_length_per_meter.json'
 import plotData2_6 from './plots/plot_6_meter_timelines.json'
 
-In my [previous notebook](https://fpgmaas.nl/2019-12-06-1.0-summary-statistics-upvotes-and-awards/), I did some initial
+<MyPlotly data ={plotData2_2.data} layout = {{...plotData2_2.layout, showlegend: false}} />
+
+In my [previous notebook](/blog/poetry-and-data-1), I did some initial
 analysis on the dataset that contains all poems by [/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog). I
 noted there that the rhythm, or poetic meter, of the poems, is one of the main characteristics that makes these poems so
 appealing to me.

@@ -26,6 +26,7 @@
     "gatsby": "^4.11.0",
     "gatsby-plugin-catch-links": "^4.11.0",
     "gatsby-plugin-mdx": "^3.11.1",
+    "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-sass": "^5.11.0",
     "gatsby-plugin-sharp": "^4.11.1",
     "gatsby-plugin-web-font-loader": "^1.0.4",

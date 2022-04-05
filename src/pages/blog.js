@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import Layout from '../components/layout'
 import * as blogStyles from './blog.module.scss'
+import SEO from '../components/seo.js'
 
 
 import { library } from "@fortawesome/fontawesome-svg-core"
@@ -33,6 +34,8 @@ const Blog = () => {
     )
 
     return (
+        <>
+        <SEO title = 'Blog' url = 'blog' />
         <Layout>
             <div className={blogStyles.content}>
                 <hr className = {blogStyles.line}></hr>
@@ -57,6 +60,7 @@ const Blog = () => {
             </div>
 
         </Layout>
+        </>
 
     )
 }

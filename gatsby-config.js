@@ -1,11 +1,15 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'Florian Maas',
-    author: 'Florian Maas'
+    title: `Florian Maas`,
+    description: `Data Scientist by trade & web developer enthusiast.`,
+    author: `Florian Maas`,
+    url: `https://www.fpgmaas.com`
   },
   plugins: [
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-catch-links`,
+    'gatsby-plugin-react-helmet',
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-remark-images`,
