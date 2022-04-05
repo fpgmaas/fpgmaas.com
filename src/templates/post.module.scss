@@ -9,17 +9,34 @@
     width: 100%;
     padding-top: 2rem;
     padding-bottom: 2rem;
+
+    @media screen and (max-width: 768px) {
+        padding-left: 2rem;
+        padding-right: 2rem;  
+    }
+
+    @media screen and (max-width: 500px) {
+        padding-left: 1rem;
+        padding-right: 1rem;  
+    }
 }
 
 .title {
     margin: 0 0 .3rem 0;
     color: $darkblue;
+
+    @media screen and (max-width: 768px) {
+        font-size: 1.7rem;
+    }
 }
 
 .subtitle {
     margin:0 0 .5rem 0;
     color: #222222;
     font-size: 1.4rem;
+    @media screen and (max-width: 768px) {
+        font-size: 1.2rem;
+    }
 }
 
 .post-details {
@@ -29,11 +46,15 @@
     margin-top: 1rem;
     margin-bottom: 0rem;
     flex-wrap: wrap;
+    @media screen and (max-width: 768px) {
+        font-size: .9rem;
+    }
 }
 
 .post-details p{
     margin: 0 0 0 0;
     color: $grey;
+    font-size: inherit;
 }
 
 .author {
