@@ -36,7 +36,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [`gatsby-remark-images`],
+        gatsbyRemarkPlugins: [`gatsby-remark-images`, `gatsby-remark-autolink-headers`],
         remarkPlugins: [
           [require('gatsby-remark-vscode').remarkPlugin, {
             theme: 'Monokai'

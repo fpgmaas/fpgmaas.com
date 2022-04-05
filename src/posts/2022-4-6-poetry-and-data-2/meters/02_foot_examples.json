@@ -1,7 +1,7 @@
 {
     "iambic_foot": {
+        "title": "iambic foot",
         "data": {
-            "title": "iambic foot",
             "text": [
                 [
                     "ex",
@@ -17,8 +17,8 @@
         }
     },
     "trochaic_foot": {
+        "title": "trochaic foot",
         "data": {
-            "title": "trochaic foot",
             "text": [
                 [
                     "ti",
@@ -34,8 +34,8 @@
         }
     },
     "anapestic_foot": {
+        "title": "anapestic foot",
         "data": {
-            "title": "iambic foot",
             "text": [
                 [
                     "un",

@@ -6,7 +6,7 @@ export const Meter = ({data}) => {
     console.log(data);
     return (
         <div className = {meterStyles.meterContainer}>
-            {("title" in data) && <h3>{data.title}</h3>}
+            {("title" in data) && <h3 className = {meterStyles.meterTitle}>{data.title}</h3>}
             <div className={meterStyles.linesContainer}>
                 {data.data.text.map((line, lineIndex) => {
                     return (
