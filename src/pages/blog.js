@@ -13,8 +13,9 @@ library.add(far);
 
 const Blog = () => {
     const data = useStaticQuery(graphql`
-    query {
+        query {
         allMdx(
+          	filter: {frontmatter: { type :{eq: "post"}}},
             sort: { fields: [frontmatter___date, frontmatter___title], order: DESC }
         ) {
             edges {
@@ -25,11 +26,13 @@ const Blog = () => {
                         subtitle
                         reading_time
                         slug
+                        type
                     }
                 }
             }
         }
     }
+  
     `
     )
 

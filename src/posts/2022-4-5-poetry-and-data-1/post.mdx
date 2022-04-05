@@ -5,13 +5,13 @@ subtitle: "Analyzing the comment history of /u/poem_for_your_sprog on Reddit"
 author: "Florian Maas"
 reading_time: "9 minutes"
 slug: "poetry-and-data-1"
+type: "post"
 ---
 
 I am a really big fan of the poems by [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) on
-Reddit. For those of you who are not familiar with this person yet; they write short poems as responses to others on
-[/r/AskReddit](https://www.reddit.com/r/AskReddit/) threads. To give you an example, one that I particularly like is the
-following, which was written in response to a thread full of responses from ICU workers, who despite their best efforts
-are not always able to save every patient they meet:
+Reddit. For those of you who don't know this person yet; they are well known on Reddit for writing short poems in reaction to the comments of others on [/r/AskReddit](https://www.reddit.com/r/AskReddit/) threads. To give you an example, one that I
+particularly like is the following, which was written in response to a thread full of responses from ICU workers, who
+despite their best efforts are not always able to save every patient they meet:
 
 > You’ll weather the wind and the rain and the rough -  
 > And sometimes you’ll try but it won’t be enough.
@@ -33,8 +33,8 @@ with words as [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your
 poetry in the only way I know how: By using data.
 
 My plan is to create a dataset of all the poems
-[/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) has written, and create a number of notebooks
-that dive into these works. In this first notebook, I want to explore some basic statistics about these poems.
+[/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) has written, and create a number of posts
+that dive into these works. In this first post, I want to explore some basic statistics about these poems.
 
 You can find the notebook with python code that was used to create this page on 
 [GitHub](https://github.com/fpgmaas/poems/blob/master/notebooks/1.0-summary-statistics-upvotes-and-awards.ipynb).
@@ -55,7 +55,7 @@ import plotData1_11 from './plots/plot_11_correlation.json'
 ## Comments per day
 
 Let's start by simply looking at the amount of poems over time. We can see below that on the extraordinarily productive
-days, sprog provides us with about 5 or 6 poems, and his productivity seems to have increased somewhat over time. The
+days sprog writes about 5 or 6 poems, and their productivity seems to have increased somewhat over time. The
 outlier of 10 comments in June is the ['Ask Me
 Anything'](https://www.reddit.com/r/books/comments/3aungz/hi_im_sam_garland_aka_upoem_for_your_sprog_ive/), or AMA in
 short, where they answered questions of fellow Redditors.
@@ -68,14 +68,13 @@ to get a clearer view:
 
 <MyPlotly data = {plotData1_2.data} layout = {plotData1_2.layout} />
 
-Here we can see that sprog was most productive between 2017 and 2020. 
-
-Not all poems by sprog have been posted on [/r/AskReddit](https://reddit.com/r/askreddit) threads, they also responded to posts on some other subreddits. In
-total, there are 3415 comments by [/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) on Reddit. Out of those, 96.0% were comments within
-[/r/AskReddit](https://reddit.com/r/askreddit). It would be interesting to find out to which other subreddits sprog has posted their poems in the past. To
-gain insight in the temporary pattern of these poems and in the distribution of these poems over the subreddits
-simultaneously, we can create a plot with multiple timelines and denote the comments as events in a scatter plot. You
-can hover over the plot to read the poems.
+Not all poems by sprog have been posted on [/r/AskReddit](https://reddit.com/r/askreddit) threads, they also responded
+to posts on some other subreddits. In total, there are 3,415 comments by
+[/u/poem_for_your_sprog](https://www.reddit.com/user/Poem_for_your_sprog/) on Reddit. Out of those, 96.0% were comments
+within [/r/AskReddit](https://reddit.com/r/askreddit). It would be interesting to find out to which other subreddits
+sprog has posted their poems in the past. To gain insight in the temporal pattern of these poems and in the
+distribution of these poems over the subreddits simultaneously, we can create a plot with multiple timelines and denote
+the comments as events in a scatter plot. You can hover over the plot to read the poems.
 
 <MyPlotly data = {plotData1_3.data} layout = {plotData1_3.layout} />
 
@@ -134,9 +133,9 @@ To get a better idea, here is an example of one of these poems:
 
 
 I feel there's a lot more to learn about metre. But that seems to be a very broad topic, so let's save that for another
-notebook, and let's try to get a better feeling of the basic structure of the poems first. For example, it would be
+post, and let's try to get a better feeling of the basic structure of the poems first. For example, it would be
 interesting to take a look at some of the poems with very short or very long line lengths to see what they look like.
-However, listing all the poems here would make this notebook quite long, so let's just plot them. In the figure below, I
+However, listing all the poems here would make this post quite long, so let's just plot them. In the figure below, I
 have put the 100 poems with the shortest average line length and the the 100 poems with the longest average line length
 in a plot that allows you to read the poems by hovering over the points. 
 
@@ -218,6 +217,7 @@ general a lower average line length, although the correlation coefficient of the
 
 <MyPlotly data = {plotData1_11.data} layout = {plotData1_11.layout} />
 
-That's enough exploring poems for now! This helped in providing a better sense of the data by doing some initial exploration, 
-but I think there's still a lot to find that can help me understand the art behind the poems better. 
-In a next notebook I will try to dive a bit deeper into the things that make a poem a poem, such as meter or rhyme.
+That's enough exploring poems for now! This helped in providing a better sense of the data by doing some initial
+exploration, but I think there's still a lot to find that can help me understand the art behind the poems better. In the
+[next post](/blog/poetry-and-data-2) I will try to dive a bit deeper into the things that make a poem a poem, such as
+meter or rhyme.

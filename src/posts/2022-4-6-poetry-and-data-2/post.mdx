@@ -3,8 +3,9 @@ date: "2022-01-02"
 title: "Poetry & Data II: Meter"
 slug: poetry-and-data-2
 subtitle: Analyzing the meter in the poetry of /u/poem_for_your_sprog on Reddit
-reading_time: 12 minutes
+reading_time: 10 minutes
 author: Florian Maas
+type: post
 ---
 
 import { Meter } from './meter.js'
@@ -16,20 +17,27 @@ import plotData2_4 from './plots/plot_4_box_plot_upvotes_per_meter.json'
 import plotData2_5 from './plots/plot_5_hist_line_length_per_meter.json'
 import plotData2_6 from './plots/plot_6_meter_timelines.json'
 
-<MyPlotly data ={plotData2_2.data} layout = {{...plotData2_2.layout, showlegend: false}} />
-
-In my [previous notebook](/blog/poetry-and-data-1), I did some initial
+In my [previous post](/blog/poetry-and-data-1), I did some initial
 analysis on the dataset that contains all poems by [/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog). I
-noted there that the rhythm, or poetic meter, of the poems, is one of the main characteristics that makes these poems so
-appealing to me.
+noted there that the rhythm, or poetic meter, of the poems is one of the main characteristics that makes these poems so
+appealing to me. In this post, I want to get to know a bit more about poetic meter, and explore the meters that sprog utilizes in his
+poems on [/r/AskReddit](https://www.reddit.com/r/AskReddit/).
 
-In this notebook, I want to get to know a bit more about poetic meter, and explore the meters that sprog utilizes in his
-poems on [/r/AskReddit](https://www.reddit.com/r/AskReddit/). A little disclaimer before we start; I did not know
-anything about poetry when I started this notebook. Well, that's not entirely true; I knew that in poems words usually
-rhyme. That's about it. Anway, I don't claim that this notebook is exhaustive nor that everything in it is correct, so
-if you have any feedback or suggestions; please do let me know!
+Before we dive into this notebook, take a look at the chart containing some of the most popular poems by
+[/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog) below and see what patterns you can discover. You can
+read the poems by hovering over the points in the plot.
 
-Oh, by the way; all code can be found on [GitHub](https://github.com/fpgmaas/poems).
+<MyPlotly data ={plotData2_2.data} layout = {{...plotData2_2.layout, showlegend: false, title: null}} />
+
+Did you notice any patterns? The legend for this plot can be found a little later in this post, so if you are in a
+hurry; feel free to scroll down. Otherwise, continue reading while we find out more about what it is that makes some of
+these poems feel so similar.
+
+A little disclaimer before we start; I did not know anything about poetry when I
+started this analysis. Well, that's not entirely true; I knew that in poems words usually rhyme. That's about it. Anway,
+I don't claim that this notebook is exhaustive nor that everything in it is correct, so if you have any feedback or
+suggestions; please do let me know! Oh, and by the way; all code can be found on
+[GitHub](https://github.com/fpgmaas/poems).
 
 Let's go exploring!
 
@@ -79,8 +87,10 @@ Here, the syllables in the blue squares are stressed, and the syllables in the g
 trouble hearing the rhythm, try to read the lines out loud, stressing the syllables in the grey squares. Feels unnatural
 doesn't it? Now try the same, but stressing the words in the blue squares. That should be a lot more comfortable.
 
-So we could say that the rhythm of the two lines above is
+So one could say that the rhythm of the two lines above is
 unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed-unstressed-stressed.
+Saying that out loud does fill a little cumbersome though.
+
 Luckily, as with any other art, science, religion or discipline, things in poetry tend to have names to make talking
 about them a bit easier. For example, the meter of the first line is iambic tetrameter, whereas the second line is
 iambic trimeter. To break that down: First, they are both iambic, because they consist of iambic feet. An iambic foot is
@@ -108,84 +118,11 @@ import meterData2 from './meters/02_foot_examples.json'
 <Meter data = {meterData2.anapestic_foot} />
 
 By combining these three feet in a large variety of ways, we can construct the meter for most of the poems by
-/u/poem_for_your_sprog. To perform analysis on the meters that sprog uses however, we should first identify which meter
-each poem uses. We could do that by reading each poem and assigning the meter by hand, but that will be very time
-consuming. So let's see if we can use [Python](https://www.python.org/) to do this for us! If you are interested in
-learning more about my approach for tackling this problem, continue reading. If you are just interested in the results,
-feel free to skip the next section.
-
-## Identifying meter in poetry using Python
-
-In order to identify which meter each poem uses, we need a computer to determine which syllables are stressed in a
-sentence, and which are not. It turns out that this can be quite tricky. Compare for example the following two lines
-with the example given earlier:
-
-import meterData3 from './meters/03_meter_example.json'
-
-<Meter data = {meterData3} />
-
-Both examples contain the word "have", but in the first example it was unstressed, while in the latter example it's
-stressed. Why? Beats me. It's just what happens in my head when I read it. Sadly, that's not very useful information for
-a computer. It turns out that the problem of teaching a computer to find the right
-[scansion](https://en.wikipedia.org/wiki/Scansion) (marking the stressed and unstressed syllables) is quite a complex
-one. I found a Python library called
-[pronouncing](https://pronouncing.readthedocs.io/en/latest/tutorial.html#counting-syllables) that can help determine the
-stressed and unstressed syllables of a single word. For example:
-
-```python
-import pronouncing
-pronounciation = pronouncing.phones_for_word('have')
-pronouncing.stresses(pronounciation[0])
-> 1
-```
-
-```python
-import pronouncing
-pronounciation = pronouncing.phones_for_word('another')
-pronouncing.stresses(pronounciation[0])
-> 010 
-```
-
-where `1` denotes a stressed syllable, and `0` denotes an unstressed syllable. For "have", it gives us a single stressed
-syllable, which as we saw in the example may or may not be correct based on the context. For "another" it returns `010`,
-which is in line with the scansion of our second example. I think this is correct regardless of context; try to
-pronounce "another" like "ANother" or "anothER" and you'll understand why. 
-
-So we are definitely not going to get a perfect scansion for each poem by simply using this `pronouncing` library.
-However, I came up with a method to use it to at least get the poem's primary meter:
-
-- For each line, determine the scansion by determining the scansion for each word. This will give us a string of 0's and 1's.
-- Divide the lines of the poem into groups by the amounts of syllables per line. (So for example, lines with 9 syllables
-  are grouped together)
-- Try to find the closest match for each line in a set of known meters, also represented as 0's and 1's.
-- Per group, find the most found known meter.
-- Now we have a set of meters that together make up the meter of the poem.
-
-There are a few more steps in this process to make it work. In the previous notebook, we saw that sprog quite often
-splits a line over two or even more lines. For example;
-
-import meterData4 from './meters/04_meter_example.json'
-
-<Meter data = {meterData4} />
-
-To accurately determine the meter of the poem, we could recognize that the latter two lines are actually one line split
-into two, and if we merge them back together we get two lines with the same meter:
-
-import meterData5 from './meters/04_meter_example.json'
-
-<Meter data = {meterData5} />
-
-Now we recognize this as being anapestic tetrameter, with the first unstressed syllable omitted. This is called iambic
-substitution, since the first anapestic foot is replaced with an iambic foot. 
-
-In my code I have built a function that looks for these kind of lines and combines them; it looks for lines that
-together have the same amount of syllables as a longer line in that poem (in this example 6 + 5 = 11). If such a set of
-lines is found, they are merged into a single line. I'm not 100% sure if this is the right thing to do when analyzing
-the meter in a poem, but it does seem to make a lot of sense to me. Besides, if poets get to split lines and call that
-'artistic freedom', I think data scientists are allowed some 'scientific freedom' and merge them back together.
-
-Now, I can talk a lot more about this process, since it took me quite some time to build something that performs
-satisfactorily, but I propose we just continue with applying the logic to sprog's poems and take a look at the results!
+[/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog). To perform analysis on the meters that sprog uses
+however, we should first identify which meter each poem uses. We could do that by reading each poem and assigning the
+meter by hand, but that will be very time consuming. So instead, I leveraged [Python](https://www.python.org/) to do
+this for us. If you are interested in learning more about my approach for tackling this problem, see [this post](/blog/poetry-and-data-2-addendum). If you are just interested in the results, feel free to skip that page and
+continue reading here.
 
 ## Poetic meter in the poems by /u/poem_for_your_sprog
 
