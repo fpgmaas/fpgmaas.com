@@ -2,6 +2,7 @@ import React from "react"
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import SEO from '../components/seo.js'
 
 import * as postStyles from './post.module.scss'
 
@@ -31,6 +32,8 @@ query($slug: String) {
 
 const Post = (props) => {
   return (
+    <>
+    <SEO title = {props.data.mdx.frontmatter.title} url = {`blog/${props.data.mdx.frontmatter.slug}`}/>
     <Layout>
       <div className={postStyles.content}>
 
@@ -47,6 +50,7 @@ const Post = (props) => {
         <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
       </div>
     </Layout>
+    </>
 
   )
 }

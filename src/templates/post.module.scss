@@ -6,6 +6,9 @@
     padding-right: 5rem;
     align-items: stretch;
     min-width: 0;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .title {
@@ -25,11 +28,12 @@
     align-items: center;
     margin-top: 1rem;
     margin-bottom: 0rem;
+    flex-wrap: wrap;
 }
 
 .post-details p{
     margin: 0 0 0 0;
-    color: $grey
+    color: $grey;
 }
 
 .author {

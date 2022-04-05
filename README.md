@@ -1,10 +1,12 @@
 # fpgmaas.com
 
 ## TODO:
-- experiment with fonts
-- add plotly loader
-- fix blog layout page
-- fix a colors 
-- fix responsive plot titles
-- fix correlation plot
+- add relative urls to other posts!
+- find out issue with namespace of json imports..
+- add google analytics
 - make sure colors are also available in js, remove hardcoded color from plotly.js
+- allow people to like or upvote?
+- add pageviews to blog.
+- autolink headers
+- add blog pagination overview
+- add tags

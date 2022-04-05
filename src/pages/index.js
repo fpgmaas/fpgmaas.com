@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import * as indexStyles from './index.module.scss'
+import SEO from '../components/seo.js'
 
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
@@ -13,6 +14,8 @@ library.add(fab);
 const IndexPage = () => {
 
   return (
+    <>
+    <SEO/>
     <Layout>
       <div className={indexStyles.content}>
 
@@ -37,6 +40,7 @@ const IndexPage = () => {
         </div>
       </div>
     </Layout>
+    </>
   )
 }
 

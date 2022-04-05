@@ -1,11 +1,15 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'Florian Maas',
-    author: 'Florian Maas'
+    title: `Florian Maas`,
+    description: `Data Scientist by trade & web developer enthusiast.`,
+    author: `Florian Maas`,
+    url: `https://www.fpgmaas.com`
   },
   plugins: [
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-catch-links`,
+    'gatsby-plugin-react-helmet',
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-remark-images`,
@@ -32,17 +36,14 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [`gatsby-remark-images`]
+        gatsbyRemarkPlugins: [`gatsby-remark-images`, `gatsby-remark-autolink-headers`],
+        remarkPlugins: [
+          [require('gatsby-remark-vscode').remarkPlugin, {
+            theme: 'Monokai'
+          }]
+        ]
       },
-    },
-      {
-        resolve: 'gatsby-plugin-web-font-loader',
-        options: {
-          google: {
-            families: ['Quicksand']
-          }
-        }
-      }
-    ]
+    }
+  ]
 }
 

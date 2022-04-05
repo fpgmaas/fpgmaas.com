@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from '../components/layout'
+import SEO from '../components/seo.js'
 
 import * as contactStyles from './contact.module.scss'
 
@@ -11,6 +12,8 @@ library.add(far);
 
 const ContactPage = () => {
   return (
+    <>
+    <SEO title="Contact" url = 'contact' />
     <Layout>
       <div class={contactStyles.emailContainer}>
         <div class={contactStyles.iconContainer}>
@@ -19,6 +22,7 @@ const ContactPage = () => {
         <p class={contactStyles.email}>fpgmaas@gmail.com</p>
       </div>
     </Layout>
+    </>
   )
 }
 

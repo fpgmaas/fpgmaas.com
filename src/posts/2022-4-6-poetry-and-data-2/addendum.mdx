@@ -1,0 +1,88 @@
+---
+date: "2022-01-02"
+title: "Addendum to 'Poetry & Data II: Meter'"
+slug: poetry-and-data-2-addendum
+subtitle: "Identifying meter in poetry using Python"
+reading_time: 5 minutes
+author: Florian Maas
+type: addendum
+---
+
+import { Meter } from './meter.js'
+
+> The code that is referred to in this post can be found on <a href="https://github.com/fpgmaas/poems/blob/master/src/meter.py" target="_blank">Github</a>
+
+In order to identify which meter a poem uses, we need a computer to determine which syllables are stressed in a
+sentence, and which are not. It turns out that this can be quite tricky. Compare for example the following two examples:
+
+import meterData1 from './meters/01_meter_example.json'
+
+<Meter data = {meterData1} />
+
+import meterData3 from './meters/03_meter_example.json'
+
+<Meter data = {meterData3} />
+
+Both examples contain the word "have", but in the first example it was unstressed, while in the latter example it's
+stressed. Why? Beats me. It's just what happens in my head when I read it. Sadly, that's not very useful information for
+a computer. It turns out that the problem of teaching a computer to find the right
+[scansion](https://en.wikipedia.org/wiki/Scansion) (marking the stressed and unstressed syllables) is quite a complex
+one. I found a Python library called
+[pronouncing](https://pronouncing.readthedocs.io/en/latest/tutorial.html#counting-syllables) that can help determine the
+stressed and unstressed syllables of a single word. For example:
+
+```python
+import pronouncing
+pronounciation = pronouncing.phones_for_word('have')
+pronouncing.stresses(pronounciation[0])
+> 1
+```
+
+```python
+import pronouncing
+pronounciation = pronouncing.phones_for_word('another')
+pronouncing.stresses(pronounciation[0])
+> 010 
+```
+
+where `1` denotes a stressed syllable, and `0` denotes an unstressed syllable. For "have", it gives us a single stressed
+syllable, which as we saw in the example may or may not be correct based on the context. For "another" it returns `010`,
+which is in line with the scansion of our second example. I think this is correct regardless of context; try to
+pronounce "another" like "ANother" or "anothER" and you'll understand why. 
+
+So we are definitely not going to get a perfect scansion for each poem by simply using this `pronouncing` library.
+However, I came up with a method to use it to at least get the poem's primary meter:
+
+- For each line, determine the scansion by determining the scansion for each word. This will give us a string of 0's and 1's.
+- Divide the lines of the poem into groups by the amounts of syllables per line. (So for example, lines with 9 syllables
+  are grouped together)
+- Try to find the closest match for each line in a set of known meters, also represented as 0's and 1's.
+- Per group, find the most found known meter.
+- Now we have a set of meters that together make up the meter of the poem.
+
+There are a few more steps in this process to make it work. In the [first post]('/blog/poetry-and-data-1') on this
+subject, we saw that sprog quite often splits a line over two or even more lines. For example;
+
+import meterData4 from './meters/04_meter_example.json'
+
+<Meter data = {meterData4} />
+
+To accurately determine the meter of the poem, we could recognize that the latter two lines are actually one line split
+into two, and if we merge them back together we get two lines with the same meter:
+
+import meterData5 from './meters/04_meter_example.json'
+
+<Meter data = {meterData5} />
+
+Now we recognize this as being anapestic tetrameter, with the first unstressed syllable omitted. This is called iambic
+substitution, since the first anapestic foot is replaced with an iambic foot. 
+
+In my code I have built a function that looks for these kind of lines and combines them; it looks for lines that
+together have the same amount of syllables as a longer line in that poem (in this example 6 + 5 = 11). If such a set of
+lines is found, they are merged into a single line. I'm not 100% sure if this is the right thing to do when analyzing
+the meter in a poem, but it does seem to make a lot of sense to me. Besides, if poets get to split lines and call that
+'artistic freedom', I think data scientists are allowed some 'scientific freedom' and merge them back together.
+
+Now, I can talk a lot more about this process, since it took me quite some time to build something that performs
+satisfactorily, but I propose we just continue with applying the logic to sprog's poems and take a look at the results!
+You can do so by returning to [this post](/blog/poetry-and-data-2#poetic-meter-in-the-poems-by-upoem_for_your_sprog).

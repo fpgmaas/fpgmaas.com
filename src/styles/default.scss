@@ -1,13 +1,23 @@
 *
 {
-  font-family: 'Quicksand', 'Arial', 'Sans Serif';
+  font-family: 'Inter', 'Arial', 'Sans Serif';
 }
-  
+
+p, li {
+  color: $grey;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+}
+ 
 body {
   background-color: $lightblue;
   margin: 0;
 }
-p a {
+p a, li a {
   color: $darkblue;
   transition: all ease .5s;
 }
@@ -24,4 +34,10 @@ blockquote {
   padding:.5em 10px;
   quotes:"\201C""\201D""\2018""\2019";
   color: $grey;
+}
+
+code {
+  font-family: 'fira-code';
+  font-size: 1.2rem;
+  font-weight: 400;
 }
