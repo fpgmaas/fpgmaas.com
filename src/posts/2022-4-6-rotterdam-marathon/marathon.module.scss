@@ -13,22 +13,69 @@
     // width: 100%;
 }
 
+.bib-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bib-input-header{
+    //
+}
+
+.bib-input {
+    margin-bottom: 1rem;
+    border: darkgrey 1px solid;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: white;
+    padding: 12px;
+    border-radius: 3px;
+    width: 250px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.bib-input:focus {
+    border: red 1px solid !important;
+}
+
 .header {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    flex-wrap: wrap;
+    border: $darkblue 2px solid;
+}
+
+.header-row {
+    display: flex;
     flex-direction: row;
-    // justify-content: flex-start;
-    // align-content: center;
-    // width: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    flex-wrap: wrap;
+    border: $darkblue 2px solid;
 }
 
 .athlete-name {
-    padding: 0 2rem 0 2rem;
+    margin: 1rem 1rem 1rem 1rem;
 }
 
 .athlete-flag {
-    padding: 0 2rem 0 2rem;
+    margin: 1rem 2rem 1rem 2rem;
+    height: 60px;
 }
 
 .athlete-rank {
-    padding: 0 2rem 0 2rem;
+    margin: 1rem 1rem 1rem 1rem;
 }
