@@ -4,3 +4,31 @@
     justify-content: center;
     align-content: center;
 }
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: flex-start;
+    // align-content: center;
+    // width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    // justify-content: flex-start;
+    // align-content: center;
+    // width: 100%;
+}
+
+.athlete-name {
+    padding: 0 2rem 0 2rem;
+}
+
+.athlete-flag {
+    padding: 0 2rem 0 2rem;
+}
+
+.athlete-rank {
+    padding: 0 2rem 0 2rem;
+}
