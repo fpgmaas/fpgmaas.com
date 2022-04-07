@@ -3,7 +3,6 @@ import React from 'react'
 import * as meterStyles from './meter.module.scss'
 
 export const Meter = ({data}) => {
-    console.log(data);
     return (
         <div className = {meterStyles.meterContainer}>
             {("title" in data) && <h3 className = {meterStyles.meterTitle}>{data.title}</h3>}
