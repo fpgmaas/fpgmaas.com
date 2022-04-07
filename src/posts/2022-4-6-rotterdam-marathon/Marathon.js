@@ -40,7 +40,7 @@ function Marathon() {
   return (
     <div className={marathonStyles.myDiv}>
       <div className={marathonStyles.bibInputContainer}>
-        <h2 className={marathonStyles.bibInputHeader}> BIB number </h2>
+        <h3 className={marathonStyles.bibInputHeader}> Enter a BIB number: </h3>
         <input value={bib} onInput={e => setBib(e.target.value)} className={marathonStyles.bibInput} />
       </div>
       {jsonData === undefined ? <></> : PageForBib(bib)}

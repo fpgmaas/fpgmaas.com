@@ -43,7 +43,7 @@ const Post = (props) => {
         <div className = {postStyles.postDetails}>
           <p className = {postStyles.author}>{props.data.mdx.frontmatter.author}</p>
           <p className = {postStyles.date}>{props.data.mdx.frontmatter.date}</p>
-          <p className = {postStyles.readingTime}>Reading time {props.data.mdx.frontmatter.reading_time}</p>
+          {props.data.mdx.frontmatter.reading_time ? <p className = {postStyles.readingTime}>Reading time {props.data.mdx.frontmatter.reading_time}</p> : <></>}
         </div>
         <hr className={postStyles.lineLeft} />
 

@@ -7,12 +7,10 @@ const get_athlete_pace = (athlete) => {
   return athlete.splits.slice(-1)[0].time / 60 / 42.2
 }
 
-const generate_hover_text = (e,paces) => {
-  console.log('yesy!', paces)
-
+const generate_hover_text = (e, paces) => {
   return (
-    'pace: ' + convert_number_to_minute_and_seconds(e.x0) + ' - ' + convert_number_to_minute_and_seconds(e.x1) + 
-    '<br>' + 'Fastest ' + calculate_pace_percentage(e.x1,paces).toString() + '%'
+    'pace: ' + convert_number_to_minute_and_seconds(e.x0) + ' - ' + convert_number_to_minute_and_seconds(e.x1) +
+    '<br>' + 'Fastest ' + calculate_pace_percentage(e.x1, paces).toString() + '%'
   )
 }
 
@@ -20,13 +18,13 @@ const zeroPad = (num, places) => String(num).padStart(places, '0')
 
 const convert_number_to_minute_and_seconds = (number) => {
   var decimal = number - Math.floor(number)
-  var seconds = Math.round(decimal*60)
+  var seconds = Math.round(decimal * 60)
   return Math.floor(number).toString() + ':' + zeroPad(seconds.toString(), 2)
 }
 
 const calculate_pace_percentage = (pace, paces) => {
-  var fraction_slower = paces.filter(e => e>pace).length/paces.length
-  return Math.round((1-fraction_slower)*10000)/100
+  var fraction_slower = paces.filter(e => e > pace).length / paces.length
+  return Math.round((1 - fraction_slower) * 10000) / 100
 }
 
 function getAllNumbersBetween(x, y) {
@@ -38,7 +36,7 @@ function getAllNumbersBetween(x, y) {
 }
 
 const SpeedHistogram = ({ athlete, data }) => {
-  
+
   var paces = data.map(e => get_athlete_pace(e));
 
   var histGenerator = d3.bin()
@@ -58,13 +56,13 @@ const SpeedHistogram = ({ athlete, data }) => {
   console.log('xValue!', xValue)
 
 
-  var yValue = arr.map(e => {return e.length});
+  var yValue = arr.map(e => { return e.length });
   console.log('yvalue!', yValue)
 
   var trace1 = {
     x: xValue,
     y: yValue,
-    hovertext: arr.map(e => {return generate_hover_text(e, paces) }),
+    hovertext: arr.map(e => { return generate_hover_text(e, paces) }),
     hoverinfo: 'text',
     type: 'bar',
     marker: {
@@ -81,13 +79,13 @@ const SpeedHistogram = ({ athlete, data }) => {
 
   var annotation = (
     'pace: ' + convert_number_to_minute_and_seconds(get_athlete_pace(athlete)) + ' min/km<br>' +
-    'Fastest ' + calculate_pace_percentage(get_athlete_pace(athlete),paces).toString() + '%'
+    'Fastest ' + calculate_pace_percentage(get_athlete_pace(athlete), paces).toString() + '%'
   )
-  var x_tick_vals = getAllNumbersBetween(Math.floor(Math.min(...paces)),Math.ceil(Math.max(...paces)))
-  var x_tick_text = x_tick_vals.map(e => {return convert_number_to_minute_and_seconds(e)})
+  var x_tick_vals = getAllNumbersBetween(Math.floor(Math.min(...paces)), Math.ceil(Math.max(...paces)))
+  var x_tick_text = x_tick_vals.map(e => { return convert_number_to_minute_and_seconds(e) })
 
   var layout = {
-    title: { text:'Pace distribution'},
+    title: { text: 'Pace distribution' },
     barmode: 'stack',
     xaxis: {
       tickmode: "array",
@@ -95,7 +93,7 @@ const SpeedHistogram = ({ athlete, data }) => {
       ticktext: x_tick_text
     },
     yaxis: {
-      range: [0, Math.max(...yValue)*1.1],
+      range: [0, Math.max(...yValue) * 1.1],
       showticklabels: false
     },
     shapes: [{
@@ -110,19 +108,19 @@ const SpeedHistogram = ({ athlete, data }) => {
         width: 3,
       }
     }
-  ],
-  annotations: [{
-    yref: 'paper',
-    x: get_athlete_pace(athlete),
-    xanchor: 'center',
-    y: .9,
-    yanchor: 'bottom',
-    text: annotation,
-    showarrow: false
-  }]
+    ],
+    annotations: [{
+      yref: 'paper',
+      x: get_athlete_pace(athlete),
+      xanchor: 'center',
+      y: .9,
+      yanchor: 'bottom',
+      text: annotation,
+      showarrow: false
+    }]
   };
-  
-  return <MyPlotly data={data} layout = {layout}/>
+
+  return <MyPlotly data={data} layout={layout} />
 }
 
 const BibStats = ({ athlete, data }) => {
@@ -130,6 +128,7 @@ const BibStats = ({ athlete, data }) => {
   const athletes_in_this_category = data.filter(e => {
     return e.category == athlete.category;
   })
+  console.log(athlete);
   return (
     <div className={marathonStyles.statsContainer}>
       <div className={marathonStyles.header}>
@@ -137,12 +136,21 @@ const BibStats = ({ athlete, data }) => {
           <img className={marathonStyles.athleteFlag}
             alt={`${athlete.countryCode}`}
             src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${athlete.countryCode}.svg`} />
-          <h2 className={marathonStyles.athleteRank}> {`#${athlete.rank}/${total_athletes}`} </h2>
-          <h2 className={marathonStyles.athleteName}> {athlete.name} </h2>
+          <p className={marathonStyles.athleteName}> {athlete.name} </p>
+          <p className={marathonStyles.finishTime}> {'Finish time: ' + new Date(athlete.chipTime * 1000).toISOString().substr(11, 8)} </p>
         </div>
         <div className={marathonStyles.headerRow}>
-          <h3 className={marathonStyles.athleteRank}> {`Category: ${athlete.category}`} </h3>
-          <h3 className={marathonStyles.athleteRank}> {`Category rank: #${athlete.categoryRank}/${athletes_in_this_category.length}`} </h3>
+          <div className={marathonStyles.athleteRankContainer}>
+          <span className={marathonStyles.athleteRankPrefix}>Rank: </span>
+            <span className={marathonStyles.athleteRank}> {`#${athlete.rank}`}</span>
+            <span className={marathonStyles.athleteRankSub}>{`/${total_athletes}`}</span>
+          </div>
+          <p className={marathonStyles.athleteCategory}> {`Category: ${athlete.category}`} </p>
+          <div className={marathonStyles.athleteRankContainer}>
+            <span className={marathonStyles.athleteRankPrefix}>Category rank: </span>
+            <span className={marathonStyles.athleteRank}> {`#${athlete.categoryRank}`}</span>
+            <span className={marathonStyles.athleteRankSub}>{`/${athletes_in_this_category.length}`}</span>
+          </div>
         </div>
       </div>
       <SpeedHistogram athlete={athlete} data={data} />
