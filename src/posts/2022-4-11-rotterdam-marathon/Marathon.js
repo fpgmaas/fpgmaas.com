@@ -5,7 +5,7 @@ import * as marathonStyles from './marathon.module.scss'
 import BibStats from "./BibStats";
 
 function Marathon() {
-  const githubUrl = "https://raw.githubusercontent.com/fpgmaas/rotterdam-marathon/python/data/6855879561074155264_480016.json";
+  const githubUrl = "https://raw.githubusercontent.com/fpgmaas/sporthive-api-scraper/main/data/6855879561074155264_480016.json";
 
   const [jsonData, setJsonData] = useState();
   const [bib, setBib] = useState(3);

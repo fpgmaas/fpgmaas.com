@@ -1,5 +1,5 @@
 export const get_athlete_pace = (athlete) => {
-    return athlete.splits.slice(-1)[0].time / 60 / 42.2
+    return athlete.chipTime / 60 / 42.2
 }
 
 export const zero_pad = (num, places) => String(num).padStart(places, '0')
