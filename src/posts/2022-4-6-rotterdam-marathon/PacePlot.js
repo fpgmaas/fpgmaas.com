@@ -3,9 +3,7 @@ import * as marathonStyles from './marathon.module.scss'
 import { MyPlotly } from '../../components/MyPlotly'
 import * as d3 from "d3"
 
-const get_athlete_pace = (athlete) => {
-  return athlete.splits.slice(-1)[0].time / 60 / 42.2
-}
+
 
 const generate_hover_text = (e, paces) => {
   return (
