@@ -14,9 +14,7 @@ const Layout = (props) => {
         <MDXProvider components={shortcodes}>
             <div className={layoutStyles.page}>
                 <Header />
-                <div className={layoutStyles.contentContainer}>
-                        {props.children}
-                </div>
+                {props.children}
                 <Footer />
             </div>
         </MDXProvider>
