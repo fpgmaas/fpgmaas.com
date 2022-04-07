@@ -117,15 +117,15 @@
   }
 },
 "10": {
-  "title": "10. anapestic diameter",
+  "title": "10. anapestic dimeter",
   "data": {
       "text": [
-        ["my","name","is","dog"],
-        ["and","e","ven", "though"]
+        ["i","re","mem","ber","the","way"],
+        ["that","i","thought","a","bout","love"]
       ],
       "stressed": [
-        [0,1,0,1],
-        [0,1,0,1]
+        [0,0,1,0,0,1],
+        [0,0,1,0,0,1]
       ]
   }
 }
