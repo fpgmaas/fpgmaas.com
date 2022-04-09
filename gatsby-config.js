@@ -8,8 +8,21 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
-    'gatsby-plugin-react-helmet',
     `gatsby-plugin-catch-links`,
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://www.fpgmaas.com`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.fpgmaas.com',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: `gatsby-remark-images`,
       options: {
