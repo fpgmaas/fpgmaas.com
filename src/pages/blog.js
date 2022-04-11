@@ -27,6 +27,7 @@ const Blog = () => {
                         reading_time
                         slug
                         type
+                        description
                     }
                 }
             }
@@ -50,7 +51,7 @@ const Blog = () => {
                                         <Link to={`/blog/${edge.node.frontmatter.slug}`}>
                                             <div>
                                                 <h2 className={blogStyles.title}>{edge.node.frontmatter.title}</h2>
-                                                <p className={blogStyles.subtitle}>{edge.node.frontmatter.subtitle}</p>
+                                                <p className={blogStyles.subtitle}>{edge.node.frontmatter.description}</p>
                                             </div>
                                             <div className={blogStyles.dateContainer}>
                                                 <FontAwesomeIcon icon={["far", "fa-calendar"]} />
