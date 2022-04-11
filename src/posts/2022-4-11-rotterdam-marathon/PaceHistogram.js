@@ -21,12 +21,11 @@ const PaceHistogram = ({ athlete, data, title, category_filter }) => {
   var x_max = Math.max(...paces)+.5
   if (category_filter)
   {
-    console.log('filtering')
     paces = data.filter(e => e.category == athlete.category).map(e => get_athlete_pace(e));
   }
 
   var histGenerator = d3.bin()
-    .domain([Math.min(...paces), Math.max(...paces)])
+    .domain([x_min, x_max])
     .thresholds(50);
   var arr = histGenerator(paces)
 

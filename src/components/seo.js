@@ -26,13 +26,22 @@ const SEO = ({ title, description, url, article }) => {
 
   return (
     <Helmet title={seo.title}>
-      <meta name="description" content={seo.description} />
+
+      <meta property="keywords" content={"Python, Data Science, Javascript"} />
+
+      {seo.url && <meta name="url" content={seo.url} />}
       {seo.url && <meta property="og:url" content={seo.url} />}
-      {(article ? true : null) && <meta property="og:type" content="article" />}
+
+      {seo.title && <meta name="title" content={seo.title} />}
       {seo.title && <meta property="og:title" content={seo.title} />}
-      {seo.description && (
-        <meta property="og:description" content={seo.description} />
-      )}
+      {seo.title && <meta name="twitter:title" content={seo.title} />}
+
+      {seo.description && (<meta name="description" content={seo.description} />)}
+      {seo.description && (<meta property="og:description" content={seo.description} />)}
+      {seo.description && (<meta name="twitter:description" content={seo.description} />)}
+
+      {(article ? true : null) && <meta property="og:type" content="article" />}
+
     </Helmet>
   )
 }

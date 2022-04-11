@@ -2,35 +2,31 @@ import React, { useState, useEffect } from "react";
 import Slider from 'react-input-slider';
 import * as marathonStyles from './marathon.module.scss'
 
-import BibStats from "./BibStats";
+import BibComponent from "./BibComponent";
 
 function Marathon() {
-  const githubUrl = "https://raw.githubusercontent.com/fpgmaas/sporthive-api-scraper/main/data/6855879561074155264_480016.json";
+  const githubUrl = "https://raw.githubusercontent.com/fpgmaas/sporthive-api-scraper/main/data/6914931831426482176_481627.json";
 
   const [jsonData, setJsonData] = useState();
-  const [bib, setBib] = useState(3);
+  const [bib, setBib] = useState(9);
 
   useEffect(() => {
     getGitHubUserWithFetch(githubUrl);
   }, []);
 
   const getGitHubUserWithFetch = async (githubUrl) => {
-    console.log('FETCHING! -------------- ')
     const response = await fetch(githubUrl);
     const jsonData = await response.json();
-    console.log(jsonData[0]);
     setJsonData(jsonData);
   };
 
   const PageForBib = (bib) => {
-    console.log(bib);
     if (bib == null) {
       return <p>Please enter a valid bib.</p>
     }
-    var athlete = jsonData.find(e => { return e.bib == bib })
-    console.log(athlete);
+    var athlete = jsonData.find(e => { return e.bib.toString().toUpperCase() == bib.toString().toUpperCase() })
     if (athlete) {
-      return <BibStats athlete={athlete} data={jsonData}></BibStats>
+      return <BibComponent athlete={athlete} data={jsonData}></BibComponent>
     }
     else {
       return <p>Bib not found in the results. Please enter a valid bib.</p>

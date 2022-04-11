@@ -39,6 +39,7 @@ const IndexPage = () => {
               </a>
               <hr className={indexStyles.lineRight} />
             </div>
+
           </div>
         </div>
       </Layout>

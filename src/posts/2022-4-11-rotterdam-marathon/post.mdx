@@ -2,7 +2,7 @@
 date: "2022-04-11"
 title: "Rotterdam Marathon 2022"
 slug: rotterdam-marathon-2022
-subtitle: Interactive page for comparing athlete's paces during the Marathon
+subtitle: Comparing pace during the Rotterdam Marathon 2022
 author: Florian Maas
 type: post
 ---
@@ -10,3 +10,17 @@ type: post
 import Marathon from './Marathon.js'
 
 <Marathon />
+
+The official Sporthive page with the results for the Rotterdam Marathon 2022
+can be found [here](https://results.sporthive.com/events/6914931831426482176/races/481627).
+
+## About 
+I recently rewrote my personal website from scratch in [Gatsby](https://www.gatsbyjs.com/), which in combination with
+[MDX](https://mdxjs.com/) allows for reactive components within a blog post. This blog post is the result of some
+experimenting with React components.
+
+The page was built by first scraping the [Sporthive](https://results.sporthive.com/) API with Python, the code for which
+can be found in [this github repository](https://github.com/fpgmaas/sporthive-api-scraper). That results in a
+[.json](https://raw.githubusercontent.com/fpgmaas/sporthive-api-scraper/main/data/6914931831426482176_481627.json) file
+that can be read by this page and turned into reactive components. The source code for this blog post can also be found on
+[github](https://github.com/fpgmaas/fpgmaas.com/tree/main/src/posts/2022-4-6-poetry-and-data-2).

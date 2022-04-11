@@ -8,7 +8,6 @@ const BibStats = ({ athlete, data }) => {
   const athletes_in_this_category = data.filter(e => {
     return e.category == athlete.category;
   })
-  console.log(athlete);
   return (
     <div className={marathonStyles.statsContainer}>
       <div className={marathonStyles.header}>
