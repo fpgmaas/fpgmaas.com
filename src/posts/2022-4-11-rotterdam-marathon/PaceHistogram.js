@@ -1,8 +1,7 @@
 import React from "react";
-import * as marathonStyles from './marathon.module.scss'
 import { MyPlotly } from '../../components/MyPlotly'
 import * as d3 from "d3"
-import { get_athlete_pace, zeroPad, convert_seconds_to_hms, get_all_numbers_between, 
+import { get_athlete_pace, convert_seconds_to_hms, get_all_numbers_between, 
   calculate_pace_percentage, convert_fractional_pace_to_minute_and_seconds } from "./utils";
 
 
@@ -68,11 +67,13 @@ const PaceHistogram = ({ athlete, data, title, category_filter }) => {
       tickmode: "array",
       tickvals: x_tick_vals,
       ticktext: x_tick_text,
-      range: [x_min, x_max]
+      range: [x_min, x_max],
+      fixedrange: true
     },
     yaxis: {
       range: [0, Math.max(...y_values) * 1.1],
-      showticklabels: false
+      showticklabels: false,
+      fixedrange: true
     },
     shapes: [{
       type: 'line',
