@@ -33,7 +33,11 @@ query($slug: String) {
 const Post = (props) => {
   return (
     <>
-      <SEO title={props.data.mdx.frontmatter.title} url={`blog/${props.data.mdx.frontmatter.slug}`} />
+      <SEO 
+        title={props.data.mdx.frontmatter.title} 
+        description = {props.data.mdx.frontmatter.subtitle}
+        url={`blog/${props.data.mdx.frontmatter.slug}`} 
+        />
       <Layout>
         <div className={postStyles.contentContainer}>
           <div className={postStyles.content}>
