@@ -17,28 +17,30 @@ const IndexPage = () => {
     <>
       <SEO />
       <Layout>
-        <div className={indexStyles.content}>
+        <div className={indexStyles.contentContainer}>
+          <div className={indexStyles.content}>
 
-          <h1 className={indexStyles.name}>
-            Florian Maas
-          </h1>
-          <h4 className={indexStyles.title}>
-            Senior Data Scientist Logistics at IKEA
-          </h4>
-          <div className={indexStyles.iconsContainer}>
-            <hr className={indexStyles.lineLeft} />
-            <a href="https://www.linkedin.com/in/florianmaas/" target='blank'>
-              <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={indexStyles.icon} />
-            </a>
-            <a href="https://github.com/fpgmaas" target='blank'>
-              <FontAwesomeIcon icon={["fab", "github"]} className={indexStyles.icon} />
-            </a>
-            <a href="https://stackoverflow.com/users/8037249/florian" target='blank'>
-              <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={indexStyles.icon} />
-            </a>
-            <hr className={indexStyles.lineRight} />
+            <h1 className={indexStyles.name}>
+              Florian Maas
+            </h1>
+            <h4 className={indexStyles.title}>
+              Senior Data Scientist Logistics at IKEA
+            </h4>
+            <div className={indexStyles.iconsContainer}>
+              <hr className={indexStyles.lineLeft} />
+              <a href="https://www.linkedin.com/in/florianmaas/" target='blank'>
+                <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={indexStyles.icon} />
+              </a>
+              <a href="https://github.com/fpgmaas" target='blank'>
+                <FontAwesomeIcon icon={["fab", "github"]} className={indexStyles.icon} />
+              </a>
+              <a href="https://stackoverflow.com/users/8037249/florian" target='blank'>
+                <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={indexStyles.icon} />
+              </a>
+              <hr className={indexStyles.lineRight} />
+            </div>
+
           </div>
-
         </div>
       </Layout>
     </>

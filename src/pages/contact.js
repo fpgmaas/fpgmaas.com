@@ -13,15 +13,17 @@ library.add(far);
 const ContactPage = () => {
   return (
     <>
-    <SEO title="Contact" url = 'contact' />
-    <Layout>
-      <div class={contactStyles.emailContainer}>
-        <div class={contactStyles.iconContainer}>
-          <FontAwesomeIcon icon={["far", "envelope"]} />
+      <SEO title="Contact" url='contact' />
+      <Layout>
+        <div className={contactStyles.contentContainer}>
+          <div class={contactStyles.emailContainer}>
+            <div class={contactStyles.iconContainer}>
+              <FontAwesomeIcon icon={["far", "envelope"]} />
+            </div>
+            <p class={contactStyles.email}>fpgmaas@gmail.com</p>
+          </div>
         </div>
-        <p class={contactStyles.email}>fpgmaas@gmail.com</p>
-      </div>
-    </Layout>
+      </Layout>
     </>
   )
 }

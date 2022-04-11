@@ -27,6 +27,7 @@ const Blog = () => {
                         reading_time
                         slug
                         type
+                        description
                     }
                 }
             }
@@ -38,33 +39,33 @@ const Blog = () => {
 
     return (
         <>
-        <SEO title = 'Blog' url = 'blog' />
-        <Layout>
-            <div className={blogStyles.content}>
-                <hr className = {blogStyles.line}></hr>
-                {data.allMdx.edges.map((edge) => {
-                    return (
-                        <ul className={blogStyles.list}>
-                            <li className={blogStyles.post}>
-                                <Link to={`/blog/${edge.node.frontmatter.slug}`}>
-                                    <div>
-                                        <h2 className={blogStyles.title}>{edge.node.frontmatter.title}</h2>
-                                        <p className={blogStyles.subtitle}>{edge.node.frontmatter.subtitle}</p>
-                                    </div>
-                                    <div className = {blogStyles.dateContainer}>
-                                    <FontAwesomeIcon icon={["far", "fa-calendar"]} />
-                                    <p className={blogStyles.date}>{edge.node.frontmatter.date}</p>
-                                    </div>
-                                </Link>
-                            </li>
-                        </ul>
-                    )
-                })}
-            </div>
-
-        </Layout>
+            <SEO title='Blog' url='blog' />
+            <Layout>
+                <div className={blogStyles.contentContainer}>
+                    <div className={blogStyles.content}>
+                        <hr className={blogStyles.line}></hr>
+                        {data.allMdx.edges.map((edge) => {
+                            return (
+                                <ul className={blogStyles.list}>
+                                    <li className={blogStyles.post}>
+                                        <Link to={`/blog/${edge.node.frontmatter.slug}`}>
+                                            <div>
+                                                <h2 className={blogStyles.title}>{edge.node.frontmatter.title}</h2>
+                                                <p className={blogStyles.subtitle}>{edge.node.frontmatter.description}</p>
+                                            </div>
+                                            <div className={blogStyles.dateContainer}>
+                                                <FontAwesomeIcon icon={["far", "fa-calendar"]} />
+                                                <p className={blogStyles.date}>{edge.node.frontmatter.date}</p>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            )
+                        })}
+                    </div>
+                </div>
+            </Layout>
         </>
-
     )
 }
 

@@ -1,0 +1,126 @@
+.my-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+}
+
+// BIB -------------------------------
+
+.bib-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: .4rem 0;
+    background: white;
+    border: $darkblue 1px solid;
+    border-radius: 10px;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.bib-input-header{
+    margin: 0 1rem 0 1rem;
+}
+
+.bib-input{
+    border: darkgrey 1px solid;
+    border-radius: 10px;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: $offwhite;
+    padding: 5px;
+    border-radius: 3px;
+    width: 150px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.bib-input:focus {
+    border: red 1px solid !important;
+}
+
+// header -------------------------------
+
+.header {
+    margin: .4rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 100%;
+    background-color: white;
+    border: $darkblue 1px solid;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+.header-column {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-item {
+    width: 250px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.athlete-name {
+    font-size: 1.3rem;
+}
+
+.athlete-flag {
+    height: 60px;
+}
+
+.athlete-rank-container {
+    text-align: center;
+}
+
+.athlete-rank {
+    font-size: 1.5rem;
+}
+.athlete-rank-sub {
+    font-size: 1rem;
+}
+
+.athlete-rank-prefix {
+    font-size: 1.3rem;
+}
+
+.athlete-category {
+    font-size: 1.3rem;
+}
+
+.athlete-category-rank {
+    font-size: 1.5rem;
+}
+
+.finish-time {
+    font-size: 1.3rem;
+}
+
+// plot -------------------------------
+
+.plot-container {
+    margin: .4rem 0;
+    width: 100%;
+    background-color: white;
+    border: $darkblue 1px solid;
+    border-radius: 10px;
+}

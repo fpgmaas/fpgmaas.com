@@ -1,3 +1,10 @@
+.content-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: center;
+}
+
 .email {
     margin-left: 1rem;
     margin:0 0 .2rem 0;
