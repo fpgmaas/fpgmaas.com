@@ -1,0 +1,29 @@
+.content-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.content-container >a {
+    text-decoration: none;
+}
+
+.download-container > p {
+    margin-left: 1rem;
+    margin:0 0 .2rem 0;
+    font-size: 1rem;
+    color: $grey;
+}
+
+.download-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-container {
+    color: $darkblue;
+    font-size: 2rem;
+}

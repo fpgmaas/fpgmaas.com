@@ -39,7 +39,7 @@ const Blog = () => {
 
     return (
         <>
-            <SEO title='Blog' url='blog' />
+            <SEO title='Blog' url='blog' description = 'An overview of my blog posts.'/>
             <Layout>
                 <div className={blogStyles.contentContainer}>
                     <div className={blogStyles.content}>
