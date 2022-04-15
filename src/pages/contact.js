@@ -13,7 +13,7 @@ library.add(far);
 const ContactPage = () => {
   return (
     <>
-      <SEO title="Contact" url='contact' />
+      <SEO title="Contact" url='contact' description='Feel free to send me an e-mail!' />
       <Layout>
         <div className={contactStyles.contentContainer}>
           <div class={contactStyles.emailContainer}>
