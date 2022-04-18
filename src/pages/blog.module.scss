@@ -27,14 +27,7 @@
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
 
-    background-image: linear-gradient(90deg,
-    $offwhite 0%,
-    $offwhite 50%,
-    $lightblue 50%,
-    $lightblue 100%);
-    background-size: 300%;
-    transition: background-position .3s cubic-bezier(.47, .1, 1, .63), color .2s linear;
-    transition-delay: 0.0s, 0.15s;
+    transition: ease all .5s;
 }
 
 .list {
@@ -71,7 +64,5 @@
 }
 
 .post:hover {
-    color: white;
-    cursor: pointer;
-    background-position: -50% 100%;
+    background-color: $lightblue;
 }
