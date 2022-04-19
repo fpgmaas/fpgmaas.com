@@ -5,7 +5,7 @@ import SEO from '../components/seo.js'
 import * as cvStyles from './cv.module.scss'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleDown} from "@fortawesome/free-regular-svg-icons";
 
 import downloadFile from '../../static/CV_Florian_Maas.pdf'
 
@@ -19,7 +19,7 @@ const ContactPage = () => {
           <a href={`CV_Florian_Maas.pdf`} download>
             <div class={cvStyles.downloadContainer}>
               <div class={cvStyles.iconContainer}>
-                <FontAwesomeIcon icon={faDownload} />
+                <FontAwesomeIcon icon={faArrowAltCircleDown} />
               </div>
               <p>Download</p>
             </div>
