@@ -30,18 +30,19 @@
 .title {
     margin: 0 0 .3rem 0;
     color: $darkblue;
+    font-size: 1.7rem;
 
     @media screen and (max-width: 768px) {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 }
 
 .subtitle {
     margin:0 0 .5rem 0;
     color: #222222;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     @media screen and (max-width: 768px) {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -91,7 +92,7 @@
 
 .line-left {
     background: $darkblue;
-    height: 3px;
+    height: 2px;
     border: none;
     width: 100%;
 }
