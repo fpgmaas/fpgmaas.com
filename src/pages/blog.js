@@ -46,8 +46,8 @@ const Blog = () => {
                         <hr className={blogStyles.line}></hr>
                         {data.allMdx.edges.map((edge) => {
                             return (
-                                <ul className={blogStyles.list}>
-                                    <li className={blogStyles.post}>
+                                <div>
+                                    <div className={blogStyles.post}>
                                         <Link to={`/blog/${edge.node.frontmatter.slug}`}>
                                             <div>
                                                 <h2 className={blogStyles.title}>{edge.node.frontmatter.title}</h2>
@@ -58,8 +58,9 @@ const Blog = () => {
                                                 <p className={blogStyles.date}>{edge.node.frontmatter.date}</p>
                                             </div>
                                         </Link>
-                                    </li>
-                                </ul>
+                                    </div>
+                                    <hr className={blogStyles.line}></hr>
+                                </div>
                             )
                         })}
                     </div>
