@@ -28,6 +28,7 @@ const IndexPage = () => {
             </div>
             </div>
             <div className={indexStyles.contentRight}>
+            <div className={indexStyles.textContainer}>
             <h1 className={indexStyles.name}>
             Hello!
             </h1>
@@ -39,6 +40,7 @@ const IndexPage = () => {
             
             I enjoy working with Python.
             </h4>
+            </div>
             </div>
           </div>
         </div>
