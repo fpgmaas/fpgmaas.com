@@ -8,6 +8,9 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
+import FrontImg from "../../static/florian.jpg"
+
+
 library.add(fab);
 
 
@@ -19,27 +22,24 @@ const IndexPage = () => {
       <Layout>
         <div className={indexStyles.contentContainer}>
           <div className={indexStyles.content}>
-
+            <div className={indexStyles.contentLeft}>
+            <div className = {indexStyles.imageContainer}>
+            <img src={FrontImg} alt="We are looking for your page..." className={indexStyles.image} />
+            </div>
+            </div>
+            <div className={indexStyles.contentRight}>
             <h1 className={indexStyles.name}>
-              Florian Maas
+            Hello!
             </h1>
             <h4 className={indexStyles.title}>
-              Senior Data Scientist Logistics at IKEA
-            </h4>
-            <div className={indexStyles.iconsContainer}>
-              <hr className={indexStyles.lineLeft} />
-              <a href="https://www.linkedin.com/in/florianmaas/" target='blank'>
-                <FontAwesomeIcon icon={["fab", "linkedin-in"]} className={indexStyles.icon} />
-              </a>
-              <a href="https://github.com/fpgmaas" target='blank'>
-                <FontAwesomeIcon icon={["fab", "github"]} className={indexStyles.icon} />
-              </a>
-              <a href="https://stackoverflow.com/users/8037249/florian" target='blank'>
-                <FontAwesomeIcon icon={["fab", "stack-overflow"]} className={indexStyles.icon} />
-              </a>
-              <hr className={indexStyles.lineRight} />
-            </div>
+            I am Florian Maas, a data scientist & data engineer living in The Hague, the Netherlands.
 
+            <br/>
+            <br/>
+            
+            I enjoy working with Python.
+            </h4>
+            </div>
           </div>
         </div>
       </Layout>

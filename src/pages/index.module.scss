@@ -7,11 +7,30 @@
 
 .content {
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.content-right {
+    display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     width: 100%;
-    max-width: 380px;
-    margin: 0 2rem 0 2rem;
+    max-width: 500px;
+    margin: 2rem;
+}
+
+.content-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem;
 }
 
 .name {
@@ -23,40 +42,14 @@
     color: $grey;
 }
 
-.icons-container {
-    display: flex;
-    justify-content: flex-start;
-    font-size: 1.4rem;
-    align-items: center;
-}
-
-.icon {
-    color: $darkblue;
-    margin: 0 .5rem 0 .5rem;
-    transition: all ease .5s;
-}
-
-.line-left {
-    max-width: 300px;
-    background: $darkblue;
-    margin-right: .5rem;
-    margin-left: 0;
-    height: 2px;
-    border: none;
+.image-container {
     width: 100%;
+    max-width: 420px;
 }
 
-.line-right {
-    max-width: 30px;
-    background: $darkblue;
-    margin-right: 0rem;
-    margin-left: .5rem;
-    height: 2px;
-    border: none;
-    width: 90%;
-}
-
-.icon:hover {
-    transition: all ease .5s;
-    color: $mediumblue;
+.image {
+width: 100%;
+border-radius: 50%;
+aspect-ratio: 1;
+object-fit: cover;
 }

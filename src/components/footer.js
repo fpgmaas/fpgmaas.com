@@ -16,7 +16,7 @@ const Footer = () => {
 `)
 
     return (
-        <footer>
+        <footer className={footerStyles.footer}>
             <div className={footerStyles.footerContainer}>
                 <div className={footerStyles.footerLeft}>
                     <p className={footerStyles.text}>
