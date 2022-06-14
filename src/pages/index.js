@@ -36,12 +36,11 @@ const IndexPage = () => {
             I am Florian Maas, a data scientist & data engineer living in The Hague, the Netherlands.
             <br/>
             <br/>
-            I enjoy working with Python, writing clean code, and trying to build things with web frameworks that 
-            I definitely do not have enough experience in and then continually asking myself if what I am doing makes any sense at all.
+            I enjoy working with Python, writing clean code, and getting in over my head while trying to build things with web frameworks 
+            that I lack the required experience in.
             <br/>
             <br/>
-            You are currently looking at one of those attempts.
-            The source code for this website is available on <a href= "https://github.com/fpgmaas/fpgmaas.com">GitHub</a>.
+            This website is the result of one of these situations. The source code for this website is available on <a href= "https://github.com/fpgmaas/fpgmaas.com">GitHub</a>.
             </p>
             </div>
             </div>
