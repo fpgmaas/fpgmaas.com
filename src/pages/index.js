@@ -22,24 +22,27 @@ const IndexPage = () => {
       <Layout>
         <div className={indexStyles.contentContainer}>
           <div className={indexStyles.content}>
-            <div className={indexStyles.contentLeft}>
+            <div className={indexStyles.contentBox}>
             <div className = {indexStyles.imageContainer}>
             <img src={FrontImg} alt="We are looking for your page..." className={indexStyles.image} />
             </div>
             </div>
-            <div className={indexStyles.contentRight}>
+            <div className={indexStyles.contentBox}>
             <div className={indexStyles.textContainer}>
-            <h1 className={indexStyles.name}>
+            <h1 className={indexStyles.title}>
             Hello!
             </h1>
-            <h4 className={indexStyles.title}>
+            <p className={indexStyles.text}>
             I am Florian Maas, a data scientist & data engineer living in The Hague, the Netherlands.
-
             <br/>
             <br/>
-            
-            I enjoy working with Python.
-            </h4>
+            I enjoy working with Python, writing clean code, and trying to build things with web frameworks that 
+            I definitely do not have enough experience in and then continually asking myself if what I am doing makes any sense at all.
+            <br/>
+            <br/>
+            You are currently looking at one of those attempts.
+            The source code for this website is available on <a href= "https://github.com/fpgmaas/fpgmaas.com">GitHub</a>.
+            </p>
             </div>
             </div>
           </div>
