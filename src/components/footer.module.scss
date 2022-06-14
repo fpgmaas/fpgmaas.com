@@ -43,15 +43,15 @@
     font-size: 1.4rem;
 }
 
+.icon:hover {
+    transition: all ease .5s;
+    color: $orange;
+}
+
 .icon-divider {
     height: 1.4rem;
     width: 1px;
     background-color: $grey;
     opacity: .5;
     margin: 0 .5rem;
-}
-
-.icon:hover {
-    transition: all ease .5s;
-    color: $orange;
 }

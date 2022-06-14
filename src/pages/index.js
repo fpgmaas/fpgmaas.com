@@ -24,7 +24,7 @@ const IndexPage = () => {
           <div className={indexStyles.content}>
             <div className={indexStyles.contentBox}>
             <div className = {indexStyles.imageContainer}>
-            <img src={FrontImg} alt="We are looking for your page..." className={indexStyles.image} />
+            <img src={FrontImg} alt="Florian" className={indexStyles.image} />
             </div>
             </div>
             <div className={indexStyles.contentBox}>
