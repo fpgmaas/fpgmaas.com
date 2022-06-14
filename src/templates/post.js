@@ -21,7 +21,7 @@ query($slug: String) {
       slug
       title
       subtitle
-      date
+      date(formatString: "MMMM DD, YYYY", locale: "en")
       author
       reading_time
     }

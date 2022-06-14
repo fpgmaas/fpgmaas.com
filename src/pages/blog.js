@@ -22,7 +22,7 @@ const Blog = () => {
                 node {
                     frontmatter {
                         title
-                        date
+                        date(formatString: "MMMM DD, YYYY", locale: "en")
                         subtitle
                         reading_time
                         slug
