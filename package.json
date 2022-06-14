@@ -27,6 +27,7 @@
     "add": "^2.0.6",
     "d3": "^7.4.3",
     "gatsby": "^4.11.0",
+    "gatsby-image": "^3.11.0",
     "gatsby-plugin-catch-links": "^4.11.0",
     "gatsby-plugin-google-gtag": "^4.11.0",
     "gatsby-plugin-image": "^2.11.1",
@@ -42,6 +43,7 @@
     "gatsby-remark-vscode": "^3.3.1",
     "gatsby-source-filesystem": "^4.11.0",
     "gatsby-transformer-remark": "^5.11.0",
+    "gatsby-transformer-sharp": "^4.16.0",
     "json-loader": "^0.5.7",
     "plotly.js": "^2.11.1",
     "react": "^17.0.1",
@@ -52,6 +54,7 @@
     "react-plotly.js": "^2.5.1",
     "react-spinners": "^0.11.0",
     "sass": "^1.49.9",
+    "sharp": "^0.30.6",
     "yarn": "^1.22.18"
   },
   "devDependencies": {

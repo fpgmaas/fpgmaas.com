@@ -3,7 +3,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby'
 import Layout from '../components/layout'
 import * as blogStyles from './blog.module.scss'
 import SEO from '../components/seo.js'
-
+import Img from "gatsby-image"
 
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { far } from "@fortawesome/free-regular-svg-icons"
@@ -28,6 +28,13 @@ const Blog = () => {
                         slug
                         type
                         description
+                        featuredImage {
+                            childImageSharp {
+                              fixed(width:200) {
+                                ...GatsbyImageSharpFixed
+                              }
+                            }
+                          }
                     }
                 }
             }
@@ -53,6 +60,11 @@ const Blog = () => {
                                                 <h2 className={blogStyles.title}>{edge.node.frontmatter.title}</h2>
                                                 <p className={blogStyles.subtitle}>{edge.node.frontmatter.description}</p>
                                             </div>
+
+                                                <Img
+                                                fixed={edge.node.frontmatter.featuredImage.childImageSharp.fixed}
+                                                />
+
                                             <div className={blogStyles.dateContainer}>
                                                 <FontAwesomeIcon icon={["far", "fa-calendar"]} />
                                                 <p className={blogStyles.date}>{edge.node.frontmatter.date}</p>
