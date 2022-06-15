@@ -43,7 +43,7 @@
     font-size: 1.4rem;
 }
 
-.icon:hover {
+a:hover .icon {
     transition: all ease .5s;
     color: $orange;
 }

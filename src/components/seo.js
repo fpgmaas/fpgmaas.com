@@ -25,7 +25,7 @@ const SEO = ({ title, description, url, article }) => {
   };
 
   return (
-    <Helmet title={seo.title}>
+    <Helmet title={seo.title}   htmlAttributes={{lang: 'en',}}>
 
       <meta property="keywords" content={"Python, Data Science, Javascript"} />
 

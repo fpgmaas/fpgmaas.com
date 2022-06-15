@@ -40,7 +40,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <SEO />
+      <SEO title='Projects' url='projects' description='An overview of my most recent open-source projects.' />
       <Layout>
         <div className={projectStyles.contentContainer}>
           <div className={projectStyles.content}>
