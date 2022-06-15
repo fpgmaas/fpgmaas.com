@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "fpgmaas.com",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "My personal website",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
