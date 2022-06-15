@@ -30,7 +30,7 @@ const Blog = () => {
                         description
                         featuredImage {
                             childImageSharp {
-                              fixed(width:200) {
+                              fixed(width:240, height: 120) {
                                 ...GatsbyImageSharpFixed
                               }
                             }
@@ -46,32 +46,35 @@ const Blog = () => {
 
     return (
         <>
-            <SEO title='Blog' url='blog' description = 'An overview of my blog posts.'/>
+            <SEO title='Blog' url='blog' description='An overview of my blog posts.' />
             <Layout>
                 <div className={blogStyles.contentContainer}>
                     <div className={blogStyles.content}>
-                        <hr className={blogStyles.line}></hr>
                         {data.allMdx.edges.map((edge) => {
                             return (
                                 <div>
-                                    <div className={blogStyles.post}>
-                                        <Link to={`/blog/${edge.node.frontmatter.slug}`}>
-                                            <div>
-                                                <h2 className={blogStyles.title}>{edge.node.frontmatter.title}</h2>
-                                                <p className={blogStyles.subtitle}>{edge.node.frontmatter.description}</p>
-                                            </div>
-
+                                    <div className={blogStyles.postContainer}>
+                                        <Link to={`/blog/${edge.node.frontmatter.slug}`} class = {blogStyles.link}>
+                                            <div className={blogStyles.post}>
+                                                <div className={blogStyles.imageContainer}>
                                                 <Img
-                                                fixed={edge.node.frontmatter.featuredImage.childImageSharp.fixed}
+                                                    fixed={edge.node.frontmatter.featuredImage.childImageSharp.fixed}
+                                                    width="240"
                                                 />
-
-                                            <div className={blogStyles.dateContainer}>
-                                                <FontAwesomeIcon icon={["far", "fa-calendar"]} />
-                                                <p className={blogStyles.date}>{edge.node.frontmatter.date}</p>
+                                                </div>
+                                                <div className={blogStyles.textContainer}>
+                                                    <div>
+                                                        <h2 className={blogStyles.title}>{edge.node.frontmatter.title}</h2>
+                                                        <p className={blogStyles.subtitle}>{edge.node.frontmatter.description}</p>
+                                                    </div>
+                                                    <div className={blogStyles.dateContainer}>
+                                                        <FontAwesomeIcon icon={["far", "fa-calendar"]} />
+                                                        <p className={blogStyles.date}>{edge.node.frontmatter.date}</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </Link>
                                     </div>
-                                    <hr className={blogStyles.line}></hr>
                                 </div>
                             )
                         })}
