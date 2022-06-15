@@ -30,8 +30,8 @@ const Blog = () => {
                         description
                         featuredImage {
                             childImageSharp {
-                              fixed(width:240, height: 120) {
-                                ...GatsbyImageSharpFixed
+                              fluid {
+                                ...GatsbyImageSharpFluid
                               }
                             }
                           }
@@ -58,9 +58,8 @@ const Blog = () => {
                                             <div className={blogStyles.post}>
                                                 <div className={blogStyles.imageContainer}>
                                                 <Img
-                                                    fixed={edge.node.frontmatter.featuredImage.childImageSharp.fixed}
-                                                    width="240"
-                                                />
+                                                    fluid={edge.node.frontmatter.featuredImage.childImageSharp.fluid}
+                                                    />                                              
                                                 </div>
                                                 <div className={blogStyles.textContainer}>
                                                     <div>
