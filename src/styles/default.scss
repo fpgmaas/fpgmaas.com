@@ -7,6 +7,7 @@
 p, li, span {
   color: $grey;
   line-height: 1.5;
+  margin: .5rem 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -38,7 +39,7 @@ blockquote {
 }
 
 code {
-  font-family: 'fira-code';
-  font-size: 1.2rem;
+  font-family: 'fira code';
+  font-size: 1rem;
   font-weight: 400;
 }
