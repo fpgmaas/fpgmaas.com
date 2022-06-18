@@ -3,6 +3,9 @@
   font-family: 'Inter', 'Arial', 'Sans Serif';
 }
 
+ul {
+  margin: .5rem 0;
+}
 
 p, li, span {
   color: $grey;
@@ -38,8 +41,9 @@ blockquote {
   color: $grey;
 }
 
-code {
+code, code span {
   font-family: 'fira code';
   font-size: 1rem;
   font-weight: 400;
 }
+

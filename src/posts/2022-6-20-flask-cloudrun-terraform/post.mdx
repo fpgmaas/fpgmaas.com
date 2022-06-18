@@ -4,7 +4,7 @@ title: "Deploying a Flask API to Google Cloud Run using Terraform"
 subtitle: "A tutorial on how to deploy a Flask API to Google Cloud Run using Docker and Terraform"
 description: "In this tutorial, we will deploy a Flask API to Google Cloud Run using Docker and Terraform"
 author: "Florian Maas"
-reading_time: "9 minutes"
+reading_time: "15 minutes"
 slug: "flask-api-to-cloudrun"
 type: "post"
 featuredImage: "image.png"
@@ -15,24 +15,30 @@ an Infrastructure-as-Code (IaC) tool. There are many advantages of using IaC ove
 such as simple reproducibility and the ability to keep multiple staging environments consistent with each other.
 A commonly used IaC tool is [Terraform](https://www.terraform.io/). In this tutorial, we will use Terraform to deploy a Flask API.
 
+All code created during this tutorial can be found on GitHub in the following repositories:
+
+- [cloudrun-example-api](https://github.com/fpgmaas/cloudrun-example-api)
+- [cloudrun-example-infra](https://github.com/fpgmaas/cloudrun-example-infra)
+
 ## 1. Building our Flask app
 
 Before we can deploy anything to the cloud, we will first need to build an app that we can deploy. In order to do so, create a new
-directory and initiate a Python environment. In this tutorial, I will use [Poetry](https://python-poetry.org/), but feel free to use any 
-other dependency manager. To create a new environment with Poetry, run:
+directory and initiate a Python environment. In this tutorial, we will use [Poetry](https://python-poetry.org/) to create the environment
+and manage our dependencies. To create a new environment with Poetry, run:
 
 ```bash
 poetry init
 ```
 
-Fill in the command prompts, and then add flask tot he environment and start a shell session:
+Fill in the command prompts, add flask to the environment and then start a shell session:
 
 ```bash
 poetry add flask
 poetry shell
 ```
 
-For this project, we will use a very simple Flask API, that simply returns 'Hello, World!' Create a file called `app.py`, with the following contents:
+For this project, we will use a very simple Flask API, that simply returns `"Hello, World!"`.
+To do so, we create a file called `app.py` with the following contents:
 
 ```python
 from flask import Flask
@@ -43,13 +49,17 @@ def hello_world():
     return 'Hello, World!'
 ```
 
-You can test your API with
+> Note: it's important than name of the file is `app.py`, since that is what Flask will search for by default. If you really want to 
+use a different file name, run `poetry add python-dotenv` and add a `.flaskenv` file with `FLASK_APP=<file_name>.py` as its contents.
+
+
+Once we have created this file, we can test our API by running flask:
 
 ```bash
 flask run
 ```
 
-You should now see the following output in your console:
+And we see the following output in our console:
 
 ```log
  * Environment: production
@@ -59,17 +69,15 @@ You should now see the following output in your console:
  * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
  ```
 
- And if you visit `http://127.0.0.1:5000` in youir browser, you should see `Hello, World!` displayed.
-
-Note: it's important than name of the file is `app.py`, since that is what Flask will search for by default. If you really want to 
-use a different file name, run `poetry add python-dotenv` and add a `.flaskenv` file with `FLASK_APP=<file_name>.py` as its contents.
+Now that our API is running, we should see `Hello, World!` displayed if we visit `http://127.0.0.1:5000` in our browser.
 
 Great, our API is working! If we want to deploy our API to Google Cloud Run, we will need to Dockerize it first.
 
 
 ## 2. Dockerizing our Flask app
 
-To Dockerize our Flask app, make sure you have [Docker](https://docs.docker.com/get-docker/) installed and running. 
+To Dockerize our Flask app, make sure you have [Docker](https://docs.docker.com/get-docker/) installed and the 
+Docker daemon running. 
 
 Then, we simply add a file named `Dockerfile` to our directory, with the following contents:
 
@@ -101,11 +109,12 @@ CMD python3 -m flask run --host=0.0.0.0 --port=${PORT}
 `RUN pip install "poetry==$POETRY_VERSION"`, and replace the appropriate lines with 
 `COPY ./requirements.txt /code/requirements.txt` and `RUN pip install -r requirements.txt`.
 
-One thing to notice is that we first copy the files `poetry.lock` and `pyproject.toml` and use them to install
+One thing to notice here is that we first copy the files `poetry.lock` and `pyproject.toml` and use them to install
 the environment, and that we only copy the rest of the files later. The reason for this, is that we want to leverage the 
 [build cache](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache).
-If we only change our API, for example by adding a `.py` file or by modifying `app.py`, but we do not modify the environment,
-there is no need to install the environment again. Docker will recognize that these files have not changed, and use a cached image
+If we have built our image once, and later we make a change to our API, for example by adding a `.py` file or by modifying `app.py`, 
+but we do not modify the environment, there is no need to install the environment again. 
+Docker will recognize that these files have not changed, and use a cached image
 to speed up the build process.
 
 Antoher thing to notice is that we use `PORT` as an environment variable, which is not strictly necessary at this point. However, 
@@ -138,18 +147,18 @@ docker run --env PORT=5001 -d -p 5000:5001 cloudrun-example-api
 Now that we have Dockerized our container, it is time to set up our cloud infrastructure.
 
 
-## 3. Set-up a service account
+## 3. Setting-up a service account
 
 Preferably, we don't want individual users to have the ability to make changes to the infrastructure in the cloud. 
-Instead, we will use a [Service Account](https://cloud.google.com/iam/docs/service-accounts), and grant that account the required permissions. In a later phase, we can add the credentials
-of this Service Account to a CI/CD pipeline and trigger our deployments after merge requests have been approved and merged, or when we release a
-new version of our repository. For now however, we will set-up a Service Account and simply use it from our local machine.
+Instead, we will use a [service account](https://cloud.google.com/iam/docs/service-accounts), and grant that account the required permissions. In a later phase, we can add the credentials
+of this service account to a CI/CD pipeline and trigger our deployments after merge requests have been approved and merged, or when we release a
+new version of our repository. For now however, we will set-up a service account and simply use it from our local machine.
 
 Before we can actually start building our infrastructure, we will need to create a project. 
 We can do so by following the instructions [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects) on GCP. 
 In this tutorial, we will use the project name `my-cloudrun-api`, so don't forget to replace that in the commands that will follow below if you have chosen a different
 project name. Once we have a project, head over to `IAM & Admin > Service Accounts` <sup>([link](https://console.cloud.google.com/iam-admin/serviceaccounts))</sup>
-and create a Service Account with the name `infrastructure`.
+and create a service account with the name `infrastructure`.
 
 Then, navigate to `IAM & Admin > IAM` <sup>([link](https://console.cloud.google.com/iam-admin/iam))</sup> and grant your service account the following permissions:
 
@@ -162,7 +171,7 @@ Then, navigate to `IAM & Admin > IAM` <sup>([link](https://console.cloud.google.
 Alright! Now that we have created a service account with the permissions to deploy our infrastructure, it's time to actually define our infrastructure.
 
 
-## 4. Build our cloud infrastructure with Terraform
+## 4. Building our cloud infrastructure with Terraform
 
 If you have not done so already, start by installing Terraform. 
 You can find instructions on how to install it [here](https://learn.hashicorp.com/tutorials/terraform/install-cli)
@@ -172,24 +181,29 @@ Then, we create a file called `main.tf`, and initiate our file with the followin
 ```json
 terraform {
   required_providers {
-    google = {
-      source  = "hashicorp/google"
+    google-beta = {
+      source  = "hashicorp/google-beta"
       version = "4.25.0"
     }
   }
 }
 
-provider "google" {
+provider "google-beta" {
   project = var.project_id
   region  = var.region
   zone    = var.zone
 }
 ```
 
-We specify `google` as our require [provider](https://www.terraform.io/language/providers), and configure it with 
-our project-specific variables. In order to set those variables, we create a file called `variables.tf` and populate it as follows:
+We specify `google-beta` as our require [provider](https://www.terraform.io/language/providers), and configure it with 
+our project-specific variables. The reason for choosing `google-beta` instead of `google` is that we want to use the Artifact Registry
+for uploading our Docker images, but currently the resource `google_artifact_registry_repository` is only available in 
+`google-beta`. If by the time you read this the warning on [this page](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository)
+is no longer there, you can safely use the regular `google` provider.
 
-```
+In order to set those variables, we create a file called `variables.tf` and populate it as follows:
+
+```json
 variable "project_id" {
   description = "The name of the project"
   type        = string
@@ -209,63 +223,335 @@ variable "zone" {
 }
 ```
 
-Note that you should change the defaults to 
+Where `project_id` is the name of my GCP project, and the region and zones are set to locations that are geographically close
+to me. For a list of available regions and zones, see [here](https://cloud.google.com/compute/docs/regions-zones#available).
+
+In order to set-up and configure features like Cloud Run, we need to 
+[enable](https://cloud.google.com/apis/docs/getting-started#enabling_apis)
+their corresponding [API's](https://cloud.google.com/apis/docs/overview).
+This can be achieved by navigating to the services in the UI, but since we want to omit as many manual steps as possible,
+we will use Terraform to enable those services for us instead. To do so, we add the following to `main.tf`:
 
 
+```json
+#############################################
+#               Enable API's                #
+#############################################
+
+# Enable IAM API
+resource "google_project_service" "iam" {
+  provider = google-beta
+  service            = "iam.googleapis.com"
+  disable_on_destroy = false
+}
+
+# Enable Artifact Registry API
+resource "google_project_service" "artifactregistry" {
+  provider = google-beta
+  service            = "artifactregistry.googleapis.com"
+  disable_on_destroy = false
+}
+
+# Enable Cloud Run API
+resource "google_project_service" "cloudrun" {
+  provider = google-beta
+  service            = "run.googleapis.com"
+  disable_on_destroy = false
+}
+
+# Enable Cloud Resource Manager API
+resource "google_project_service" "resourcemanager" {
+  provider = google-beta
+  service            = "cloudresourcemanager.googleapis.com"
+  disable_on_destroy = false
+}
 ```
+
+This enables the IAM, Artifact Registry, Cloud Run and Cloud Resource Manager respectively. However, the changes of enabling this
+take some time to propagate through Google's systems. Therefore, if we were to call them directly we would likely run into errors.
+Simply using the [depends_on](https://www.terraform.io/language/meta-arguments/depends_on) meta-argument also does not suffice, 
+since any resources depending on enabling these API's will be triggered once the API's are enabled, not once the changes
+have been propagated through the systems. 
+
+Therefore, we use an intermediate `time_sleep` resource, that will be triggered once 
+our API's have been enabled. We can then add this resource to the `depends_on` argument of other resources to trigger them 30
+seconds after the API's have been enabled.
+
+```json
+# This is used so there is some time for the activation of the API's to propagate through 
+# Google Cloud before actually calling them.
+resource "time_sleep" "wait_30_seconds" {
+  create_duration = "30s"
+  depends_on = [
+    google_project_service.iam,
+    google_project_service.artifactregistry, 
+    google_project_service.cloudrun, 
+    google_project_service.resourcemanager
+    ]
+}
+```
+
+Now we can use the API's to create more resources for us. Firstly, we will create the Artifact Repository to which
+we can push our Docker images. Along with the repository, we also create a service account called `docker-pusher`,
+and give it the `roles/artifactregistry.writer` role for this repository, so it can push images to the repository.
+
+```json
+#############################################
+#    Google Artifact Registry Repository    #
+#############################################
+
+# Create Artifact Registry Repository for Docker containers
+resource "google_artifact_registry_repository" "my_docker_repo" {
+  provider = google-beta
+
+  location = var.region
+  repository_id = "docker-repository"
+  description = "Example docker repository"
+  format = "DOCKER"
+  depends_on = [time_sleep.wait_30_seconds]
+}
+
+# Create a service account
+resource "google_service_account" "docker_pusher" {
+  provider = google-beta
+
+  account_id   = "docker-pusher"
+  display_name = "Docker Container Pusher"
+  depends_on =[time_sleep.wait_30_seconds]
+}
+
+# Give service account permission to push to the Artifact Registry Repository
+resource "google_artifact_registry_repository_iam_member" "docker_pusher_iam" {
+  provider = google-beta
+
+  location = google_artifact_registry_repository.my_docker_repo.location
+  repository =  google_artifact_registry_repository.my_docker_repo.repository_id
+  role   = "roles/artifactregistry.writer"
+  member = "serviceAccount:${google_service_account.docker_pusher.email}"
+  depends_on = [
+    google_artifact_registry_repository.my_docker_repo, 
+    google_service_account.docker_pusher
+    ]
+}
+```
+
+The last thing that we need to do is publish our image through Cloud Run. For this, we use `google_cloud_run_service`,
+and as the argument for `image` we pass `"europe-west4-docker.pkg.dev/${var.project_id}/docker-repository/my-api"`, so our
+resource will expect to find an image called `my-api` withiun our created Artifact Registry repository. We also pass
+some arguments to use containers with small memory usage, and we should never have to scale to more than one instance for this
+simple API. Lastly, we create a `noauth` policy and apply it to our newly created Cloud Run API so our API is open to the public 
+and we return the URL on which our API is available. 
+
+> Note: Only add the `noauth` policy to your API if you want to open it to the public. If your API uses or exposes
+> sensitive data, you should add some form of authentication to your API.
+
+```json
+##############################################
+#       Deploy API to Google Cloud Run       #
+##############################################
+
+# Deploy image to Cloud Run
+resource "google_cloud_run_service" "api_test" {
+  provider = google-beta
+  name     = "api-test"
+  location = var.region
+  template {
+    spec {
+        containers {
+            image = "europe-west4-docker.pkg.dev/${var.project_id}/docker-repository/my-api"
+            resources {
+                limits = {
+                "memory" = "1G"
+                "cpu" = "1"
+                }
+            }
+        }
+    }
+    metadata {
+        annotations = {
+            "autoscaling.knative.dev/minScale" = "0"
+            "autoscaling.knative.dev/maxScale" = "1"
+        }
+    }
+  }
+  traffic {
+    percent = 100
+    latest_revision = true
+  }
+  depends_on = [google_artifact_registry_repository_iam_member.docker_pusher_iam]
+}
+
+# Create a policy that allows all users to invoke the API
+data "google_iam_policy" "noauth" {
+  provider = google-beta
+  binding {
+    role = "roles/run.invoker"
+    members = [
+      "allUsers",
+    ]
+  }
+}
+
+# Apply the no-authentication policy to our Cloud Run Service.
+resource "google_cloud_run_service_iam_policy" "noauth" {
+  provider = google-beta
+  location    = var.region
+  project     = var.project_id
+  service     = google_cloud_run_service.api_test.name
+
+  policy_data = data.google_iam_policy.noauth.policy_data
+}
+
+output "cloud_run_instance_url" {
+  value = google_cloud_run_service.api_test.status.0.url
+}
+```
+
+Now that we have created our Terraform script, we can start deploying it to the cloud.
+
+## 5. Deploying our cloud infrastructure with Terraform
+
+Earlier, we created a service account that ahs the right permissions to deploy our infrastrcture. Within the Google Cloud Platform,
+navigate back to `IAM & Admin > Service Accounts` <sup>([link](https://console.cloud.google.com/iam-admin/serviceaccounts))</sup>, and click the
+three dots in the `Actions` column for your service account. Select `Manage Keys`, and then `Add Key > New Key`. Choose `JSON` as `Key Type`, and this 
+should download a file to your local machine. Copy this file to the directory in which you have created your `main.tf` and `variables.tf` files, and rename it to
+`infra_service_account.json`. Next, create a file called `.env` with the following contents:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="infra_service_account.json"
+```
+
+It is also possible to directly code the path to the service account into your `main.tf` file, but I prefer this approach
+since it's easier to modify it when we want to deploy our infrastructure through CI/CD later.
+
+> Note! You should keep your service account keys private and you should make sure they don't fall in the wrong hands.
+> So, if you are using Git for this project, don't forget to add the key to your `.gitignore` file. To read more about 
+> Service Account best practices, see [here](https://cloud.google.com/iam/docs/best-practices-for-using-and-managing-service-accounts).
+
+Before we deploy our infrastructure, let's see if our configuration does not contain any mistakes. First,
+we initialize our directory with
+
+```bash
 terraform init
 ```
 
-```
+and then we validate our files with
+
+```bash
 terraform validate
 ```
 
-then, we run 
-```
-terraform apply
-```
+which outputs:
 
-but we get an error.
-
-```
-Error: Attempted to load application default credentials since neither `credentials` nor `access_token` was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: google: could not find default credentials. See https://developers.google.com/accounts/docs/application-default-credentials for more information.
+```log
+Success! The configuration is valid.
 ```
 
-so we add a .env file with the credentials.
+Great! This means we can now deploy our infrastructure:
 
-Then we run `terraform apply` again.
-
+```bash
+source .env && terraform apply
 ```
+
+After about a minute, this will now return an error:
+
+```log
 Error: Error waiting to create Service: resource is in failed state "Ready:False", message: Image 'europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api' not found.
 ```
 
-That is expected. We need to uplaod our docker container to the registry now!
+This error is expected, since we configured our infrastructure to look for an image called `my-api` within `docker-repository`, but we have not created that yet!
+Luckily, if we navigate to [Artifact Registry](https://console.cloud.google.com/artifacts) in the UI, we find that our repository has been created,
+so we can now push our Docker image to the repository to finalize our set-up.
 
-## 4. Pushing the container to Artifact Registry on Google Cloud
+## 6. Pushing the container to Artifact Registry on Google Cloud
 
-Find the service account and create a key through the UI.
-Save it in the project and create a new configuration:
+In order ot push our Docker image to the cloud, we first need to download the key for the service account `docker-pusher` that we created 
+with Terraform. If you head over to `IAM & Admin > Service Accounts` <sup>([link](https://console.cloud.google.com/iam-admin/serviceaccounts))</sup>,
+you should be able to see the new service account there. Create and download a service account key in the `JSON` format, 
+similarly to how we did that for the infrastructure account earlier. Rename it to `docker_service_account.json` and store it in the
+same directory as `app.py` and `Dockerfile`.
 
-```
-gcloud config configurations create my-cloudrun-docker
+Now, we want to run commands in the command line with the permissions of our service account. In order to do so,
+we will use the [Google Cloud CLI](https://cloud.google.com/sdk/gcloud). 
+Installation instructions can be found [here](https://cloud.google.com/sdk/docs/install-sdk). After that is installed we
+can add a configuration called `docker-pusher` with the following commands:
+
+```bash
+gcloud config configurations create docker-pusher
 gcloud config set project my-cloudrun-api
-gcloud config set account docker-pusher@my-cloudrun-api.iam.gserviceaccount.com
 gcloud auth activate-service-account --key-file=docker_service_account.json
 ```
 
-Now, we can push it to the repository with:
+You can see your active and other available configurations with the command
 
+```bash
+gcloud config configurations list
 ```
+
+Once we verified that our `docker-pusher` configuration is active, we should 
+register gcloud as the credential helper for all Google-supported Docker registries with the following command:
+
+```bash
 gcloud auth configure-docker europe-west4-docker.pkg.dev 
-docker tag api_test europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api
+```
+
+Then, we tag our Docker image `cloudrun-example-api` with a tag in the form of 
+
+```bash
+<SOURCE_IMAGE> <HOSTNAME>/<PROJECT-ID>/<repository>/<IMAGE>
+```
+ 
+which in our case becomes:
+
+```bash
+docker tag cloudrun-example-api europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api
+```
+
+And we can then push that image to the Artifact Registry with:
+
+```bash
 docker push europe-west4-docker.pkg.dev/my-cloudrun-api/docker-repository/my-api
 ```
 
+If this step runs succesfully, you should now be able to see your docker image in the `docker-repository` repository
+in the [Artifact Registry](https://console.cloud.google.com/artifacts) section on GCP.
 
-- first, create a service account
-- then log in with service account
+
+## 7. Finishing up and Testing our API
+
+This means we can now finalize deploying our
+API! Navigate to your directory containing `main.tf`, and apply your files once again:
+
+```bash
+source .env && terraform apply
+```
+
+This time, since our Docker image is available to the `google_cloud_run_service` component, we should not get any errors.
+Instead we should see the following output:
+
+``` log
+Apply complete! Resources: 2 added, 0 changed, 1 destroyed.
+
+Outputs:
+
+cloud_run_instance_url = "https://api-test-qaz3iff6ea-ez.a.run.app"
+```
+
+Click the link or copy and paste the URL in your browser and you should see the text `Hello, World!` displayed. 
+Awesome, our API is working! 
+
+We have made some good progress in building our reproducible cloud environment and we have removed
+a lot of manual steps from the process. Imagine having three environments (development, acceptance and production)
+and having to set up all the resources by hand through the UI. And imagine having to 
+make sure that these environments keep being consistent when multiple people are making changes to the infrastructure.
+With our Infrastructure-as-Code, this has become a lot more manageable.
+
+And yet, this is also where there is still some room for improvement: It would be great if we can facilitate
+the deployment to multiple staging environments through our Terraform files. And ideally we would have the deployment of our infrastructure 
+incorporated in a CI/CD pipeline, for example through GitHub Actions. However, we've already accomplished quite a lot in this tutorial, so
+we'll leave these improvement for later tutorials.
+
+I hope this post was helpful toy ou, please let me know if you have any feedback!
 
 
-1. Building the Flask API
-2. Dockerizing the Flask API
-3. Pushing the container to Google Artifact Registry
+
