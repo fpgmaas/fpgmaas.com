@@ -2,8 +2,8 @@
 date: "2022-06-20"
 title: "Deploying a Flask API to Google Cloud Run using Terraform"
 subtitle: "A tutorial on how to deploy a Flask API to Google Cloud Run using Docker and Terraform"
-description: "A tutorial in which we deploy cloud infrastructure using Terraform, and then use that infrastructure to 
-deploy a Dockerized Flask API to Google Cloud Run."
+description: "A tutorial in which we deploy a Dockerized Flask API to Google Cloud Run, while provisioning the required
+infrastructure with Terraform."
 author: "Florian Maas"
 reading_time: "15 minutes"
 slug: "deploying-a-flask-api-to-cloudrun"
@@ -16,7 +16,8 @@ import TextBox from '../../components/TextBox.js'
 When deploying an API (or any other product) to the cloud, it's recommended to deploy your infrastructure using 
 an Infrastructure-as-Code (IaC) tool. There are many advantages of using IaC over manually configuring your cloud environment,
 such as simple reproducibility and the ability to keep multiple staging environments consistent with each other.
-A commonly used IaC tool is [Terraform](https://www.terraform.io/). In this tutorial, we will use Terraform to deploy a Flask API.
+A commonly used IaC tool is [Terraform](https://www.terraform.io/). In this tutorial, we will use Terraform to deploy a 
+[Flask](https://flask.palletsprojects.com/en/2.1.x/) API.
 
 All code created during this tutorial can be found on GitHub in the following repositories:
 
@@ -34,14 +35,14 @@ and manage our dependencies. To create a new environment with Poetry, run:
 poetry init
 ```
 
-We fill in the command prompts, add flask to the environment and then start a shell session:
+Fill in the command prompts, add flask to the environment and then start a shell session:
 
 ```bash
 poetry add flask
 poetry shell
 ```
 
-For this project, we will use a very simple Flask API, that simply returns `"Hello, World!"`.
+For this project, we will use a very small Flask API that simply returns `"Hello, World!"` when it recieves a request.
 To do so, we create a file called `app.py` with the following contents:
 
 ```python
@@ -88,7 +89,7 @@ Great, our API is working! If we want to deploy our API to Google Cloud Run, we 
 To Dockerize our Flask app, make sure you have [Docker](https://docs.docker.com/get-docker/) installed and the 
 Docker daemon running. 
 
-Then, we simply add a file named `Dockerfile` to our directory, with the following contents:
+Then, we simply add a file named `Dockerfile` to our directory with the following contents:
 
 ```Dockerfile
 # syntax=docker/dockerfile:1
@@ -133,7 +134,8 @@ to speed up the build process.
 
 Antoher thing to notice is that we use `PORT` as an environment variable, which is not strictly necessary at this point. However, 
 Google Cloud Run will inject the `PORT` environment variable into the container once we deploy it there, and it's recommended to 
-*"listen on the port defined by the PORT environment variable rather than a specific hardcoded port"*<sup> [\[source\]](https://cloud.google.com/run/docs/configuring/containers#configure-port)</sup>
+*"listen on the port defined by the PORT environment variable rather than a specific hardcoded 
+port"*<sup> [\[source\]](https://cloud.google.com/run/docs/configuring/containers#configure-port)</sup>.
 
 When we are finished writing the Dockerfile, we can build our docker image with:
 
@@ -147,9 +149,8 @@ And once that is finished, we can run this image in a Docker container with:
 docker run -d -p 5000:5000 cloudrun-example-api 
 ```
 
-Note that you must have terminated the Flask API that we created earlier, so that port `5000` is available again. 
 Verify that your container is running by checking if it shows up in the list of containers when running `docker ps`, 
-and verify that you can access the API by again visiting `https://localhost:5000` in your browser.
+and verify that you can access the API by again by visiting `https://localhost:5000` in your browser.
 
 We can also verify that our Flask API works with the injected `PORT` variable, by passing another port to the `--env` argument and 
 also changing the port that the Docker container should publish:
@@ -226,7 +227,7 @@ for uploading our Docker images, but currently the resource `google_artifact_reg
 is no longer there, you can safely use the regular `google` provider.
 
 We also need to define the variables that we have created by creating a file called `variables.tf` in the same directory 
-and populating it as follows:
+with the following contents:
 
 ```json
 variable "project_id" {
@@ -365,7 +366,7 @@ The last thing that we need to do is publish our image through Cloud Run. For th
 and as the argument for `image` we pass `"europe-west4-docker.pkg.dev/${var.project_id}/docker-repository/my-api"`, so our
 resource will expect to find an image called `my-api` within our created Artifact Registry repository. We also pass
 some arguments to use containers with small memory usage, and we should never have to scale to more than one instance for this
-simple API. Lastly, we create a `noauth` policy and apply it to our newly created Cloud Run API so our API is open to the public 
+simple API. Lastly, we create a `noauth` policy and apply it to our newly created Cloud Run API so our API is open to the public, 
 and we return the URL on which our API is available. 
 
 <TextBox 
@@ -591,7 +592,7 @@ the deployment to multiple staging environments through our Terraform files. And
 incorporated in a CI/CD pipeline, for example through GitHub Actions. However, we've already accomplished quite a lot in this tutorial, so
 we'll leave these improvement for later tutorials.
 
-I hope this post was helpful toy ou, please let me know if you have any feedback!
+I hope this post was helpful to you, please let me know if you have any feedback!
 
 
 

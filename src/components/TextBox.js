@@ -4,27 +4,14 @@ import * as textBoxStyles from './textbox.module.scss'
 
 import Emoji from './Emoji'
 
-const emoji = (type) => {
-  if (['warn','warning'].includes(type)) {
-    return <Emoji symbol= "⚠️"/>
-  }
-  else if (['info'].includes(type)) {
-    return <Emoji symbol= "ℹ️"/>
-  }
-  else {
-    return ""
-  }
-}
-
-const style = (type) => {
-  if (['warn','warning'].includes(type)) {
-    return textBoxStyles.warningBox
-  }
-  else if (['info'].includes(type)) {
-    return textBoxStyles.infoBox
-  }
-  else {
-    return ""
+const format = {
+  'warn' : {
+    'emoji' : <Emoji symbol= "⚠️"/>,
+    'style' : textBoxStyles.warningBox
+  },
+  'info' : {
+    'emoji' : <Emoji symbol= "ℹ️"/>,
+    'style' : textBoxStyles.infoBox
   }
 }
 
@@ -37,9 +24,11 @@ const style = (type) => {
  */
 const TextBox = ({ type, text }) => {
   return (
-  <div className = {[textBoxStyles.container, style(type)].join(' ')}>
+  <div className = {[textBoxStyles.container, format[type].style].join(' ')}>
     <span>
-    {emoji(type)} {text}
+    {format[type].emoji}
+    &nbsp;
+    {text}
     </span>
   </div>
   )
