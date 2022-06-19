@@ -23,7 +23,7 @@ All code created during this tutorial can be found on GitHub in the following re
 - [cloudrun-example-api](https://github.com/fpgmaas/cloudrun-example-api)
 - [cloudrun-example-infra](https://github.com/fpgmaas/cloudrun-example-infra)
 
-Let's get started!
+Let's get started! 
 
 ## 1. Building our Flask app
 
@@ -515,7 +515,7 @@ This error is expected, since we configured our infrastructure to look for an im
 Luckily, if we navigate to [Artifact Registry](https://console.cloud.google.com/artifacts) in the UI, we find that our repository has been created,
 so we can now push our Docker image to the repository to finalize our set-up.
 
-## 6. Pushing the container to Artifact Registry on Google Cloud
+## 6. Pushing the Docker image to Artifact Registry on Google Cloud
 
 In order to push our Docker image to the cloud, we first need to download the key for the service account `docker-pusher` that we created 
 with Terraform. If you head over to `IAM & Admin > Service Accounts` <sup>([link](https://console.cloud.google.com/iam-admin/serviceaccounts))</sup>,
