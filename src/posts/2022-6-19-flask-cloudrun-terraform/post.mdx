@@ -346,8 +346,8 @@ resource "google_artifact_registry_repository" "my_docker_repo" {
   provider = google-beta
 
   location = var.region
-  repository_id = "docker-repository"
-  description = "Example docker repository"
+  repository_id = var.repository
+  description = "My docker repository"
   format = "DOCKER"
   depends_on = [time_sleep.wait_30_seconds]
 }
@@ -376,9 +376,19 @@ resource "google_artifact_registry_repository_iam_member" "docker_pusher_iam" {
 }
 ```
 
+And we add the following to `variables.tf`:
+
+```json
+variable "repository" {
+  description = "The name of the Artifact Registry repository to be created"
+  type        = string
+  default     = "docker-repository"
+}
+```
+
 The last thing that we need to do is publish our image through Cloud Run. For this, we use `google_cloud_run_service`,
-and as the argument for `image` we pass `"europe-west4-docker.pkg.dev/${var.project_id}/docker-repository/my-api"`, so our
-resource will expect to find an image called `my-api` within our created Artifact Registry repository. We also pass
+and as the argument for `image` we pass `"europe-west4-docker.pkg.dev/${var.project_id}/${var.repository}/${var.docker_image}"`, so our
+resource will expect to find an image that we defined in `variables.tf` within our created Artifact Registry repository. We also pass
 some arguments to use containers with small memory usage, and we should never have to scale to more than one instance for this
 simple API. Lastly, we create a `noauth` policy and apply it to our newly created Cloud Run API so our API is open to the public,
 and we return the URL on which our API is available.
@@ -405,7 +415,7 @@ resource "google_cloud_run_service" "api_test" {
   template {
     spec {
         containers {
-            image = "europe-west4-docker.pkg.dev/${var.project_id}/docker-repository/my-api"
+            image = "europe-west4-docker.pkg.dev/${var.project_id}/${var.repository}/${var.docker_image}"
             resources {
                 limits = {
                 "memory" = "1G"
@@ -451,6 +461,16 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 
 output "cloud_run_instance_url" {
   value = google_cloud_run_service.api_test.status.0.url
+}
+```
+
+And we add the following to `variables.tf`:
+
+```json
+variable "docker_image" {
+  description = "The name of the Docker image in the Artifact Registry repository to be deployed to Cloud Run"
+  type        = string
+  default     = "my-api"
 }
 ```
 
