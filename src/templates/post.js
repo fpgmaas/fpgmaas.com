@@ -42,7 +42,7 @@ const Post = (props) => {
         <div className={postStyles.contentContainer}>
           <div className={postStyles.content}>
             <h1 className={postStyles.title}>{props.data.mdx.frontmatter.title}</h1>
-            <h3 className={postStyles.subtitle}>{props.data.mdx.frontmatter.subtitle}</h3>
+            {props.data.mdx.frontmatter.subtitle && <h3 className={postStyles.subtitle}>{props.data.mdx.frontmatter.subtitle}</h3>}
             <div className={postStyles.postDetails}>
               <p className={postStyles.author}>{props.data.mdx.frontmatter.author}</p>
               <p className={postStyles.date}>{props.data.mdx.frontmatter.date}</p>
