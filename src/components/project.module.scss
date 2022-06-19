@@ -1,84 +1,87 @@
 .project-container {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 2rem;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2rem;
 }
 
 .project-container:hover {
-    cursor:pointer;
+  cursor: pointer;
 }
 
-.project-container:hover .image{
-    opacity: .5;
+.project-container:hover .image {
+  opacity: 0.5;
 }
 
-.project-container:hover .title{
-    text-decoration: underline;
+.project-container:hover .title {
+  text-decoration: underline;
 }
 
 .image {
-    margin-top: 25px;
-    width: 250px;
-    border-radius: 10%;
-    transition: ease all .5s;
+  margin-top: 25px;
+  width: 250px;
+  border-radius: 10%;
+  transition: ease all 0.5s;
 }
 
 .text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 1rem;
-    padding: 0 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0 1rem 0 1rem;
 }
 
 .text-container h2 {
-    margin: 0;
-    font-size: 1.2rem;
+  margin: 0;
+  font-size: 1.2rem;
 }
 
 .description {
-    text-align: center;
-    color: $grey;
-    margin-top: .5rem;
+  text-align: center;
+  color: $grey;
+  margin-top: 0.5rem;
 }
 
 .icons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
 }
 
 .icon {
-    color: $grey;
-    margin: 0 1rem 0 .5rem;
-    transition: all ease .5s;
-    font-size: 1rem;
+  color: $grey;
+  margin: 0 1rem 0 0.5rem;
+  transition: all ease 0.5s;
+  font-size: 1rem;
 }
 
 .starIcon {
-    color: $grey;
-    margin: 0 .3rem 0 .5rem;
-    transition: all ease .5s;
-    font-size: 1rem;
+  color: $grey;
+  margin: 0 0.3rem 0 0.5rem;
+  transition: all ease 0.5s;
+  font-size: 1rem;
 }
 
 .starText {
-    font-size: .9rem;
-    margin: 0;
-    padding: 0;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
 }
 
 .icon:hover {
-    transition: all ease .5s;
-    color: $orange;
+  transition: all ease 0.5s;
+  color: $orange;
 }
 
-.link, .link:hover, .link:focus, .link:active {
-    text-decoration: none;
-    color: inherit;
-    }
+.link,
+.link:hover,
+.link:focus,
+.link:active {
+  text-decoration: none;
+  color: inherit;
+}

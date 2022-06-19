@@ -8,17 +8,16 @@ reading_time: 10 minutes
 author: Florian Maas
 type: post
 featuredImage: "image.png"
-
 ---
 
-import { Meter } from './meter.js'
+import { Meter } from "./meter.js"
 
-import plotData2_1 from './plots/plot_1_most_common_meters.json'
-import plotData2_2 from './plots/plot_2_top_rated_in_10_most_common_meters.json'
-import plotData2_3 from './plots/plot_3_avg_upvotes_per_meter.json'
-import plotData2_4 from './plots/plot_4_box_plot_upvotes_per_meter.json'
-import plotData2_5 from './plots/plot_5_hist_line_length_per_meter.json'
-import plotData2_6 from './plots/plot_6_meter_timelines.json'
+import plotData2_1 from "./plots/plot_1_most_common_meters.json"
+import plotData2_2 from "./plots/plot_2_top_rated_in_10_most_common_meters.json"
+import plotData2_3 from "./plots/plot_3_avg_upvotes_per_meter.json"
+import plotData2_4 from "./plots/plot_4_box_plot_upvotes_per_meter.json"
+import plotData2_5 from "./plots/plot_5_hist_line_length_per_meter.json"
+import plotData2_6 from "./plots/plot_6_meter_timelines.json"
 
 In my [previous post](/blog/poetry-and-data-1), I did some initial
 analysis on the dataset that contains all poems by [/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog). I
@@ -30,7 +29,10 @@ Before we dive into this post, take a look at the chart containing some of the m
 [/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog) below and see what patterns you can discover. You can
 read the poems by hovering over the points in the plot.
 
-<MyPlotly data ={plotData2_2.data} layout = {{...plotData2_2.layout, showlegend: false, title: null}} />
+<MyPlotly
+  data={plotData2_2.data}
+  layout={{ ...plotData2_2.layout, showlegend: false, title: null }}
+/>
 
 Did you notice any patterns? The legend for this plot can be found a little later in this post, so if you are in a
 hurry; feel free to scroll down. Otherwise, continue reading while we find out more about what it is that makes some of
@@ -49,42 +51,40 @@ Let's go exploring!
 To explore poetic meter, let's start by taking a look at one of my favourite poems by
 [/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog), which contains a message about dealing with regret:
 
-
 > I should have hurried youth, in truth,  
 > And moved more quickly on -  
 > I should have made the most of youth,  
-> Before the time was gone.  
-> 
+> Before the time was gone.
+>
 > I should have followed fancy, free,  
 > Before it thought to fade -  
 > I should have picked a good degree,  
-> Or found myself a trade.  
-> 
+> Or found myself a trade.
+>
 > I should have stopped to stare above;  
 > To share another's dreams -  
 > I should have never welcomed love,  
-> And lost it all, it seems.  
-> 
+> And lost it all, it seems.
+>
 > No matter what the aim or end -  
 > No matter what you do -  
-> Regrets are part of life, my friend:  
-> 
-> Don't let them conquer you.  
-> 
+> Regrets are part of life, my friend:
+>
+> Don't let them conquer you.
+>
 > [Source](https://www.reddit.com/r/AskReddit/comments/4fsds1/adults_from_reddit_what_do_you_regret_most_from/d2bmumz/)
 
 One of the reasons I like this poem is because of its clear and uplifting message. But another reason that makes this
 poem stand out to me is it's very apparent rhythm. If you say this poem out loud, you are clearly able to hear it;
-
 
 > I SHOULD have HURried YOUTH, in TRUTH,  
 > And MOVED more QUICKly ON -
 
 Or, a more visual way of representing this:
 
-import meterData1 from './meters/01_meter_example.json'
+import meterData1 from "./meters/01_meter_example.json"
 
-<Meter data = {meterData1} />
+<Meter data={meterData1} />
 
 Here, the syllables in the blue squares are stressed, and the syllables in the grey squares are unstressed. If you have
 trouble hearing the rhythm, try to read the lines out loud, stressing the syllables in the grey squares. Feels unnatural
@@ -112,13 +112,13 @@ feet (trimeter). The nomenclature for the number of feet per line is as follows:
 Two other commonly used types of feet are the trochaic foot (stressed, unstressed), and the anapestic foot (unstressed,
 unstressed, stressed). To illustrate, examples of the three types of feet we have encountered until now are:
 
-import meterData2 from './meters/02_foot_examples.json'
+import meterData2 from "./meters/02_foot_examples.json"
 
-<Meter data = {meterData2.iambic_foot} />
+<Meter data={meterData2.iambic_foot} />
 
-<Meter data = {meterData2.trochaic_foot} />
+<Meter data={meterData2.trochaic_foot} />
 
-<Meter data = {meterData2.anapestic_foot} />
+<Meter data={meterData2.anapestic_foot} />
 
 By combining these three feet in a large variety of ways, we can construct the meter for most of the poems by
 [/u/poem_for_your_sprog](https://reddit.com/u/poem_for_your_sprog). To perform analysis on the meters that sprog uses
@@ -132,7 +132,7 @@ continue reading here.
 The first thing that we might be interested in; what is Sprog's favourite meter? Or better; what are his ten most
 favourite meters?
 
-<MyPlotly data ={plotData2_1.data} layout = {plotData2_1.layout} />
+<MyPlotly data={plotData2_1.data} layout={plotData2_1.layout} />
 
 Turns out sprog's most common poetic meter is a combined meter of iambic tetrameter and iambic trimeter; alternating
 lines with eight and six syllables. The graph requires some more explanation. First, the asterisks:
@@ -149,36 +149,36 @@ If this sounds like French to you (I'm assuming you're not French here. If you a
 with a random language that you barely speak), don't worry; let's look at some examples of the ten most common meters to
 make this all a bit more clear:
 
-import meterData6 from './meters/06_10_meters.json'
+import meterData6 from "./meters/06_10_meters.json"
 
-<Meter data = {meterData6['1']} />
+<Meter data={meterData6["1"]} />
 
-<Meter data = {meterData6['2']} />
+<Meter data={meterData6["2"]} />
 
-<Meter data = {meterData6['3']} />
+<Meter data={meterData6["3"]} />
 
-<Meter data = {meterData6['4']} />
+<Meter data={meterData6["4"]} />
 
-<Meter data = {meterData6['5']} />
+<Meter data={meterData6["5"]} />
 
-<Meter data = {meterData6['6']} />
+<Meter data={meterData6["6"]} />
 
-<Meter data = {meterData6['7']} />
+<Meter data={meterData6["7"]} />
 
-<Meter data = {meterData6['8']} />
+<Meter data={meterData6["8"]} />
 
-<Meter data = {meterData6['9']} />
+<Meter data={meterData6["9"]} />
 
-<Meter data = {meterData6['10']} />
+<Meter data={meterData6["10"]} />
 
 To get a better idea of the application of these meters in the poetry by sprog, and to get an idea of how well our
 meter-determining-logic performs, below is a plot of the ten most upvoted poems for each of the ten most commonly used
-meters. 
+meters.
 
 Note that you can hover over the markers to read the poem, and you can hide/show a group of poems by clicking the
 corresponding entry in the legend on the right.
 
-<MyPlotly data ={plotData2_2.data} layout = {plotData2_2.layout} />
+<MyPlotly data={plotData2_2.data} layout={plotData2_2.layout} />
 
 Judging from these examples, it seems our simple method for determining the meter of a poem actually performs quite
 well. Of course, this is only a small subset of the total poems and we don't see how many poems that should be in these
@@ -190,7 +190,7 @@ Looking at the upvotes, it does seem like we can detect a pattern here, even tho
 in the plot. Poems written in certain meters seem to get more upvotes than poems in other meters. Initially, I thought
 about just looking at the average number of upvotes per group:
 
-<MyPlotly data ={plotData2_3.data} layout = {plotData2_3.layout} />
+<MyPlotly data={plotData2_3.data} layout={plotData2_3.layout} />
 
 However, this might lead us to draw wrong conclusions, since the dataset contains many outliers. For example, sprog's
 [most upvoted
@@ -201,7 +201,7 @@ impact for one observation! We will get more accurate results by looking at the
 [median](https://en.wikipedia.org/wiki/Median) instead of the mean. A good way of visualizing this type of data is a
 boxplot, so let's try that out:
 
-<MyPlotly data ={plotData2_4.data} layout = {plotData2_4.layout} />
+<MyPlotly data={plotData2_4.data} layout={plotData2_4.layout} />
 
 One note to fellow Redditors; please stop upvoting the ['i lik the
 bred'-poem](https://www.reddit.com/r/AskReddit/comments/598qrb/health_inspectors_of_reddit_whats_the_worst/d96si4d/).
@@ -219,7 +219,7 @@ now, we can actually validate this hypothesis. Below is a plot with multiple his
 characters per poem, overlayed on top of each other. Note that again you can hide or show histograms by clicking the
 corresponding entries in the legend on the left side.
 
-<MyPlotly data ={plotData2_5.data} layout = {plotData2_5.layout} />
+<MyPlotly data={plotData2_5.data} layout={plotData2_5.layout} />
 
 And indeed; the peak around 46/47 characters exists completely out of poems in anapestic tetrameter\*\* - at least, for
 the poems in the top 10 most commonly used meters, which are displayed here. It's also interesting to see that whereas
@@ -232,7 +232,7 @@ Now, let's see how the use of meter in sprog's poems over time has changed. Belo
 the ten most commonly used meters, and one for all others. Each timeline shows for each month the percentage of poems
 that was written in that meter during that month.
 
-<MyPlotly data ={plotData2_6.data} layout = {plotData2_6.layout} />
+<MyPlotly data={plotData2_6.data} layout={plotData2_6.layout} />
 
 The first thing that's very intesting to see; in the first few months, the category 'other' accounts for a very large
 fraction of poems. This seems to be mainly caused by the fact that meter was a less strong feature in the poems from
@@ -242,6 +242,7 @@ there is sprog developing his own characteristic style in which meter plays such
 What is also interesting to see is that halfway 2016, sprog started experimenting a bit more. The use of the always
 winning combo of iambic tetrameter, iambic trimeter starts to decline. At the same time, new meters make their
 introduction around the same period:
+
 - trochaic tetrameter, trochaic tetrameter\*
 - amphibrachic dimeter, anapestic dimeter\*\*,
 - trochaic tetrameter\*
@@ -249,4 +250,4 @@ introduction around the same period:
 - anapestic dimeter
 
 That was all for now! I learned a lot about meter in poetry by creating this post, and I hope I was able to share
-some of that with you. 
+some of that with you.

@@ -1,55 +1,23 @@
 {
-    "iambic_foot": {
-        "title": "iambic foot",
-        "data": {
-            "text": [
-                [
-                    "ex",
-                    "ist"
-                ]
-            ],
-            "stressed": [
-                [
-                    0,
-                    1
-                ]
-            ]
-        }
-    },
-    "trochaic_foot": {
-        "title": "trochaic foot",
-        "data": {
-            "text": [
-                [
-                    "ti",
-                    "ger"
-                ]
-            ],
-            "stressed": [
-                [
-                    1,
-                    0
-                ]
-            ]
-        }
-    },
-    "anapestic_foot": {
-        "title": "anapestic foot",
-        "data": {
-            "text": [
-                [
-                    "un",
-                    "der",
-                    "stand"
-                ]
-            ],
-            "stressed": [
-                [
-                    0,
-                    0,
-                    1
-                ]
-            ]
-        }
+  "iambic_foot": {
+    "title": "iambic foot",
+    "data": {
+      "text": [["ex", "ist"]],
+      "stressed": [[0, 1]]
     }
+  },
+  "trochaic_foot": {
+    "title": "trochaic foot",
+    "data": {
+      "text": [["ti", "ger"]],
+      "stressed": [[1, 0]]
+    }
+  },
+  "anapestic_foot": {
+    "title": "anapestic foot",
+    "data": {
+      "text": [["un", "der", "stand"]],
+      "stressed": [[0, 0, 1]]
+    }
+  }
 }

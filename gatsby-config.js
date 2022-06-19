@@ -3,14 +3,14 @@ module.exports = {
     title: `Florian Maas`,
     description: `Data scientist & full-stack developer`,
     author: `Florian Maas`,
-    url: `https://www.fpgmaas.com`
+    url: `https://www.fpgmaas.com`,
   },
   plugins: [
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-catch-links`,
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
@@ -18,11 +18,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: 'https://www.fpgmaas.com',
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
+        host: "https://www.fpgmaas.com",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
     {
       resolve: `gatsby-remark-images`,
@@ -33,10 +33,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-sass',
+      resolve: "gatsby-plugin-sass",
       options: {
         additionalData: `@import "${__dirname}/src/styles/colors.module.scss";`,
-      }
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -49,25 +49,29 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [`gatsby-remark-images`, `gatsby-remark-autolink-headers`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-images`,
+          `gatsby-remark-autolink-headers`,
+        ],
         remarkPlugins: [
-          [require('gatsby-remark-vscode').remarkPlugin, {
-            theme: 'Monokai'
-          }]
-        ]
+          [
+            require("gatsby-remark-vscode").remarkPlugin,
+            {
+              theme: "Monokai",
+            },
+          ],
+        ],
       },
     },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          process.env.GA_TRACKING_ID
-        ],
+        trackingIds: [process.env.GA_TRACKING_ID],
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds
         gtagConfig: {
-          optimize_id: 'OPT_CONTAINER_ID',
+          optimize_id: "OPT_CONTAINER_ID",
           anonymize_ip: true,
           cookie_expires: 0,
         },
@@ -78,10 +82,9 @@ module.exports = {
           // Setting this parameter is also optional
           respectDNT: true,
           // Avoids sending pageview hits from custom paths
-          exclude: ['/preview/**', '/do-not-track/me/too/'],
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
         },
       },
     },
-  ]
+  ],
 }
-

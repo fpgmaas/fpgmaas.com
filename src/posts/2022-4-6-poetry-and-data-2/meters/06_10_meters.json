@@ -1,132 +1,156 @@
 {
-  "1" : {
+  "1": {
     "title": "1. iambic tetrameter, iambic trimeter",
-      "data": {
-          "text": [
-            ["i", "should","have","hur","ried","youth","in","truth"],
-            ["and","moved","more","quick","ly","on"]
-          ],
-          "stressed": [
-            [0,1,0,1,0,1,0,1],
-            [0,1,0,1,0,1]
-          ]
-      }
+    "data": {
+      "text": [
+        ["i", "should", "have", "hur", "ried", "youth", "in", "truth"],
+        ["and", "moved", "more", "quick", "ly", "on"]
+      ],
+      "stressed": [
+        [0, 1, 0, 1, 0, 1, 0, 1],
+        [0, 1, 0, 1, 0, 1]
+      ]
+    }
   },
   "2": {
     "title": "2. anapestic tetrameter**",
-      "data": {
-          "text":         [
-            ["so", "throw","off","the","chains","of","op","pres","sion","said","he"],
-            ["be","fair","ly","un","fet","terred","and","free","to","be","free"]
+    "data": {
+      "text": [
+        [
+          "so",
+          "throw",
+          "off",
+          "the",
+          "chains",
+          "of",
+          "op",
+          "pres",
+          "sion",
+          "said",
+          "he"
         ],
-          "stressed": [
-            [0,1,0,0,1,0,0,1,0,0,1],
-            [0,1,0,0,1,0,0,1,0,0,1]
-          ]
-      }
+        [
+          "be",
+          "fair",
+          "ly",
+          "un",
+          "fet",
+          "terred",
+          "and",
+          "free",
+          "to",
+          "be",
+          "free"
+        ]
+      ],
+      "stressed": [
+        [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]
+      ]
+    }
   },
   "3": {
     "title": "3. iambic tetrameter",
-      "data": {
-          "text": [
-            ["from","time","to","time","i","think","of","then"],
-            ["i","turn","my","gaze","be","fore","a","gain"]
-          ],
-          "stressed": [
-            [0,1,0,1,0,1,0,1],
-            [0,1,0,1,0,1,0,1]
-          ]
-      }
+    "data": {
+      "text": [
+        ["from", "time", "to", "time", "i", "think", "of", "then"],
+        ["i", "turn", "my", "gaze", "be", "fore", "a", "gain"]
+      ],
+      "stressed": [
+        [0, 1, 0, 1, 0, 1, 0, 1],
+        [0, 1, 0, 1, 0, 1, 0, 1]
+      ]
+    }
   },
   "4": {
     "title": "4. trochaic tetrameter, trochaic tetrameter*",
     "data": {
-        "text": [
-          ["would", "you","suck","er","punch","a","mon","key?"],
-          ["would","you","up","per","cut","a","bear?"]
-        ],
-        "stressed": [
-          [1,0,1,0,1,0,1,0],
-          [1,0,1,0,1,0,1]
-        ]
+      "text": [
+        ["would", "you", "suck", "er", "punch", "a", "mon", "key?"],
+        ["would", "you", "up", "per", "cut", "a", "bear?"]
+      ],
+      "stressed": [
+        [1, 0, 1, 0, 1, 0, 1, 0],
+        [1, 0, 1, 0, 1, 0, 1]
+      ]
     }
-},
-"5": {
-  "title": "5. trochaic tetrameter",
+  },
+  "5": {
+    "title": "5. trochaic tetrameter",
     "data": {
-        "text":         [
-          ["wave","good","bye","your","e","go","bro","ther"],
-          ["kiss","your","kids","and","call","your", "mo","ther"]
+      "text": [
+        ["wave", "good", "bye", "your", "e", "go", "bro", "ther"],
+        ["kiss", "your", "kids", "and", "call", "your", "mo", "ther"]
       ],
-        "stressed": [
-          [1,0,1,0,1,0,1,0],
-          [1,0,1,0,1,0,1,0]
-        ]
+      "stressed": [
+        [1, 0, 1, 0, 1, 0, 1, 0],
+        [1, 0, 1, 0, 1, 0, 1, 0]
+      ]
     }
-},
-"6": {
-  "title": "6. amphibrachic dimeter, anapestic dimeter**",
-  "data": {
-      "text": [
-        ["you're","sea","soned","in","sad","ness"],
-        ["you're","prac","ticed","in","doubt"]
-      ],
-      "stressed": [
-        [0,1,0,0,1,0],
-        [0,1,0,0,1]
-      ]
-  }
-},
-"7": {
-  "title": "7. trochaic tetrameter*",
-  "data": {
-      "text": [
-        ["when", "you're","full","of","doubt","and","fear"],
-        ["i'll","be","with","you","wait","ing","here"]
-      ],
-      "stressed": [
-        [1,0,1,0,1,0,1],
-        [1,0,1,0,1,0,1]
-      ]
-  }
-},
-"8": {
-  "title": "8. trochaic tetrameter, trochaic trimeter*",
+  },
+  "6": {
+    "title": "6. amphibrachic dimeter, anapestic dimeter**",
     "data": {
-        "text": [
-          ["no","one's","quite","as","strong","as","stan","ley"],
-          ["stan","ley's","been","to","war"]
-        ],
-        "stressed": [
-          [1,0,1,0,1,0,1,0],
-          [1,0,1,0,1]
-        ]
-    }
-},
-"9": {
-  "title": "9. iambic dimeter",
-  "data": {
-      "text":         [
-        ["my","name","is","dog"],
-        ["and","e","ven", "though"]
-    ],
-      "stressed": [
-        [0,1,0,1],
-        [0,1,0,1]
-      ]
-  }
-},
-"10": {
-  "title": "10. anapestic dimeter",
-  "data": {
       "text": [
-        ["i","re","mem","ber","the","way"],
-        ["that","i","thought","a","bout","love"]
+        ["you're", "sea", "soned", "in", "sad", "ness"],
+        ["you're", "prac", "ticed", "in", "doubt"]
       ],
       "stressed": [
-        [0,0,1,0,0,1],
-        [0,0,1,0,0,1]
+        [0, 1, 0, 0, 1, 0],
+        [0, 1, 0, 0, 1]
       ]
+    }
+  },
+  "7": {
+    "title": "7. trochaic tetrameter*",
+    "data": {
+      "text": [
+        ["when", "you're", "full", "of", "doubt", "and", "fear"],
+        ["i'll", "be", "with", "you", "wait", "ing", "here"]
+      ],
+      "stressed": [
+        [1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 1, 0, 1, 0, 1]
+      ]
+    }
+  },
+  "8": {
+    "title": "8. trochaic tetrameter, trochaic trimeter*",
+    "data": {
+      "text": [
+        ["no", "one's", "quite", "as", "strong", "as", "stan", "ley"],
+        ["stan", "ley's", "been", "to", "war"]
+      ],
+      "stressed": [
+        [1, 0, 1, 0, 1, 0, 1, 0],
+        [1, 0, 1, 0, 1]
+      ]
+    }
+  },
+  "9": {
+    "title": "9. iambic dimeter",
+    "data": {
+      "text": [
+        ["my", "name", "is", "dog"],
+        ["and", "e", "ven", "though"]
+      ],
+      "stressed": [
+        [0, 1, 0, 1],
+        [0, 1, 0, 1]
+      ]
+    }
+  },
+  "10": {
+    "title": "10. anapestic dimeter",
+    "data": {
+      "text": [
+        ["i", "re", "mem", "ber", "the", "way"],
+        ["that", "i", "thought", "a", "bout", "love"]
+      ],
+      "stressed": [
+        [0, 0, 1, 0, 0, 1],
+        [0, 0, 1, 0, 0, 1]
+      ]
+    }
   }
-}
 }
