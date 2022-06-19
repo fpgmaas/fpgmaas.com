@@ -16,6 +16,13 @@ export const query = graphql`
         date(formatString: "MMMM DD, YYYY", locale: "en")
         author
         reading_time
+        featuredImage {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       body
     }
@@ -29,6 +36,9 @@ const Post = props => {
         title={props.data.mdx.frontmatter.title}
         description={props.data.mdx.frontmatter.subtitle}
         url={`blog/${props.data.mdx.frontmatter.slug}`}
+        image={
+          props.data.mdx.frontmatter.featuredImage.childImageSharp.fluid.src
+        }
       />
       <Layout>
         <div className={postStyles.contentContainer}>
