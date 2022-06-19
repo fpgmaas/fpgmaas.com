@@ -97,7 +97,23 @@ And we see the following output in our console:
 
 Now that our API is running, we should see `Hello, World!` displayed if we visit `http://127.0.0.1:5000` in our browser.
 
+As the warning tells us, we should not use the development server that Flask uses by default in production.
+Instead, we should use a WSGI server like [Gunicorn](https://gunicorn.org/). For more information on this subject, see e.g.
+[this page](https://flask.palletsprojects.com/en/2.1.x/deploying/) of the Flask documentation. To use Gunicorn, 
+we have to add it to the environment first:
+
+```bash
+poetry add gunicorn
+```
+
+Now, we can run our Flask application using Gunicorn as our WSGI server with the following command:
+
+```bash
+gunicorn app:app -b 0.0.0.0:5000
+```
+
 Great, our API is working! If we want to deploy our API to Google Cloud Run, we will need to Dockerize it first.
+
 
 ## 2. Dockerizing our Flask app
 
@@ -127,7 +143,7 @@ RUN poetry config virtualenvs.create false && poetry install --no-interaction --
 # Creating folders, and files for a project:
 COPY . /code
 
-CMD python3 -m flask run --host=0.0.0.0 --port=${PORT}
+CMD gunicorn app:app -w 2 --threads 2 -b 0.0.0.0:${PORT}
 ```
 
 <TextBox
