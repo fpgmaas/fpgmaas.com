@@ -9,6 +9,9 @@ import {
     faStackOverflow,
     faTwitter
   } from '@fortawesome/free-brands-svg-icons'
+  import {
+    faEnvelope
+  } from '@fortawesome/free-regular-svg-icons'
 
 const Footer = () => {
 
@@ -45,6 +48,10 @@ const Footer = () => {
                         <div className={footerStyles.iconDivider}></div>
                         <a href="https://twitter.com/fpgmaas" target='blank'>
                             <FontAwesomeIcon icon={faTwitter} className={footerStyles.icon} />
+                        </a>
+                        <div className={footerStyles.iconDivider}></div>
+                        <a href="mailto:fpgmaas@gmail.com" target='blank'>
+                            <FontAwesomeIcon icon={faEnvelope} className={footerStyles.icon} />
                         </a>
                     </div>
                 </div>

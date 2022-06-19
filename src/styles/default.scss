@@ -3,10 +3,14 @@
   font-family: 'Inter', 'Arial', 'Sans Serif';
 }
 
+ul {
+  margin: .5rem 0;
+}
 
 p, li, span {
   color: $grey;
   line-height: 1.5;
+  margin: .5rem 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -37,8 +41,9 @@ blockquote {
   color: $grey;
 }
 
-code {
-  font-family: 'fira-code';
-  font-size: 1.2rem;
+code, code span {
+  font-family: 'fira code';
+  font-size: 1rem;
   font-weight: 400;
 }
+
