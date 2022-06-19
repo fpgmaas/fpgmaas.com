@@ -5,8 +5,8 @@ import * as projectStyles from './projects.module.scss'
 import SEO from '../components/seo.js'
 
 
-import simpleHomepageImg from "../../static/simple-homepage.png"
-import cookiecutterPoetryImg from "../../static/cookiecutter.png"
+import simpleHomepageImg from "../../static/projects/simple-homepage.png"
+import cookiecutterPoetryImg from "../../static/projects/cookiecutter.png"
 import Project from "../components/project"
 
 
