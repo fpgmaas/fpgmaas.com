@@ -1,98 +1,97 @@
 .content-container {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    align-items: stretch;
-    min-width: 0;
-    width: 100%;
-    max-width: 800px;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    @media screen and (max-width: 768px) {
-        padding-left: 2rem;
-        padding-right: 2rem;  
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  align-items: stretch;
+  min-width: 0;
+  width: 100%;
+  max-width: 800px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  @media screen and (max-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 
-    @media screen and (max-width: 500px) {
-        padding-left: 1rem;
-        padding-right: 1rem;  
-    }
+  @media screen and (max-width: 500px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .title {
-    margin: 0 0 .3rem 0;
-    font-size: 1.7rem;
+  margin: 0 0 0.3rem 0;
+  font-size: 1.7rem;
 
-    @media screen and (max-width: 768px) {
-        font-size: 1.5rem;
-    }
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 }
 
 .subtitle {
-    margin:0 0 .5rem 0;
-    color: $grey;
-    font-size: 1.2rem;
-    @media screen and (max-width: 768px) {
-        font-size: 1.1rem;
-    }
+  margin: 0 0 0.5rem 0;
+  color: $grey;
+  font-size: 1.2rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 }
 
 .post-details {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 0rem;
-    flex-wrap: wrap;
-    @media screen and (max-width: 768px) {
-        font-size: .9rem;
-    }
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  flex-wrap: wrap;
+  @media screen and (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 }
 
-.post-details p{
-    margin: 0 0 0 0;
-    color: $grey;
-    font-size: inherit;
+.post-details p {
+  margin: 0 0 0 0;
+  color: $grey;
+  font-size: inherit;
 }
 
 .author {
-    color: #444444;
-    font-size: 1rem;
+  color: #444444;
+  font-size: 1rem;
 }
 
 .date {
-    color: #444444;
-    font-size: 1rem;
+  color: #444444;
+  font-size: 1rem;
 }
 
-
-.date::before{
-    content: "\02022";
-    padding: 0 1rem;
+.date::before {
+  content: "\02022";
+  padding: 0 1rem;
 }
 
 .reading-time {
-    color: #444444;
-    font-size: 1rem;
+  color: #444444;
+  font-size: 1rem;
 }
 
-.reading-time::before{
-    content: "\02022";
-    padding: 0 1rem;
+.reading-time::before {
+  content: "\02022";
+  padding: 0 1rem;
 }
 
 .line-left {
-    background: $darkblue;
-    height: 2px;
-    border: none;
-    width: 100%;
-    margin-bottom: 1rem;
+  background: $darkblue;
+  height: 2px;
+  border: none;
+  width: 100%;
+  margin-bottom: 1rem;
 }

@@ -9,20 +9,20 @@ type: addendum
 featuredImage: "image.png"
 ---
 
-import { Meter } from './meter.js'
+import { Meter } from "./meter.js"
 
 > The code that is referred to in this post can be found on <a href="https://github.com/fpgmaas/poems/blob/master/src/meter.py" target="_blank">Github</a>
 
 In order to identify which meter a poem uses, we need a computer to determine which syllables are stressed in a
 sentence, and which are not. It turns out that this can be quite tricky. Compare for example the following two examples:
 
-import meterData1 from './meters/01_meter_example.json'
+import meterData1 from "./meters/01_meter_example.json"
 
-<Meter data = {meterData1} />
+<Meter data={meterData1} />
 
-import meterData3 from './meters/03_meter_example.json'
+import meterData3 from "./meters/03_meter_example.json"
 
-<Meter data = {meterData3} />
+<Meter data={meterData3} />
 
 Both examples contain the word "have", but in the first example it was unstressed, while in the latter example it's
 stressed. Why? Beats me. It's just what happens in my head when I read it. Sadly, that's not very useful information for
@@ -43,13 +43,13 @@ pronouncing.stresses(pronounciation[0])
 import pronouncing
 pronounciation = pronouncing.phones_for_word('another')
 pronouncing.stresses(pronounciation[0])
-> 010 
+> 010
 ```
 
 where `1` denotes a stressed syllable, and `0` denotes an unstressed syllable. For "have", it gives us a single stressed
 syllable, which as we saw in the example may or may not be correct based on the context. For "another" it returns `010`,
 which is in line with the scansion of our second example. I think this is correct regardless of context; try to
-pronounce "another" like "ANother" or "anothER" and you'll understand why. 
+pronounce "another" like "ANother" or "anothER" and you'll understand why.
 
 So we are definitely not going to get a perfect scansion for each poem by simply using this `pronouncing` library.
 However, I came up with a method to use it to at least get the poem's primary meter:
@@ -64,19 +64,19 @@ However, I came up with a method to use it to at least get the poem's primary me
 There are a few more steps in this process to make it work. In the [first post]('/blog/poetry-and-data-1') on this
 subject, we saw that sprog quite often splits a line over two or even more lines. For example;
 
-import meterData4 from './meters/04_meter_example.json'
+import meterData4 from "./meters/04_meter_example.json"
 
-<Meter data = {meterData4} />
+<Meter data={meterData4} />
 
 To accurately determine the meter of the poem, we could recognize that the latter two lines are actually one line split
 into two, and if we merge them back together we get two lines with the same meter:
 
-import meterData5 from './meters/04_meter_example.json'
+import meterData5 from "./meters/04_meter_example.json"
 
-<Meter data = {meterData5} />
+<Meter data={meterData5} />
 
 Now we recognize this as being anapestic tetrameter, with the first unstressed syllable omitted. This is called iambic
-substitution, since the first anapestic foot is replaced with an iambic foot. 
+substitution, since the first anapestic foot is replaced with an iambic foot.
 
 In my code I have built a function that looks for these kind of lines and combines them; it looks for lines that
 together have the same amount of syllables as a longer line in that poem (in this example 6 + 5 = 11). If such a set of

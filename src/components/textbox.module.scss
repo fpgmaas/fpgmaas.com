@@ -1,15 +1,15 @@
 .container {
-    border-radius: 5px;
-    margin: .5rem;
-    padding: .5rem;
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 
 .infoBox {
-    background-color: $superlightblue;
-    border-left: 4px solid $mediumblue;
+  background-color: $superlightblue;
+  border-left: 4px solid $mediumblue;
 }
 
 .warningBox {
-    background-color: #f8d8b8;
-    border-left: 4px solid $orange;
+  background-color: #f8d8b8;
+  border-left: 4px solid $orange;
 }

@@ -1,57 +1,57 @@
 .footer {
-    padding: 2rem 1rem 0rem 1rem;
+  padding: 2rem 1rem 0rem 1rem;
 }
 
 .footer-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .footer-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .text {
-    color: $grey;
+  color: $grey;
 }
 
 @media screen and (max-width: 992px) {
- .text {
-     font-size: .8rem;
- }
+  .text {
+    font-size: 0.8rem;
+  }
 }
 
 .icons-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .icon {
-    color: $darkblue;
-    margin: 0 .5rem 0 .5rem;
-    transition: all ease .5s;
-    font-size: 1.4rem;
+  color: $darkblue;
+  margin: 0 0.5rem 0 0.5rem;
+  transition: all ease 0.5s;
+  font-size: 1.4rem;
 }
 
 a:hover .icon {
-    transition: all ease .5s;
-    color: $orange;
+  transition: all ease 0.5s;
+  color: $orange;
 }
 
 .icon-divider {
-    height: 1.4rem;
-    width: 1px;
-    background-color: $grey;
-    opacity: .5;
-    margin: 0 .5rem;
+  height: 1.4rem;
+  width: 1px;
+  background-color: $grey;
+  opacity: 0.5;
+  margin: 0 0.5rem;
 }

@@ -1,26 +1,26 @@
 .content-container {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
 }
 
-.content-container >a {
-    text-decoration: none;
+.content-container > a {
+  text-decoration: none;
 }
 
 .download-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.download-container> p{
-margin-top: .25rem;
+.download-container > p {
+  margin-top: 0.25rem;
 }
 
 .icon-container {
-    color: $darkblue;
-    font-size: 2rem;
+  color: $darkblue;
+  font-size: 2rem;
 }

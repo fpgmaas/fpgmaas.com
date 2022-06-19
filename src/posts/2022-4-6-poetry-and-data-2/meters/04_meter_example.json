@@ -1,12 +1,26 @@
 {
-    "data": {
-        "text":
-        [["so","throw","off","the","chains","of","op","pres","sion","said","he"],
-        ["be","fair","ly","un","fet","terred"],
-        ["and","free","to","be","free"]],
-        "stressed":
-        [[0,1,0,0,1,0,0,1,0,0,1],
-        [0,1,0,0,1,0],
-        [0,1,0,0,1]]
-    }
+  "data": {
+    "text": [
+      [
+        "so",
+        "throw",
+        "off",
+        "the",
+        "chains",
+        "of",
+        "op",
+        "pres",
+        "sion",
+        "said",
+        "he"
+      ],
+      ["be", "fair", "ly", "un", "fet", "terred"],
+      ["and", "free", "to", "be", "free"]
+    ],
+    "stressed": [
+      [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+      [0, 1, 0, 0, 1, 0],
+      [0, 1, 0, 0, 1]
+    ]
+  }
 }

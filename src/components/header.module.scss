@@ -1,28 +1,28 @@
 .header {
-    padding: 1rem 0 2rem;
-    display: flex;
-    justify-content: flex-end;
+  padding: 1rem 0 2rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .nav-list {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
 }
 
 .nav-item {
-    color: $grey;
-    font-size: 1rem;
-    margin-right: 2rem;
-    text-decoration: none;
-    transition: all ease .5s;
+  color: $grey;
+  font-size: 1rem;
+  margin-right: 2rem;
+  text-decoration: none;
+  transition: all ease 0.5s;
 }
 
 .nav-item:hover {
-    color: $orange;
-    transition: all ease .5s;
+  color: $orange;
+  transition: all ease 0.5s;
 }
 
 .active-nav-item {
-    color: $darkblue !important;
+  color: $darkblue !important;
 }

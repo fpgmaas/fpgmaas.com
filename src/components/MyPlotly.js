@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
-import Loadable from 'react-loadable'
+import React, { Component } from "react"
+import Loadable from "react-loadable"
 
-import PropTypes from 'prop-types';
-import { faBorderNone } from '@fortawesome/free-solid-svg-icons';
-import FadeLoader from "react-spinners/FadeLoader";
+import PropTypes from "prop-types"
+import { faBorderNone } from "@fortawesome/free-solid-svg-icons"
+import FadeLoader from "react-spinners/FadeLoader"
 
-import * as plotlyStyles from './plotly.module.scss'
-
-
+import * as plotlyStyles from "./plotly.module.scss"
 
 const Plotly = Loadable({
   loader: () => import(`react-plotly.js`),
@@ -35,24 +33,30 @@ export const MyPlotly = ({ data, layout, style, config, ...rest }) => {
   let { width, margin, title, ...newlayout } = layout
 
   newlayout = {
-    ...newlayout, margin: {
+    ...newlayout,
+    margin: {
       l: 30,
       r: 30,
       b: 80,
       t: 20,
-    }
+    },
   }
 
   return (
     <div>
-      {title? <h3 className={plotlyStyles.plotTitle}> {title.text.replace('<br>',' ')} </h3> : null}
+      {title ? (
+        <h3 className={plotlyStyles.plotTitle}>
+          {" "}
+          {title.text.replace("<br>", " ")}{" "}
+        </h3>
+      ) : null}
       <Plotly
         data={data}
         layout={{
           ...newlayout,
-          paper_bgcolor: 'rgba(0,0,0,0)',
-          plot_bgcolor: 'rgba(0,0,0,0)',
-          autosize: true
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: "rgba(0,0,0,0)",
+          autosize: true,
         }}
         style={{ width: `100%`, ...style }}
         useResizeHandler
