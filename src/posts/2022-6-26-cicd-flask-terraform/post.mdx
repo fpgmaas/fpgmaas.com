@@ -1,0 +1,182 @@
+---
+date: "2022-06-26"
+title: "Deploying a Flask API to Google Cloud Run using Terraform - Part 2" 
+subtitle: "Adding deployment through CI/CD with GitHub Actions to our Cloud Run API"
+description: "In this tutorial we add deployment through CI/CD with GitHub Actions to the Cloud Run API that we built in the
+previous tutorial."
+author: "Florian Maas"
+reading_time: "15 minutes"
+slug: "deploying-a-flask-api-to-cloudrun-2"
+type: "post"
+featuredImage: "image.png"
+---
+
+TODO: 
+- add pagination
+- add filename codeblock!
+
+import TextBox from "../../components/TextBox.js"
+import { Link } from "gatsby"
+
+In the <Link to="/blog/deploying-a-flask-api-to-cloudrun">previous tutorial</Link>, we deployed a 
+Flask API to Google Cloud Run by creating two repositories. [One](https://github.com/fpgmaas/cloudrun-example-api/tree/blogpost1)
+with a Flask API and a Dockerfile, and [another](https://github.com/fpgmaas/cloudrun-example-infra/tree/blogpost1) with
+Terraform files to deploy our infrastructure to the Google Cloud Platform. At the end of the tutorial, we reduced the deployment
+of our API and our infrastructure to just a few simple commands that we could run locally. While that is already a great improvement
+over performing all the steps manually, it's not yet where we would want to be if we want to use this API in a production environment.
+To enable that, it's crucial that we use a **backend for Terraform** and so we are able to trigger our deployments through 
+**CI/CD pipelines**. In this tutorial, we will aim to cover these topics so we can use our API in production.
+
+## 1. Setting up the backend for Terraform
+
+Terraform must store state about your managed infrastructure and configuration. This state is used by 
+Terraform to map real world resources to your configuration, keep track of metadata, 
+and to improve performance for large infrastructures<sup>[[source](https://www.terraform.io/language/state)]</sup>. By default,
+this state is stored locally in the file `terraform.tfstate`. If we want to deploy our infrastructure through CI/CD
+we should use a [backend](https://www.terraform.io/language/state/backends) for Terraform, so our state is stored remotely. 
+
+There are multiple available backends for Terraform, a comprehensive list can be found in the sidebar of 
+[this page](https://www.terraform.io/language/settings/backends). Since we are using GCP, we will also use the gsc
+(Google Cloud Storage) backend.
+
+First, we need to create a bucket in Google Cloud Storage so we can store our state files there.
+This is a step that we only need to execute once when initiating the ptroject, so we could do this manually through the UI. 
+However, since w e might want to do this in multiple projects and to make our approach reproducible, we will also provision this
+bucket using Terraform.
+To do so, we start with the [repository](https://github.com/fpgmaas/cloudrun-example-infra) we created last time. Since we want
+to use this code only once per project while we want the rest of the Terraform code to run during every deployment, we will create 
+a new module. To do so, create a new directory called `backend` with the files `main.tf` an `variables.tf` respectively:
+
+`backend/main.tf`
+
+```json
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "4.25.0"
+    }
+  }
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+# Enable storage API
+resource "google_project_service" "storage" {
+  provider           = google
+  service            = "storage.googleapis.com"
+  disable_on_destroy = false
+}
+
+# This is used so there is some time for the activation of the API's to propagate through 
+# Google Cloud before actually calling them.
+resource "time_sleep" "wait_30_seconds" {
+  create_duration = "30s"
+  depends_on = [google_project_service.storage]
+}
+
+// Terraform plugin for creating random IDs
+resource "random_id" "instance_id" {
+  byte_length = 8
+}
+
+resource "google_storage_bucket" "default" {
+  name          = "bucket-tfstate-${random_id.instance_id.hex}"
+  force_destroy = false
+  location      = var.region
+  storage_class = "STANDARD"
+  versioning {
+    enabled = true
+  }
+  depends_on = [time_sleep.wait_30_seconds]
+}
+
+output "bucket_name" {
+  description = "Terraform backend bucket name"
+  value       = google_storage_bucket.default.name
+}
+```
+
+`backend/variables.tf`
+
+```json
+variable "project_id" {
+  description = "The name of the project"
+  type        = string
+  default     = "my-cloudrun-api"
+}
+
+variable "region" {
+  description = "The default compute region"
+  type        = string
+  default     = "europe-west4"
+}
+```
+
+With our knowledge of the previous tutorial, this is all pretty straightforward. The only resources that we have 
+not encountered before are the `random_id` and the `google_storage_bucket`. The `random_id` is used to create a 
+string of random characters to be appended to the name of our storage bucket, since the bucket names have to be globally unique.
+`google_storage_bucket` is used - not surprisingly - to create the storage bucket.
+
+## 2. Creating the backend
+
+To create the backend we have to run `terraform apply` again, this time using the [`chdir`](https://www.terraform.io/cli/commands#switching-working-directory-with-chdir)
+argument. This enables us to change the working directory for the Terraform commands that we run. We also need to use
+the service account key that we created in the <Link to="/blog/deploying-a-flask-api-to-cloudrun#5-deploying-our-cloud-infrastructure-with-terraform">previous tutorial</Link>
+again. There is a small change that we should make before we can do this though. Last time, we set the path to our service account 
+as a relative path in our `.env` file. However, since we are going to change the working directory for our `terraform apply`
+command this time, we should change this to an absolute path. So in my case, I change the `.env` file from 
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="infra_service_account.json"
+```
+
+to 
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/fpgmaas/git/cloudrun-example-infra/infra_service_account.json"
+```
+
+Now, we are ready to create our storage bucket:
+
+```bash
+source .env
+terraform -chdir=backend validate
+terraform -chdir=backend apply
+```
+
+Copy the name of your bucket
+to the clipboard, because we are going to need it later. 
+
+Now let's configure Terraform to actually use this backend.
+
+## 3. Configuring Terraform to use the backend
+
+First, we move the `main.tf` and `variables.tf` files we created earlier to a directory called `main` for consistency, 
+since we also created a directory called `backend`. Within this directory, we create a file called `backend.tf` with
+the following contents:
+
+```json
+terraform {
+  backend "gcs" {
+    bucket = "bucket-tfstate-f38f0b132659d977"
+    prefix = "terraform/state"
+  }
+}
+```
+
+Where we set `bucket` to the value that we copy-pasted from [Cloud Storage].
+
+
+```bash
+terraform -chdir=backend apply
+```
+
+go to google buckets, copy paste the bucket name.
+create backend.tf, add bucket name.
+then run
+
+terraform -chdir=main init
