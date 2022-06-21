@@ -140,8 +140,8 @@ COPY poetry.lock pyproject.toml /code/
 # Project initialization:
 RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi --no-root
 
-# Creating folders, and files for a project:
-COPY . /code
+# Copy our Flask app to the Docker image
+COPY app.py /code
 
 CMD gunicorn app:app -w 2 --threads 2 -b 0.0.0.0:${PORT}
 ```
@@ -159,7 +159,7 @@ CMD gunicorn app:app -w 2 --threads 2 -b 0.0.0.0:${PORT}
 ></TextBox>
 
 One thing to notice here is that we first copy the files `poetry.lock` and `pyproject.toml` and use them to install
-the environment, and that we only copy the rest of the files later. The reason for this is that we want to leverage the
+the environment, and that we only copy the rest of the files - `app.py` in this case - later. The reason for this is that we want to leverage the
 [build cache](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache).
 If we have built our image once, and later we make some changes to our API without making modifcations to the environment,
 for example by adding a `.py` file or by modifying `app.py`, there is no need to install the environment again.
