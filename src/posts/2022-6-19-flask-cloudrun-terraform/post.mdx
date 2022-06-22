@@ -557,8 +557,8 @@ Error: Error waiting to create Service: resource is in failed state "Ready:False
 ```
 
 This error is expected, since we configured our infrastructure to look for an image called `my-api` within `docker-repository`, but we have not created that yet.
-Luckily, if we navigate to [Artifact Registry](https://console.cloud.google.com/artifacts) in the UI, we find that our repository has been created,
-so we can now push our Docker image to the repository to finalize our set-up.
+The preceding steps have run succesfully however, so if we navigate to [Artifact Registry](https://console.cloud.google.com/artifacts) in the UI, 
+we find that our repository has been created. This means that we can now push our Docker image to the repository to finalize our set-up.
 
 ## 6. Pushing the Docker image to Artifact Registry on Google Cloud
 
