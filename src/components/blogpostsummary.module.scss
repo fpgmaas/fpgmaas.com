@@ -1,6 +1,6 @@
 .postContainer {
   margin: 1rem 0.5rem;
-  max-width: 1200px;
+  width: 100%;
 }
 
 .post {
@@ -42,7 +42,7 @@
   font-size: 1.2rem;
 }
 
-.subtitle {
+.description {
   color: $grey;
   font-size: 1rem;
   margin: 0.2rem 0 1rem 0;

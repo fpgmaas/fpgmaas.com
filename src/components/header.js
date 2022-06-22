@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import * as headerStyles from "./header.module.scss"
+import * as styles from "./header.module.scss"
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -15,11 +15,11 @@ const Header = () => {
 
   const nav_list = (
     <nav>
-      <ul className={headerStyles.navList}>
+      <ul className={styles.navList}>
         <li>
           <Link
-            className={headerStyles.navItem}
-            activeClassName={headerStyles.activeNavItem}
+            className={styles.navItem}
+            activeClassName={styles.activeNavItem}
             to="/"
           >
             Home
@@ -27,8 +27,8 @@ const Header = () => {
         </li>
         <li>
           <Link
-            className={headerStyles.navItem}
-            activeClassName={headerStyles.activeNavItem}
+            className={styles.navItem}
+            activeClassName={styles.activeNavItem}
             to="/projects"
           >
             Projects
@@ -36,8 +36,8 @@ const Header = () => {
         </li>
         <li>
           <Link
-            className={headerStyles.navItem}
-            activeClassName={headerStyles.activeNavItem}
+            className={styles.navItem}
+            activeClassName={styles.activeNavItem}
             to="/blog"
           >
             Blog
@@ -45,8 +45,8 @@ const Header = () => {
         </li>
         <li>
           <Link
-            className={headerStyles.navItem}
-            activeClassName={headerStyles.activeNavItem}
+            className={styles.navItem}
+            activeClassName={styles.activeNavItem}
             to="/cv"
           >
             CV
@@ -56,7 +56,7 @@ const Header = () => {
     </nav>
   )
 
-  return <header className={headerStyles.header}>{nav_list}</header>
+  return <header className={styles.header}>{nav_list}</header>
 }
 
 export default Header

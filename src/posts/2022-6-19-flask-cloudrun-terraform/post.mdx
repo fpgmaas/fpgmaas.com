@@ -99,7 +99,7 @@ Now that our API is running, we should see `Hello, World!` displayed if we visit
 
 As the warning tells us, we should not use the development server that Flask uses by default in production.
 Instead, we should use a WSGI server like [Gunicorn](https://gunicorn.org/). For more information on this subject, see e.g.
-[this page](https://flask.palletsprojects.com/en/2.1.x/deploying/) of the Flask documentation. To use Gunicorn, 
+[this page](https://flask.palletsprojects.com/en/2.1.x/deploying/) of the Flask documentation. To use Gunicorn,
 we have to add it to the environment first:
 
 ```bash
@@ -113,7 +113,6 @@ gunicorn app:app -b 0.0.0.0:5000
 ```
 
 Great, our API is working! If we want to deploy our API to Google Cloud Run, we will need to Dockerize it first.
-
 
 ## 2. Dockerizing our Flask app
 

@@ -1,15 +1,13 @@
 import React from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import * as blogStyles from "./blog-list.module.scss"
+import * as styles from "./blog-list.module.scss"
 import SEO from "../components/seo.js"
-import Img from "gatsby-image"
 
 import BlogPostSummary from "../components/blogPostSummary"
 
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { far } from "@fortawesome/free-regular-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 library.add(far)
 
@@ -30,8 +28,8 @@ class BlogList extends React.Component {
           description="An overview of my blog posts."
         />
         <Layout>
-          <div className={blogStyles.contentContainer}>
-            <div className={blogStyles.content}>
+          <div className={styles.contentContainer}>
+            <div className={styles.content}>
               {data.allMdx.edges.map(edge => {
                 return (
                   <BlogPostSummary
@@ -43,19 +41,32 @@ class BlogList extends React.Component {
                   />
                 )
               })}
+              <div className={styles.navigationContainer}>
+                <div className={styles.navigationContainerLeft}>
+                  {!isFirst && (
+                    <Link
+                      to={"/blog/" + prevPage}
+                      className={styles.navLink}
+                      rel="prev"
+                    >
+                      ← Previous Page
+                    </Link>
+                  )}
+                </div>
+                <div className={styles.navigationContainerRight}>
+                  {!isLast && (
+                    <Link
+                      to={"/blog/" + nextPage}
+                      className={styles.navLink}
+                      rel="next"
+                    >
+                      Next Page →
+                    </Link>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-
-          {!isFirst && (
-            <Link to={'/blog/' + prevPage} rel="prev">
-              ← Previous Page
-            </Link>
-          )}
-          {!isLast && (
-            <Link to={'/blog/' + nextPage} rel="next">
-              Next Page →
-            </Link>
-          )}
         </Layout>
       </>
     )

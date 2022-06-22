@@ -1,11 +1,9 @@
-import React, { Component } from "react"
+import React from "react"
 import Loadable from "react-loadable"
 
-import PropTypes from "prop-types"
-import { faBorderNone } from "@fortawesome/free-solid-svg-icons"
 import FadeLoader from "react-spinners/FadeLoader"
 
-import * as plotlyStyles from "./plotly.module.scss"
+import * as styles from "./plotly.module.scss"
 
 const Plotly = Loadable({
   loader: () => import(`react-plotly.js`),
@@ -13,7 +11,7 @@ const Plotly = Loadable({
     timedOut ? (
       <blockquote>Error: Loading Plotly timed out.</blockquote>
     ) : (
-      <div className={plotlyStyles.loadingDiv}>
+      <div className={styles.loadingDiv}>
         <p>Loading plot...</p>
         <FadeLoader color={"#004080"} size={50} />
       </div>
@@ -45,7 +43,7 @@ export const MyPlotly = ({ data, layout, style, config, ...rest }) => {
   return (
     <div>
       {title ? (
-        <h3 className={plotlyStyles.plotTitle}>
+        <h3 className={styles.plotTitle}>
           {" "}
           {title.text.replace("<br>", " ")}{" "}
         </h3>

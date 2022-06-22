@@ -20,7 +20,6 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.allMdx.edges
 
-
   // Create blog posts pages.
 
   const postTemplate = path.resolve("./src/templates/post.js")
@@ -34,12 +33,11 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  
   // Create blog post list pages
 
-  const postsPerPage = 2
-   // we only want to include posts with type 'post', since only they will be shown in the list of blogposts.
-  const posts_to_show = posts.filter(e => e.node.frontmatter.type === "post")   
+  const postsPerPage = 8
+  // we only want to include posts with type 'post', since only they will be shown in the list of blogposts.
+  const posts_to_show = posts.filter(e => e.node.frontmatter.type === "post")
   const numPages = Math.ceil(posts_to_show.length / postsPerPage)
   const blogListTemplate = path.resolve("./src/templates/blog-list.js")
   Array.from({ length: numPages }).forEach((_, i) => {

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
+import React, { useEffect } from "react"
 import Layout from "../components/layout"
-import * as projectStyles from "./projects.module.scss"
+import * as styles from "./projects.module.scss"
 import SEO from "../components/seo.js"
 
 import simpleHomepageImg from "../../static/projects/simple-homepage.png"
@@ -43,8 +42,8 @@ const IndexPage = () => {
         description="An overview of my most recent open-source projects."
       />
       <Layout>
-        <div className={projectStyles.contentContainer}>
-          <div className={projectStyles.content}>
+        <div className={styles.contentContainer}>
+          <div className={styles.content}>
             <Project
               url="https://fpgmaas.github.io/cookiecutter-poetry/"
               title="cookiecutter-poetry"
