@@ -1,0 +1,17 @@
+.content-container {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
