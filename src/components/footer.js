@@ -1,7 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import * as footerStyles from "./footer.module.scss"
-
+import * as styles from "./footer.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faLinkedin,
@@ -23,45 +22,36 @@ const Footer = () => {
   `)
 
   return (
-    <footer className={footerStyles.footer}>
-      <div className={footerStyles.footerContainer}>
-        <div className={footerStyles.footerLeft}>
-          <p className={footerStyles.text}>
+    <footer className={styles.footer}>
+      <div className={styles.footerContainer}>
+        <div className={styles.footerLeft}>
+          <p className={styles.text}>
             Created by {data.site.siteMetadata.author}, © 2022.
           </p>
         </div>
-        <div className={footerStyles.footerRight}>
-          <div className={footerStyles.iconsContainer}>
+        <div className={styles.footerRight}>
+          <div className={styles.iconsContainer}>
             <a href="https://www.linkedin.com/in/florianmaas/" target="blank">
-              <FontAwesomeIcon
-                icon={faLinkedin}
-                className={footerStyles.icon}
-              />
+              <FontAwesomeIcon icon={faLinkedin} className={styles.icon} />
             </a>
-            <div className={footerStyles.iconDivider}></div>
+            <div className={styles.iconDivider}></div>
             <a href="https://github.com/fpgmaas" target="blank">
-              <FontAwesomeIcon icon={faGithub} className={footerStyles.icon} />
+              <FontAwesomeIcon icon={faGithub} className={styles.icon} />
             </a>
-            <div className={footerStyles.iconDivider}></div>
+            <div className={styles.iconDivider}></div>
             <a
               href="https://stackoverflow.com/users/8037249/florian"
               target="blank"
             >
-              <FontAwesomeIcon
-                icon={faStackOverflow}
-                className={footerStyles.icon}
-              />
+              <FontAwesomeIcon icon={faStackOverflow} className={styles.icon} />
             </a>
-            <div className={footerStyles.iconDivider}></div>
+            <div className={styles.iconDivider}></div>
             <a href="https://twitter.com/fpgmaas" target="blank">
-              <FontAwesomeIcon icon={faTwitter} className={footerStyles.icon} />
+              <FontAwesomeIcon icon={faTwitter} className={styles.icon} />
             </a>
-            <div className={footerStyles.iconDivider}></div>
+            <div className={styles.iconDivider}></div>
             <a href="mailto:fpgmaas@gmail.com" target="blank">
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className={footerStyles.icon}
-              />
+              <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
             </a>
           </div>
         </div>
