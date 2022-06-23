@@ -5,7 +5,7 @@ import SEO from "../components/seo.js"
 
 import simpleHomepageImg from "../../static/projects/simple-homepage.png"
 import cookiecutterPoetryImg from "../../static/projects/cookiecutter.png"
-import Project from "../components/project"
+import Project from "../components/projects/project"
 
 // https://api.github.com/repos/fpgmaas/cookiecutter-poetry?page=$i&per_page=100
 
@@ -25,7 +25,7 @@ const IndexPage = () => {
   const getNumberOfStars = repository => {
     if (jsonData) {
       console.log(jsonData)
-      var stars = jsonData.filter(e => e.name == repository)[0][
+      var stars = jsonData.filter(e => e.name === repository)[0][
         "stargazers_count"
       ]
       return stars

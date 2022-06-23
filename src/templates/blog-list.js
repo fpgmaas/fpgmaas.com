@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import * as styles from "./blog-list.module.scss"
 import SEO from "../components/seo.js"
 
-import BlogPostSummary from "../components/blogPostSummary"
+import BlogPostSummary from "../components/blog-list/blogPostSummary"
 
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { far } from "@fortawesome/free-regular-svg-icons"

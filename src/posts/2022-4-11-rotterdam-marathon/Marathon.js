@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import Slider from "react-input-slider"
 import * as marathonStyles from "./marathon.module.scss"
 
 import BibComponent from "./BibComponent"
@@ -26,7 +25,7 @@ function Marathon() {
       return <p>Please enter a valid bib.</p>
     }
     var athlete = jsonData.find(e => {
-      return e.bib.toString().toUpperCase() == bib.toString().toUpperCase()
+      return e.bib.toString().toUpperCase() === bib.toString().toUpperCase()
     })
     if (athlete) {
       return <BibComponent athlete={athlete} data={jsonData}></BibComponent>
