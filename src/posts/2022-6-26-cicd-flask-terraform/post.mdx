@@ -1,7 +1,7 @@
 ---
 date: "2022-06-26"
 title: "Deploying a Flask API to Google Cloud Run using Terraform - Part 2" 
-subtitle: "Adding deployment through CI/CD with GitHub Actions to our Cloud Run API"
+subtitle: "Deploying a Flask API to Google Cloud Run using GitHub Actions"
 description: "In this tutorial we add deployment through CI/CD with GitHub Actions to the Cloud Run API that we built in the
 previous tutorial."
 author: "Florian Maas"
@@ -12,7 +12,7 @@ featuredImage: "image.png"
 ---
 
 
-import TextBox from "../../components/TextBox.js"
+import TextBox from "../../components/utils/TextBox.js"
 import { Link } from "gatsby"
 
 
@@ -21,9 +21,8 @@ Flask API to Google Cloud Run by creating two repositories. One with a Flask API
 Terraform files to deploy our infrastructure to the Google Cloud Platform. At the end of the tutorial, we reduced the deployment
 of our API and our infrastructure to just a few simple commands that we could run locally. While that is already a great improvement
 over performing all the steps manually, it's not yet where we would want to be if we were to use this API in a production environment.
-The two most important features that are missing are the use of a backend for Terraform and the ability to trigger deployments through 
-CI/CD pipelines. In this tutorial, we will aim to cover these topics so we can use our API in production.
-
+The two most important features that are missing are the use of a **backend for Terraform** and the ability to **trigger deployments through 
+CI/CD pipelines**. In this tutorial, we will aim to cover these topics.
 The source code for this tutorial can be found here:
 
 - [API](https://github.com/fpgmaas/cloudrun-example-api)
@@ -35,7 +34,7 @@ The source code for this tutorial can be found here:
     Although our starting point for this tutorial is the code from the previous tutorial,
     which you can find <a href ="https://github.com/fpgmaas/cloudrun-example-infra/tree/blogpost1" target = "_blank">here</a>
     &nbsp;and <a href ="https://github.com/fpgmaas/cloudrun-example-api/tree/blogpost1" target = "_blank">here</a>,
-    we will assume we have not deployed the infrastructure or API yet. If you have the infrastructure 
+    we will assume we have not deployed the infrastructure or the API yet. If you have the infrastructure 
     from the previous tutorial deployed, run <code>terraform destroy</code> before starting with this tutorial.
   </span>
 ></TextBox>
@@ -59,8 +58,8 @@ This is a step that we only need to execute once when initiating the project, so
 However, since we might want to do this in multiple projects and to make our approach reproducible, we will also provision this
 bucket using Terraform.
 To do so, we start with the [repository](https://github.com/fpgmaas/cloudrun-example-infra/tree/blogpost1) we created last time. Since we want
-to use this code only once per project while we want the rest of the Terraform code to run during every deployment, we will create 
-a new module. To do so, create a new directory called `backend` with the files `main.tf` and `variables.tf`:
+to use this code only once per project while we want the rest of the Terraform code to run during every deployment, we 
+create a new directory called `backend` with the files `main.tf` and `variables.tf`:
 
 `backend/main.tf`
 
@@ -195,7 +194,6 @@ Where we set `bucket` to the value that we copy-pasted when we created the backe
 │   ├── backend.tf
 │   ├── main.tf
 │   └── variables.tf
-├── README.md
 └── infra_service_account.json
 ```
 
@@ -203,7 +201,8 @@ Where we set `bucket` to the value that we copy-pasted when we created the backe
 ## 4. Deploying the initial infrastructure
 
 When we attempted to deploy the infrastructure for the first time with `terraform apply` in the previous tutorial, we got an 
-error that the Docker image required to deploy the front-end could not be found. Although this is not a problem, it also does not feel very clean
+error that the Docker image required to deploy the front-end could not be found. This was expected, since we needed to ceate the
+repository before we could push our Docker image to the cloud. Although this did not create any problems, it also does not feel very clean
 to expect an error when running our code. Instead, we are going to add a variable to `main/variables.tf`, indicating if we are deploying our 
 infrastructure for the first time:
 
@@ -215,9 +214,9 @@ variable "first_time" {
 }
 ```
 
-We can use this argument to only deploy a subset of our infratructure when we deploy it for the first time.
+We can use this argument to only deploy a subset of our infrastructure when we deploy it for the first time.
 If `first_time` is `true`, we want Terraform to deploy all infrastructure except the Cloud Run instance. If `first_time`
-is set to `false`, we want to deploy all infrastructure *including* the Cloud Run instance. To do so, we can add a `count` argument 
+is set to `false`, we want Terraform to deploy all infrastructure *including* the Cloud Run instance. To do so, we can add a `count` argument 
 with a conditional expression. The `count` argument specifies the number of resources that should be created within a block. In our case, we
 want to set that to `1` or `0`, dependent on the value of `first_time`. A conditional expression in Terraform has the following syntax:
 
@@ -251,7 +250,7 @@ service  = google_cloud_run_service.api_test[0].name
 ```
 
 Lastly, we also have to make the output conditional, since there is no URL for the API to return if we do not create the API.
-To do so, we replace out output statement with
+To do so, we replace our output statement with
 
 ```json
 output "cloud_run_instance_url" {
