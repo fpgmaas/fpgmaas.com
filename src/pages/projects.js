@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
+import React, { useEffect } from "react"
 import Layout from "../components/layout"
-import * as projectStyles from "./projects.module.scss"
+import * as styles from "./projects.module.scss"
 import SEO from "../components/seo.js"
 
 import simpleHomepageImg from "../../static/projects/simple-homepage.png"
 import cookiecutterPoetryImg from "../../static/projects/cookiecutter.png"
-import Project from "../components/project"
+import Project from "../components/projects/project"
 
 // https://api.github.com/repos/fpgmaas/cookiecutter-poetry?page=$i&per_page=100
 
@@ -26,7 +25,7 @@ const IndexPage = () => {
   const getNumberOfStars = repository => {
     if (jsonData) {
       console.log(jsonData)
-      var stars = jsonData.filter(e => e.name == repository)[0][
+      var stars = jsonData.filter(e => e.name === repository)[0][
         "stargazers_count"
       ]
       return stars
@@ -43,8 +42,8 @@ const IndexPage = () => {
         description="An overview of my most recent open-source projects."
       />
       <Layout>
-        <div className={projectStyles.contentContainer}>
-          <div className={projectStyles.content}>
+        <div className={styles.contentContainer}>
+          <div className={styles.content}>
             <Project
               url="https://fpgmaas.github.io/cookiecutter-poetry/"
               title="cookiecutter-poetry"

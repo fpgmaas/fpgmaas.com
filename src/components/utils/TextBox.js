@@ -1,17 +1,15 @@
-import React, { Component } from "react"
-
-import * as textBoxStyles from "./textbox.module.scss"
-
+import React from "react"
+import * as styles from "./textbox.module.scss"
 import Emoji from "./Emoji"
 
 const format = {
   warn: {
     emoji: <Emoji symbol="⚠️" />,
-    style: textBoxStyles.warningBox,
+    style: styles.warningBox,
   },
   info: {
     emoji: <Emoji symbol="ℹ️" />,
-    style: textBoxStyles.infoBox,
+    style: styles.infoBox,
   },
 }
 
@@ -24,7 +22,7 @@ const format = {
  */
 const TextBox = ({ type, text }) => {
   return (
-    <div className={[textBoxStyles.container, format[type].style].join(" ")}>
+    <div className={[styles.container, format[type].style].join(" ")}>
       <span>
         {format[type].emoji}
         &nbsp;

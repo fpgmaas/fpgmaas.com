@@ -1,5 +1,5 @@
 import React from "react"
-import { MyPlotly } from "../../components/MyPlotly"
+import { MyPlotly } from "../../components/utils/MyPlotly"
 import * as d3 from "d3"
 import {
   get_athlete_pace,
@@ -32,7 +32,7 @@ const PaceHistogram = ({ athlete, data, title, category_filter }) => {
   var x_max = Math.max(...paces) + 0.5
   if (category_filter) {
     paces = data
-      .filter(e => e.category == athlete.category)
+      .filter(e => e.category === athlete.category)
       .map(e => get_athlete_pace(e))
   }
 
