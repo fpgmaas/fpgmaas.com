@@ -28,7 +28,7 @@ const IndexPage = () => {
                   The Hague, the Netherlands.
                   <br />
                   <br />
-                  I enjoy working with Python, writing clean code, and getting
+                  I enjoy working with a variety of programming languages, writing clean code, and getting
                   in over my head while trying to build things with web
                   frameworks that I lack the required experience in.
                   <br />
