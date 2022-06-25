@@ -17,14 +17,18 @@
 .top-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   margin: 2rem;
   width: 100%;
+  flex-wrap:wrap;
 }
 
 .image-container {
-  width: 45%;
+  width: 80%;
+  min-width: 350px;
+  max-width: 450px;
+  margin: 1rem;
 }
 
 .image {
@@ -37,41 +41,41 @@
 .typewriter-container {
   padding: 1rem;
   width: 500px;
-}
-
-.typewriter {
-  display: inline;
-  white-space: pre;
+  min-width: 500px;
 }
 
 .typewriter-text {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.text-container {
-  width: 40%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
+}
+
+.typewriter-text p,li,span{
+  font-size: 1.6rem;
+  margin :0;
+}
+
+.skills {
+  display: flex;
+  flex-direction: row;
   align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
-.title {
-  margin: 0 0 1rem 0;
+.skill {
+margin: 0 .5rem;
 }
 
-.text {
-  color: $grey;
+@media screen and (max-width: 600px) {
+  .typewriter-text p,li,span{
+    font-size: 1.3rem;
+  }
+  .typewriter-container {
+    width: 350px;
+    min-width: 300px;
+  }
+
+  .image-container {
+    min-width: 300px;
+  }
 }
