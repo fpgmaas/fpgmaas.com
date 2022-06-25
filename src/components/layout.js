@@ -14,7 +14,9 @@ const Layout = props => {
     <MDXProvider components={shortcodes}>
       <div className={styles.page}>
         <Header />
-        {props.children}
+        <div className={"fade-in"}>
+          {props.children}
+        </div>
         <Footer />
       </div>
     </MDXProvider>
