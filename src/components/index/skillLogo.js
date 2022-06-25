@@ -2,7 +2,8 @@ import React from "react"
 import * as styles from "./skillLogo.module.scss"
 
 
-const SkillLogo = ({ name, logo }) => {
+const SkillLogo = ({ name, logo, color }) => {
+
   return (
     <div className={styles.skillContainer}>
     <div className={styles.logoContainer}>

@@ -75,40 +75,8 @@ const IndexPage = () => {
                   </a>
                   .
                 </p>
-
-                <h3> Thing I like to work with</h3>
-                <br></br>
-                <div className={styles.skills}>
-                <div className={styles.skill}>
-                  <SkillLogo name="Python" logo={PythonLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="Terraform" logo={TerraformLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="GCP" logo={GcpLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="AWS" logo={AwsLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="Docker" logo={DockerLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="Spark" logo={SparkLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="Javascript" logo={JavascriptLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="Gatsby" logo={GatsbyLogo} />
-                </div>
-                <div className={styles.skill}>
-                  <SkillLogo name="Plotly" logo={PlotlyLogo} />
-                </div>
               </div>
-              </div>
-            </div>
+            </div>           
           </div>
         </div>
       </Layout>

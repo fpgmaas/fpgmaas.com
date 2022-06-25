@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   margin: 2rem;
   width: 100%;
   flex-wrap:wrap;
@@ -52,6 +52,12 @@
 .typewriter-text p,li,span{
   font-size: 1.6rem;
   margin :0;
+}
+
+.skills-section {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .skills {
