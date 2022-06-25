@@ -1,8 +1,11 @@
 import Layout from "../components/layout"
 import * as styles from "./about.module.scss"
 import SEO from "../components/seo.js"
-import React, { useRef, useEffect } from "react"
+import React from "react"
 import SkillLogo from "../components/index/skillLogo"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faFileLines } from "@fortawesome/free-regular-svg-icons"
 
 import PythonLogo from "../../static/logos/python.svg"
 import DockerLogo from "../../static/logos/docker.svg"
@@ -20,25 +23,26 @@ const AboutPage = () => {
       <SEO title="About" url="about" description="About me." />
       <Layout>
         <div className={styles.contentContainer}>
-          <div className = {styles.textContainer}>
+          <div className={styles.textContainer}>
             <h1>About me</h1>
-          <p>
-            Hi, I'm Florian, a data scientist/engineer  living in The Hague, the Netherlands. 
-            I graduated in Econometrics with a specialization in Quantiative Logistics & Operations Research from 
-            Erasumus University in 2014. Since then I have worked in a variety of positions, working with a variety of technologies.
-            Currently, I am working at IKEA, where I aim to develop and deploy models from the field of Operations Research in order to optimize
-            the in-store logistics.
+            <p>
+              Hi, I'm Florian, a data scientist/engineer living in The Hague,
+              the Netherlands. I graduated in Econometrics with a specialization
+              in Quantiative Logistics & Operations Research from Erasumus
+              University in 2014. Since then I have worked in a variety of
+              positions, working with a variety of technologies. Currently, I am
+              working at IKEA, where I aim to develop and deploy models from the
+              field of Operations Research in order to optimize the in-store
+              logistics.
             </p>
             <p>
-              I enjoy experimenting with new tchnologies
-            I get energy from ...
-            intrinsically motivated
-
+              I enjoy experimenting with new tchnologies, I get energy from
+              ...,intrinsically motivated
             </p>
-
           </div>
+
           <div className={styles.skills}>
-            <h3> Things I like to work with</h3>
+            <h3> Things I enjoy working with</h3>
             <br></br>
             <div className={styles.skills}>
               <div className={styles.skill}>
@@ -70,6 +74,14 @@ const AboutPage = () => {
               </div>
             </div>
           </div>
+
+          <a href={`CV_Florian_Maas.pdf`} download class={styles.downloadContainer}>
+              <div class={styles.iconContainer}>
+                <FontAwesomeIcon icon={faFileLines} />
+              </div>
+              <p>Download CV</p>
+          </a>
+
         </div>
       </Layout>
     </>
