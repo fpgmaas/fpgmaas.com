@@ -29,21 +29,22 @@ const AboutPage = () => {
               Hi, I'm Florian, a data scientist/engineer living in The Hague,
               the Netherlands. I graduated in Econometrics with a specialization
               in Quantiative Logistics & Operations Research from Erasumus
-              University in 2014. Since then I have worked in a variety of
-              positions, working with a variety of technologies. Currently, I am
-              working at IKEA, where I aim to develop and deploy models from the
-              field of Operations Research in order to optimize the in-store
-              logistics.
+              University in 2014. Since then, I have worked in a variety of
+              positions where I have mostly been involved with developing
+              machine learning- and operations research models and deploying
+              them to production.
             </p>
             <p>
-              I enjoy experimenting with new tchnologies, I get energy from
-              ...,intrinsically motivated
+              I enjoy experimenting with new technologies, writing 'clean' code
+            </p>
+            <p>
+              I aspire to make the world a slightly better place with the
+              solutions I create, although I am still searching for the best ways to do so.
             </p>
           </div>
 
           <div className={styles.skills}>
-            <h3> Things I enjoy working with</h3>
-            <br></br>
+            <h3 className> Things I enjoy working with</h3>
             <div className={styles.skills}>
               <div className={styles.skill}>
                 <SkillLogo name="Python" logo={PythonLogo} color="darkblue" />
@@ -75,13 +76,16 @@ const AboutPage = () => {
             </div>
           </div>
 
-          <a href={`CV_Florian_Maas.pdf`} download class={styles.downloadContainer}>
-              <div class={styles.iconContainer}>
-                <FontAwesomeIcon icon={faFileLines} />
-              </div>
-              <p>Download CV</p>
+          <a
+            href={`CV_Florian_Maas.pdf`}
+            download
+            class={styles.downloadContainer}
+          >
+            <div class={styles.iconContainer}>
+              <FontAwesomeIcon icon={faFileLines} />
+            </div>
+            <p>Download CV</p>
           </a>
-
         </div>
       </Layout>
     </>
