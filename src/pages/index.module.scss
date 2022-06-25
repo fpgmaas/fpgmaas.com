@@ -54,23 +54,6 @@
   margin :0;
 }
 
-.skills-section {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.skills {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.skill {
-margin: 0 .5rem;
-}
 
 @media screen and (max-width: 600px) {
   .typewriter-text p,li,span{

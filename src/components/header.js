@@ -37,9 +37,9 @@ const Header = () => {
           <Link
             className={styles.navItem}
             activeClassName={styles.activeNavItem}
-            to="/cv"
+            to="/about"
           >
-            CV
+            About
           </Link>
         </li>
       </ul>
