@@ -18,11 +18,11 @@ import { Link } from "gatsby"
 
 In the <Link to="/blog/deploying-a-flask-api-to-cloudrun">previous tutorial</Link>, we deployed a 
 Flask API to Google Cloud Run by creating two repositories. One with a Flask API and a Dockerfile, and another with
-Terraform files to deploy our infrastructure to the Google Cloud Platform. At the end of the tutorial, we reduced the deployment
+Terraform files to deploy our infrastructure to GCP. At the end of the tutorial, we reduced the deployment
 of our API and our infrastructure to just a few simple commands that we could run locally. While that is already a great improvement
 over performing all the steps manually, it's not yet where we would want to be if we were to use this API in a production environment.
 The two most important features that are missing are the use of a **backend for Terraform** and the ability to **trigger deployments through 
-CI/CD pipelines**. In this tutorial, we will aim to cover these topics.
+CI/CD**. In this tutorial, we will aim to cover these topics.
 The source code for this tutorial can be found here:
 
 - [API](https://github.com/fpgmaas/cloudrun-example-api)
@@ -45,8 +45,8 @@ The source code for this tutorial can be found here:
 
 Terraform must store state about your managed infrastructure and configuration. This state is used by 
 Terraform to map real world resources to your configuration, keep track of metadata, 
-and to improve performance for large infrastructures<sup>[[source](https://www.terraform.io/language/state)]</sup>. By default,
-this state is stored locally in the file `terraform.tfstate`. If we want to deploy our infrastructure through CI/CD
+and to improve performance for large infrastructures. By default,
+this state is stored locally in the file `terraform.tfstate`. However, if we want to deploy our infrastructure through CI/CD
 we should use a [backend](https://www.terraform.io/language/state/backends) for Terraform, so our state is stored remotely. 
 
 There are multiple available backends for Terraform. A comprehensive list can be found in the sidebar of 
@@ -335,10 +335,10 @@ Let's take a closer look at this file. The first section specifies that we want 
 on every release from the `main` branch. Releases are a great feature on GitHub that work with git `tags`, you can find
 more information about it [here](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
-Next, we set checkout our code and set up poetry. For setting up poetry, we see that another file in our repository is required. 
+Next, we checkout our code and set up poetry. For setting up poetry, we see that another file in our repository is required. 
 Create a new file `.github/workflows/setup-poetry-env/action.yml` and simply copy-paste the contents from 
-[this file on GitHub](.github/workflows/setup-poetry-env/action.yml). For the scope of this tutorial, it suffices to know that this sets up
-your Poetry environment, so we will not elaborate on the contents of this file.
+[this file on GitHub](https://github.com/fpgmaas/cloudrun-example-api/blob/main/.github/workflows/setup-poetry-env/action.yml). 
+For the scope of this tutorial, it suffices to know that this sets up your Poetry environment, so we will not elaborate on the contents of this file.
 
 In the next step, we use the [auth action](https://github.com/google-github-actions/auth) from google-github-actions
 to authenticate our Google Cloud connection. This requires us to set `DOCKER_PUSHER_SERVICE_ACCOUNT_KEY` as a 
@@ -435,7 +435,7 @@ service account key to the repository. To do so, simply copy and paste the conte
  `GOOGLE_CREDENTIALS` in our repository, similar to how we did that for pushing our Docker images through GitHub Actions.
 
 Optionally, also add a file called `on-pull-request.yml` to the workflows directory. The file is relatively long, so instead of 
-showing the contents of that file on this page, you can find them [here](https://github.com/fpgmaas/cloudrun-example-infra/blob/main/.github/workflows/on-pull-request.yml).
+showing the contents of that file on this page, you can find it [here](https://github.com/fpgmaas/cloudrun-example-infra/blob/main/.github/workflows/on-pull-request.yml).
 This workflow will run on every pull request, and it will automatically run the `fmt`, `validate`, and `apply` steps with the proposed changes.
 It will then add the output of these steps in a comment to the Pull Request, so the proposed changes can easily be evaluated:
 
