@@ -5,18 +5,8 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import React, { useRef, useEffect } from "react"
 import Typed from "typed.js"
-import SkillLogo from "../components/index/skillLogo"
 
 import FrontImg from "../../static/florian.jpg"
-import PythonLogo from "../../static/logos/python.svg"
-import DockerLogo from "../../static/logos/docker.svg"
-import AwsLogo from "../../static/logos/aws.svg"
-import GcpLogo from "../../static/logos/gcp.svg"
-import GatsbyLogo from "../../static/logos/gatsby.svg"
-import JavascriptLogo from "../../static/logos/javascript.svg"
-import PlotlyLogo from "../../static/logos/plotly.svg"
-import TerraformLogo from "../../static/logos/terraform.svg"
-import SparkLogo from "../../static/logos/spark.svg"
 
 library.add(fab)
 
@@ -60,11 +50,10 @@ const IndexPage = () => {
                 </div>
                 <br></br>
                 <p>
-                  I enjoy working with Python, writing clean code, and getting
-                  in over my head while trying to build things with web
-                  frameworks that I lack the required experience in.
-                  <p></p>
-                  This website is the result of one of these situations. The
+                  I'm passionate about data, algorithms, computer science and the intersection of those fields.
+                  </p><p>
+                  I also enjoy experimenting with web frameworks and libraries such as Gatsby and React.
+                  This website is the result of one of those experiments. The
                   source code for this website is available on{" "}
                   <a
                     href="https://github.com/fpgmaas/fpgmaas.com"
