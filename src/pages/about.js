@@ -20,9 +20,25 @@ const AboutPage = () => {
       <SEO title="About" url="about" description="About me." />
       <Layout>
         <div className={styles.contentContainer}>
-          <h1>About me</h1>
+          <div className = {styles.textContainer}>
+            <h1>About me</h1>
+          <p>
+            Hi, I'm Florian, a data scientist/engineer  living in The Hague, the Netherlands. 
+            I graduated in Econometrics with a specialization in Quantiative Logistics & Operations Research from 
+            Erasumus University in 2014. Since then I have worked in a variety of positions, working with a variety of technologies.
+            Currently, I am working at IKEA, where I aim to develop and deploy models from the field of Operations Research in order to optimize
+            the in-store logistics.
+            </p>
+            <p>
+              I enjoy experimenting with new tchnologies
+            I get energy from ...
+            intrinsically motivated
+
+            </p>
+
+          </div>
           <div className={styles.skills}>
-            <h3> Thing I like to work with</h3>
+            <h3> Things I like to work with</h3>
             <br></br>
             <div className={styles.skills}>
               <div className={styles.skill}>
