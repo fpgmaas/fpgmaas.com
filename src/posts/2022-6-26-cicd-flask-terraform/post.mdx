@@ -18,7 +18,7 @@ import { Link } from "gatsby"
 
 In the <Link to="/blog/deploying-a-flask-api-to-cloudrun">previous tutorial</Link>, we deployed a 
 Flask API to Google Cloud Run by creating two repositories. One with a Flask API and a Dockerfile, and another with
-Terraform files to deploy our infrastructure to GCP. At the end of the tutorial, we reduced the deployment
+Terraform files to provision our infrastructure to GCP. At the end of the tutorial, we reduced the deployment
 of our API and our infrastructure to just a few simple commands that we could run locally. While that is already a great improvement
 over performing all the steps manually, it's not yet where we would want to be if we were to use this API in a production environment.
 The two most important features that are missing are the use of a **backend for Terraform** and the ability to **trigger deployments through 
@@ -34,8 +34,8 @@ The source code for this tutorial can be found here:
     Although our starting point for this tutorial is the code from the previous tutorial,
     which you can find <a href ="https://github.com/fpgmaas/cloudrun-example-infra/tree/blogpost1" target = "_blank">here</a>
     &nbsp;and <a href ="https://github.com/fpgmaas/cloudrun-example-api/tree/blogpost1" target = "_blank">here</a>,
-    we will assume we have not deployed the infrastructure or the API yet. If you have the infrastructure 
-    from the previous tutorial deployed, run <code>terraform destroy</code> before starting with this tutorial.
+    we will assume we have not provisioned the infrastructure or the API yet. If you have the infrastructure 
+    from the previous tutorial still deployed, run <code>terraform destroy</code> before starting with this tutorial.
   </span>
 ></TextBox>
 
@@ -46,7 +46,7 @@ The source code for this tutorial can be found here:
 Terraform must store state about your managed infrastructure and configuration. This state is used by 
 Terraform to map real world resources to your configuration, keep track of metadata, 
 and to improve performance for large infrastructures. By default,
-this state is stored locally in the file `terraform.tfstate`. However, if we want to deploy our infrastructure through CI/CD
+this state is stored locally in the file `terraform.tfstate`. However, if we want to provision our infrastructure through CI/CD
 we should use a [backend](https://www.terraform.io/language/state/backends) for Terraform, so our state is stored remotely. 
 
 There are multiple available backends for Terraform. A comprehensive list can be found in the sidebar of 
@@ -55,7 +55,7 @@ There are multiple available backends for Terraform. A comprehensive list can be
 
 First, we need to create a bucket in Google Cloud Storage so we can store our state files there.
 This is a step that we only need to execute once when initiating the project, so we could do this manually through the UI. 
-However, since we might want to do this in multiple projects and to make our approach reproducible, we will also provision this
+However, since we might want to do this in multiple projects and to make our approach reproducible, we will also create this
 bucket using Terraform.
 To do so, we start with the [repository](https://github.com/fpgmaas/cloudrun-example-infra/tree/blogpost1) we created last time. Since we want
 to use this code only once per project while we want the rest of the Terraform code to run during every deployment, we 
@@ -198,12 +198,12 @@ Where we set `bucket` to the value that we copy-pasted when we created the backe
 ```
 
 
-## 4. Deploying the initial infrastructure
+## 4. Provisioning the initial infrastructure
 
-When we attempted to deploy the infrastructure for the first time with `terraform apply` in the previous tutorial, we got an 
-error that the Docker image required to deploy the front-end could not be found. This was expected, since we needed to ceate the
+When we attempted to provision the infrastructure for the first time with `terraform apply` in the previous tutorial, we got an 
+error that the Docker image required to create the Cloud Run instance could not be found. This was expected, since we needed to ceate the
 repository before we could push our Docker image to the cloud. Although this did not create any problems, it also does not feel very clean
-to expect an error when running our code. Instead, we are going to add a variable to `main/variables.tf`, indicating if we are deploying our 
+to expect an error when running our code. Instead, we are going to add a variable to `main/variables.tf`, indicating if we are provisioning our 
 infrastructure for the first time:
 
 ```json
@@ -214,9 +214,9 @@ variable "first_time" {
 }
 ```
 
-We can use this argument to only deploy a subset of our infrastructure when we deploy it for the first time.
-If `first_time` is `true`, we want Terraform to deploy all infrastructure except the Cloud Run instance. If `first_time`
-is set to `false`, we want Terraform to deploy all infrastructure *including* the Cloud Run instance. To do so, we can add a `count` argument 
+We can use this argument to only create a subset of our infrastructure when we provision it for the first time.
+If `first_time` is `true`, we want Terraform to create all infrastructure except the Cloud Run instance. If `first_time`
+is set to `false`, we want Terraform to create all infrastructure *including* the Cloud Run instance. To do so, we can add a `count` argument 
 with a conditional expression. The `count` argument specifies the number of resources that should be created within a block. In our case, we
 want to set that to `1` or `0`, dependent on the value of `first_time`. A conditional expression in Terraform has the following syntax:
 
@@ -260,7 +260,7 @@ output "cloud_run_instance_url" {
 
 This returns `null` if `first_time` is `true`, and it returns the URL of the deployed API otherwise.
 
-Assuming we already have sourced our `.env` file, we can now run the following commands to deploy our initial infrastructure.
+Assuming we already have sourced our `.env` file, we can now run the following commands to create our initial infrastructure.
 
 ```bash
 terraform -chdir=main init
@@ -362,7 +362,7 @@ our Docker image along with the tag we used for our release:
 
 ![Our Docker image in the Artifact Registry](./images/artifact-registry.png)
 
-# 6. Deploying our infrastructure with GitHub Actions
+# 6. Provisioning our infrastructure with GitHub Actions
 
 As a recap, here's a list of what we have already achieved during this tutorial:
 
@@ -371,7 +371,7 @@ As a recap, here's a list of what we have already achieved during this tutorial:
 - Initiated our Terraform infrastructure
 - Deployed our Docker image to Artifact Registry through GitHub Actions.
 
-All that's left for us to do now is to deploy the Terraform infrastructure *including* the Cloud Run instance through GitHub Actions. To do so,
+All that's left for us to do now is to provision the Terraform infrastructure *including* the Cloud Run instance through GitHub Actions. To do so,
 we add a file `.github/workflows/on-release-main.yml` with the following contents:
 
 ```yaml
