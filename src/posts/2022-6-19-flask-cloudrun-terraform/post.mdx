@@ -14,7 +14,7 @@ featuredImage: "image.png"
 
 import TextBox from "../../components/utils/TextBox.js"
 
-When deploying an API (or any other product) to the cloud, it's recommended to deploy your infrastructure using
+When deploying an API (or any other product) to the cloud, it's recommended to provision your infrastructure using
 an Infrastructure-as-Code (IaC) tool. There are many advantages of using IaC over manually configuring your cloud environment,
 such as simple reproducibility and the ability to keep multiple staging environments consistent with each other.
 A commonly used IaC tool is [Terraform](https://www.terraform.io/). In this tutorial, we will use Terraform to deploy a
@@ -215,7 +215,7 @@ Then, navigate to `IAM & Admin > IAM` <sup>([link](https://console.cloud.google.
 - Project IAM Admin
 - Service Usage Admin
 
-Alright! Now that we have created a service account with the permissions to deploy our infrastructure, it's time to actually define our infrastructure.
+Alright! Now that we have created a service account with the permissions to provision our infrastructure, it's time to actually define our infrastructure.
 
 ## 4. Building our cloud infrastructure with Terraform
 
@@ -489,11 +489,11 @@ variable "docker_image" {
 }
 ```
 
-Now that we have created our Terraform script, we can start deploying it to the cloud.
+Now that we have created our Terraform script, we can start using it to provision our infrastructure.
 
-## 5. Deploying our cloud infrastructure with Terraform
+## 5. Provisioning our cloud infrastructure with Terraform
 
-Earlier, we created a service account that has the right permissions to deploy our infrastrcture. Within the Google Cloud Platform,
+Earlier, we created a service account that has the right permissions to provision our infrastrcture. Within the Google Cloud Platform,
 navigate back to `IAM & Admin > Service Accounts` <sup>([link](https://console.cloud.google.com/iam-admin/serviceaccounts))</sup>, and click the
 three dots in the `Actions` column for your service account. Select `Manage Keys`, and then `Add Key > New Key`.
 Choose `JSON` as the `Key Type`, and this should trigger the download of a file to your local machine.
@@ -505,7 +505,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="infra_service_account.json"
 ```
 
 It is also possible to hard-code the path to the service account into your `main.tf` file, but I prefer the approach
-of using enviornment variables since it's easier to modify our configuration when we want to deploy our infrastructure through CI/CD later.
+of using enviornment variables since it's easier to modify our configuration when we want to provision our infrastructure through CI/CD later.
 
 <TextBox
   type="warn"
@@ -524,7 +524,7 @@ of using enviornment variables since it's easier to modify our configuration whe
   </span>
 ></TextBox>
 
-Before we deploy our infrastructure, let's see if our configuration does not contain any mistakes. First,
+Before we create our infrastructure, let's see if our configuration does not contain any mistakes. First,
 we initialize our directory with
 
 ```bash
@@ -543,7 +543,7 @@ which outputs:
 Success! The configuration is valid.
 ```
 
-Great! This means we can now deploy our infrastructure:
+Great! This means we can now create our infrastructure:
 
 ```bash
 source .env && terraform apply
