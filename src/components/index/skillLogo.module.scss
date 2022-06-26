@@ -1,0 +1,32 @@
+.logo-container {
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: ease all .3s;
+  }
+ 
+.logo-container:hover{
+transform: scale(.90);
+} 
+
+.logo {
+width: 100%;
+}
+
+.text {
+    margin-top: .2rem;
+    font-size: .8rem;
+    color: $grey;
+}
+
+.skill-container {
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+width: 65px;
+}

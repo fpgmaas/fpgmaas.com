@@ -1,11 +1,12 @@
 .footer {
-  padding: 2rem 1rem 0rem 1rem;
+  padding: 2rem 1rem 0.5rem 1rem;
 }
 
 .footer-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer-left {
@@ -24,9 +25,15 @@
   color: $grey;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 600px) {
   .text {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-container{
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }
 
