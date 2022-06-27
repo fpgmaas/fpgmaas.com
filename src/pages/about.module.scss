@@ -31,31 +31,3 @@
 .skill {
 margin: 0 .5rem;
 }
-
-.download-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 4.5rem;
-  text-decoration: none;
-  padding: 1rem;
-  background-color: $superlightblue;
-  border-radius: 20px;
-}
-
-.download-container:hover .icon-container {
-  transform: scale(.85);
-}
-
-.download-container > p {
-  margin-top: 0.25rem;
-  font-size: .9rem;
-  color: $grey;
-}
-
-.icon-container {
-  color: $darkblue;
-  font-size: 2rem;
-  transition: all ease 0.5s;
-}

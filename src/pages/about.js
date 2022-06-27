@@ -83,16 +83,6 @@ const AboutPage = () => {
             </div>
           </div>
 
-          <a
-            href={`CV_Florian_Maas.pdf`}
-            download
-            class={styles.downloadContainer}
-          >
-            <div class={styles.iconContainer}>
-              <FontAwesomeIcon icon={faFileLines} />
-            </div>
-            <p>Download CV</p>
-          </a>
         </div>
       </Layout>
     </>

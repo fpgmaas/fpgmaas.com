@@ -26,3 +26,11 @@
 .active-nav-item {
   color: $darkblue !important;
 }
+
+
+@media screen and (max-width: 600px) {
+  .nav-item {
+    font-size: .9rem;
+    margin-right: 1.5rem;
+  }
+}
