@@ -35,7 +35,6 @@ const IndexPage = () => {
       <SEO />
       <Layout>
         <div className={styles.contentContainer}>
-          <div className={styles.content}>
             <div className={styles.topContent}>
               <div className={styles.imageContainer}>
                 <img src={FrontImg} alt="Florian" className={styles.image} />
@@ -67,7 +66,6 @@ const IndexPage = () => {
               </div>
             </div>           
           </div>
-        </div>
       </Layout>
     </>
   )

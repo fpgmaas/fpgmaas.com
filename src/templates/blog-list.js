@@ -29,7 +29,6 @@ class BlogList extends React.Component {
         />
         <Layout>
           <div className={styles.contentContainer}>
-            <div className={styles.content}>
               {data.allMdx.edges.map(edge => {
                 return (
                   <BlogPostSummary
@@ -66,7 +65,6 @@ class BlogList extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
         </Layout>
       </>
     )
