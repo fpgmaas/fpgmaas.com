@@ -28,23 +28,30 @@ const AboutPage = () => {
             <p>
               Hi, I'm Florian, a data scientist/engineer living in The Hague,
               the Netherlands. I graduated in Econometrics with a specialization
-              in Quantiative Logistics & Operations Research from Erasumus
+              in Quantiative Logistics & Operations Research from Erasmus
               University in 2014. Since then, I have worked in a variety of
               positions where I have mostly been involved with developing
               machine learning- and operations research models and deploying
               them to production.
             </p>
             <p>
-              I enjoy experimenting with new technologies, writing 'clean' code
+              I enjoy experimenting with new technologies and writing&nbsp;
+              <a
+                href="https://www.goodreads.com/book/show/3735293-clean-code"
+                target="_blank"
+              >
+                clean code
+              </a>.
+              
             </p>
             <p>
               I aspire to make the world a slightly better place with the
-              solutions I create, although I am still searching for the best ways to do so.
+              solutions I create, although I am still in an ongoing search for the best ways to do so.
             </p>
           </div>
 
           <div className={styles.skills}>
-            <h3 className> Things I enjoy working with</h3>
+            <h3 className> Things I work with</h3>
             <div className={styles.skills}>
               <div className={styles.skill}>
                 <SkillLogo name="Python" logo={PythonLogo} color="darkblue" />

@@ -43,7 +43,6 @@ const IndexPage = () => {
       />
       <Layout>
         <div className={styles.contentContainer}>
-          <div className={styles.content}>
             <Project
               url="https://fpgmaas.github.io/cookiecutter-poetry/"
               title="cookiecutter-poetry"
@@ -59,7 +58,6 @@ const IndexPage = () => {
               stars={getNumberOfStars("simple-homepage")}
             />
           </div>
-        </div>
       </Layout>
     </>
   )
