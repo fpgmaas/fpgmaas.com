@@ -16,6 +16,7 @@ import JavascriptLogo from "../../static/logos/javascript.svg"
 import PlotlyLogo from "../../static/logos/plotly.svg"
 import TerraformLogo from "../../static/logos/terraform.svg"
 import SparkLogo from "../../static/logos/spark.svg"
+import RLogo from "../../static/logos/r.svg"
 
 const AboutPage = () => {
   return (
@@ -79,6 +80,9 @@ const AboutPage = () => {
               </div>
               <div className={styles.skill}>
                 <SkillLogo name="Plotly" logo={PlotlyLogo} />
+              </div>
+              <div className={styles.skill}>
+                <SkillLogo name="R" logo={RLogo} />
               </div>
             </div>
           </div>

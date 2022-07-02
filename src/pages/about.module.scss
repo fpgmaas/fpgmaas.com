@@ -13,11 +13,11 @@
 .skills {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
 .text-container {
@@ -27,6 +27,8 @@
   justify-content: flex-start;
   width: 100%;
 }
+
+
 
 .skill {
 margin: 0 .5rem;
