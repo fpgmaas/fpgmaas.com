@@ -18,6 +18,7 @@ const IndexPage = () => {
       strings: [
         "<span style='color:#538cc6'>data scientist</span>.",
         "<span style='color:#538cc6'>data engineer</span>.",
+        "<span style='color:#538cc6'>freelancer</span>.",
         "<span style='color:#538cc6'>web development enthusiast</span>.",
       ],
       typeSpeed: 40,

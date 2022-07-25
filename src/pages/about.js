@@ -29,7 +29,7 @@ const AboutPage = () => {
             <p>
               Hi, I'm Florian, a data scientist/engineer living in The Hague,
               the Netherlands. I graduated in Econometrics with a specialization
-              in Quantiative Logistics & Operations Research from Erasmus
+              in Quantitative Logistics & Operations Research from Erasmus
               University in 2014. Since then, I have worked in a variety of
               positions where I have mostly been involved with developing
               machine learning- and operations research models and deploying
